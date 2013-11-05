@@ -123,11 +123,9 @@
 		C86268D71828781C0092B910 /* PerfecTiming */ = {
 			isa = PBXGroup;
 			children = (
-				C86268E01828781C0092B910 /* PTAppDelegate.h */,
-				C86268E11828781C0092B910 /* PTAppDelegate.m */,
+				C862690918287B280092B910 /* Controllers */,
+				C862690818287B100092B910 /* Models */,
 				C86268E91828781C0092B910 /* MainStoryboard.storyboard */,
-				C86268EC1828781C0092B910 /* PTViewController.h */,
-				C86268ED1828781C0092B910 /* PTViewController.m */,
 				C86268D81828781C0092B910 /* Supporting Files */,
 			);
 			path = PerfecTiming;
@@ -136,6 +134,8 @@
 		C86268D81828781C0092B910 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C86268E01828781C0092B910 /* PTAppDelegate.h */,
+				C86268E11828781C0092B910 /* PTAppDelegate.m */,
 				C86268D91828781C0092B910 /* PerfecTiming-Info.plist */,
 				C86268DA1828781C0092B910 /* InfoPlist.strings */,
 				C86268DD1828781C0092B910 /* main.m */,
@@ -145,6 +145,22 @@
 				C86268E71828781C0092B910 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C862690818287B100092B910 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C862690918287B280092B910 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C86268EC1828781C0092B910 /* PTViewController.h */,
+				C86268ED1828781C0092B910 /* PTViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +363,7 @@
 				C86268F31828781C0092B910 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
