@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C86268D21828781C0092B910 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D11828781C0092B910 /* UIKit.framework */; };
+		C86268D41828781C0092B910 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D31828781C0092B910 /* Foundation.framework */; };
+		C86268D61828781C0092B910 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D51828781C0092B910 /* CoreGraphics.framework */; };
+		C86268DC1828781C0092B910 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C86268DA1828781C0092B910 /* InfoPlist.strings */; };
+		C86268DE1828781C0092B910 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86268DD1828781C0092B910 /* main.m */; };
+		C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86268E11828781C0092B910 /* PTAppDelegate.m */; };
+		C86268E41828781C0092B910 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C86268E31828781C0092B910 /* Default.png */; };
+		C86268E61828781C0092B910 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86268E51828781C0092B910 /* Default@2x.png */; };
+		C86268E81828781C0092B910 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86268E71828781C0092B910 /* Default-568h@2x.png */; };
+		C86268EB1828781C0092B910 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86268E91828781C0092B910 /* MainStoryboard.storyboard */; };
+		C86268EE1828781C0092B910 /* PTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86268ED1828781C0092B910 /* PTViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C86268CE1828781C0092B910 /* PerfecTiming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfecTiming.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C86268D11828781C0092B910 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C86268D31828781C0092B910 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C86268D51828781C0092B910 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C86268D91828781C0092B910 /* PerfecTiming-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PerfecTiming-Info.plist"; sourceTree = "<group>"; };
+		C86268DB1828781C0092B910 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C86268DD1828781C0092B910 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C86268DF1828781C0092B910 /* PerfecTiming-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PerfecTiming-Prefix.pch"; sourceTree = "<group>"; };
+		C86268E01828781C0092B910 /* PTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTAppDelegate.h; sourceTree = "<group>"; };
+		C86268E11828781C0092B910 /* PTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTAppDelegate.m; sourceTree = "<group>"; };
+		C86268E31828781C0092B910 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C86268E51828781C0092B910 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C86268E71828781C0092B910 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C86268EA1828781C0092B910 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		C86268EC1828781C0092B910 /* PTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTViewController.h; sourceTree = "<group>"; };
+		C86268ED1828781C0092B910 /* PTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C86268CB1828781C0092B910 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C86268D21828781C0092B910 /* UIKit.framework in Frameworks */,
+				C86268D41828781C0092B910 /* Foundation.framework in Frameworks */,
+				C86268D61828781C0092B910 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C86268C51828781C0092B910 = {
+			isa = PBXGroup;
+			children = (
+				C86268D71828781C0092B910 /* PerfecTiming */,
+				C86268D01828781C0092B910 /* Frameworks */,
+				C86268CF1828781C0092B910 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C86268CF1828781C0092B910 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C86268CE1828781C0092B910 /* PerfecTiming.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C86268D01828781C0092B910 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C86268D11828781C0092B910 /* UIKit.framework */,
+				C86268D31828781C0092B910 /* Foundation.framework */,
+				C86268D51828781C0092B910 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C86268D71828781C0092B910 /* PerfecTiming */ = {
+			isa = PBXGroup;
+			children = (
+				C86268E01828781C0092B910 /* PTAppDelegate.h */,
+				C86268E11828781C0092B910 /* PTAppDelegate.m */,
+				C86268E91828781C0092B910 /* MainStoryboard.storyboard */,
+				C86268EC1828781C0092B910 /* PTViewController.h */,
+				C86268ED1828781C0092B910 /* PTViewController.m */,
+				C86268D81828781C0092B910 /* Supporting Files */,
+			);
+			path = PerfecTiming;
+			sourceTree = "<group>";
+		};
+		C86268D81828781C0092B910 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C86268D91828781C0092B910 /* PerfecTiming-Info.plist */,
+				C86268DA1828781C0092B910 /* InfoPlist.strings */,
+				C86268DD1828781C0092B910 /* main.m */,
+				C86268DF1828781C0092B910 /* PerfecTiming-Prefix.pch */,
+				C86268E31828781C0092B910 /* Default.png */,
+				C86268E51828781C0092B910 /* Default@2x.png */,
+				C86268E71828781C0092B910 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C86268CD1828781C0092B910 /* PerfecTiming */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C86268F11828781C0092B910 /* Build configuration list for PBXNativeTarget "PerfecTiming" */;
+			buildPhases = (
+				C86268CA1828781C0092B910 /* Sources */,
+				C86268CB1828781C0092B910 /* Frameworks */,
+				C86268CC1828781C0092B910 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PerfecTiming;
+			productName = PerfecTiming;
+			productReference = C86268CE1828781C0092B910 /* PerfecTiming.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C86268C61828781C0092B910 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PT;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "BRIAN J GOLDEN";
+			};
+			buildConfigurationList = C86268C91828781C0092B910 /* Build configuration list for PBXProject "PerfecTiming" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C86268C51828781C0092B910;
+			productRefGroup = C86268CF1828781C0092B910 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C86268CD1828781C0092B910 /* PerfecTiming */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C86268CC1828781C0092B910 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C86268DC1828781C0092B910 /* InfoPlist.strings in Resources */,
+				C86268E41828781C0092B910 /* Default.png in Resources */,
+				C86268E61828781C0092B910 /* Default@2x.png in Resources */,
+				C86268E81828781C0092B910 /* Default-568h@2x.png in Resources */,
+				C86268EB1828781C0092B910 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C86268CA1828781C0092B910 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C86268DE1828781C0092B910 /* main.m in Sources */,
+				C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */,
+				C86268EE1828781C0092B910 /* PTViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C86268DA1828781C0092B910 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C86268DB1828781C0092B910 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C86268E91828781C0092B910 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C86268EA1828781C0092B910 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C86268EF1828781C0092B910 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C86268F01828781C0092B910 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C86268F21828781C0092B910 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PerfecTiming/PerfecTiming-Prefix.pch";
+				INFOPLIST_FILE = "PerfecTiming/PerfecTiming-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C86268F31828781C0092B910 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PerfecTiming/PerfecTiming-Prefix.pch";
+				INFOPLIST_FILE = "PerfecTiming/PerfecTiming-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C86268C91828781C0092B910 /* Build configuration list for PBXProject "PerfecTiming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C86268EF1828781C0092B910 /* Debug */,
+				C86268F01828781C0092B910 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C86268F11828781C0092B910 /* Build configuration list for PBXNativeTarget "PerfecTiming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C86268F21828781C0092B910 /* Debug */,
+				C86268F31828781C0092B910 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C86268C61828781C0092B910 /* Project object */;
+}
