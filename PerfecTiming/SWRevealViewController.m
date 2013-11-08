@@ -27,25 +27,25 @@
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
-#import "PTRevealViewController.h"
+#import "SWRevealViewController.h"
 
-#pragma mark - PTDirectionPanGestureRecognizer
+#pragma mark - SWDirectionPanGestureRecognizer
 
 typedef enum
 {
-    PTDirectionPanGestureRecognizerVertical,
-    PTDirectionPanGestureRecognizerHorizontal
+    SWDirectionPanGestureRecognizerVertical,
+    SWDirectionPanGestureRecognizerHorizontal
 
-} PTDirectionPanGestureRecognizerDirection;
+} SWDirectionPanGestureRecognizerDirection;
 
-@interface PTDirectionPanGestureRecognizer : UIPanGestureRecognizer
+@interface SWDirectionPanGestureRecognizer : UIPanGestureRecognizer
 
-@property (nonatomic, assign) PTDirectionPanGestureRecognizerDirection direction;
+@property (nonatomic, assign) SWDirectionPanGestureRecognizerDirection direction;
 
 @end
 
 
-@implementation PTDirectionPanGestureRecognizer
+@implementation SWDirectionPanGestureRecognizer
 {
     BOOL _dragging;
     CGPoint _init;
@@ -81,14 +81,14 @@ typedef enum
     
     if (abs(moveX) > kDirectionPanThreshold)
     {
-        if (_direction == PTDirectionPanGestureRecognizerHorizontal)
+        if (_direction == SWDirectionPanGestureRecognizerHorizontal)
             _dragging = YES;
         else
             self.state = UIGestureRecognizerStateFailed;
     }
     else if (abs(moveY) > kDirectionPanThreshold)
     {
-        if (_direction == PTDirectionPanGestureRecognizerVertical)
+        if (_direction == SWDirectionPanGestureRecognizerVertical)
             _dragging = YES ;
         else
             self.state = UIGestureRecognizerStateFailed;
@@ -119,7 +119,7 @@ static CGFloat statusBarAdjustment( UIView* view )
 
 @interface SWRevealView: UIView
 {
-    __weak PTRevealViewController *_c;
+    __weak SWRevealViewController *_c;
 }
 
 @property (nonatomic, readonly) UIView *rearView;
@@ -130,7 +130,7 @@ static CGFloat statusBarAdjustment( UIView* view )
 @end
 
 
-@interface PTRevealViewController()
+@interface SWRevealViewController()
 - (void)_getRevealWidth:(CGFloat*)pRevealWidth revealOverDraw:(CGFloat*)pRevealOverdraw forSymetry:(int)symetry;
 - (void)_getBounceBack:(BOOL*)pBounceBack pStableDrag:(BOOL*)pStableDrag forSymetry:(int)symetry;
 - (void)_getAdjustedFrontViewPosition:(FrontViewPosition*)frontViewPosition forSymetry:(int)symetry;
@@ -149,7 +149,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     return result;
 }
 
-- (id)initWithFrame:(CGRect)frame controller:(PTRevealViewController*)controller
+- (id)initWithFrame:(CGRect)frame controller:(SWRevealViewController*)controller
 {
     self = [super initWithFrame:frame];
     if ( self )
@@ -349,7 +349,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 
 #pragma mark - SWRevealViewController Class
 
-@interface PTRevealViewController()<UIGestureRecognizerDelegate>
+@interface SWRevealViewController()<UIGestureRecognizerDelegate>
 {
     SWRevealView *_contentView;
     UIPanGestureRecognizer *_panGestureRecognizer;
@@ -360,7 +360,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 @end
 
 
-@implementation PTRevealViewController
+@implementation SWRevealViewController
 {
     FrontViewPosition _panInitialFrontPosition;
     NSMutableArray *_animationQueue;
@@ -435,7 +435,7 @@ static NSString * const SWSegueRearIdentifier = @"sw_rear";
 static NSString * const SWSegueFrontIdentifier = @"sw_front";
 static NSString * const SWSegueRightIdentifier = @"sw_right";
 
-- (void)prepareForSegue:(PTRevealViewControllerSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(SWRevealViewControllerSegue *)segue sender:(id)sender
 {
     // $ using a custom segue we can get access to the storyboard-loaded rear/front view controllers
     // the trick is to define segues of type SWRevealViewControllerSegue on the storyboard
@@ -448,25 +448,25 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
     // $ none of this would be necessary if Apple exposed "relationship" segues for container view controllers.
 
     NSString *identifier = segue.identifier;
-    if ( [segue isKindOfClass:[PTRevealViewControllerSegue class]] && sender == nil )
+    if ( [segue isKindOfClass:[SWRevealViewControllerSegue class]] && sender == nil )
     {
         if ( [identifier isEqualToString:SWSegueRearIdentifier] )
         {
-            segue.performBlock = ^(PTRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc)
+            segue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc)
             {
                 [self _setRearViewController:dvc];
             };
         }
         else if ( [identifier isEqualToString:SWSegueFrontIdentifier] )
         {
-            segue.performBlock = ^(PTRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc)
+            segue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc)
             {
                 [self _setFrontViewController:dvc];
             };
         }
         else if ( [identifier isEqualToString:SWSegueRightIdentifier] )
         {
-            segue.performBlock = ^(PTRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc)
+            segue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc)
             {
                 [self _setRightViewController:dvc];
             };
@@ -668,10 +668,10 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 {
     if ( _panGestureRecognizer == nil )
     {
-        PTDirectionPanGestureRecognizer *customRecognizer =
-            [[PTDirectionPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handleRevealGesture:)];
+        SWDirectionPanGestureRecognizer *customRecognizer =
+            [[SWDirectionPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handleRevealGesture:)];
         
-        customRecognizer.direction = PTDirectionPanGestureRecognizerHorizontal;
+        customRecognizer.direction = SWDirectionPanGestureRecognizerHorizontal;
         customRecognizer.delegate = self;
         _panGestureRecognizer = customRecognizer ;
     }
@@ -998,7 +998,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 - (void)_dispatchSetFrontViewPosition:(FrontViewPosition)frontViewPosition animated:(BOOL)animated
 {
     NSTimeInterval duration = animated?_toggleAnimationDuration:0.0;
-    __weak PTRevealViewController *theSelf = self;
+    __weak SWRevealViewController *theSelf = self;
     _enqueue( [theSelf _setFrontViewPosition:frontViewPosition withDuration:duration] );
 }
 
@@ -1014,7 +1014,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
     
     NSTimeInterval duration = animated?_toggleAnimationDuration:0.0;
 
-    __weak PTRevealViewController *theSelf = self;
+    __weak SWRevealViewController *theSelf = self;
     if ( animated )
     {
         _enqueue( [theSelf _setFrontViewPosition:FrontViewPositionRightMost withDuration:firstDuration] );
@@ -1030,14 +1030,14 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 - (void)_dispatchSetRearViewController:(UIViewController *)newRearViewController
 {
-    __weak PTRevealViewController *theSelf = self;
+    __weak SWRevealViewController *theSelf = self;
     _enqueue( [theSelf _setRearViewController:newRearViewController] );
 }
 
 
 - (void)_dispatchSetRightViewController:(UIViewController *)newRightViewController
 {
-    __weak PTRevealViewController *theSelf = self;
+    __weak SWRevealViewController *theSelf = self;
     _enqueue( [theSelf _setRightViewController:newRightViewController] );
 }
 
@@ -1301,12 +1301,12 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - UIViewController(SWRevealViewController) Category
 
-@implementation UIViewController(PTRevealViewController)
+@implementation UIViewController(SWRevealViewController)
 
-- (PTRevealViewController*)revealViewController
+- (SWRevealViewController*)revealViewController
 {
     UIViewController *parent = self;
-    Class revealClass = [PTRevealViewController class];
+    Class revealClass = [SWRevealViewController class];
     
     while ( nil != (parent = [parent parentViewController]) && ![parent isKindOfClass:revealClass] )
     {
@@ -1320,7 +1320,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 #pragma mark - SWRevealViewControllerSegue Class
 
-@implementation PTRevealViewControllerSegue
+@implementation SWRevealViewControllerSegue
 
 - (void)perform
 {

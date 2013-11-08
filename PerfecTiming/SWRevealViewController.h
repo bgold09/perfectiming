@@ -27,10 +27,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class PTRevealViewController;
-@protocol PTRevealViewControllerDelegate;
+@class SWRevealViewController;
+@protocol SWRevealViewControllerDelegate;
 
-#pragma mark - PTRevealViewController Class
+#pragma mark - SWRevealViewController Class
 
 // Enum values for setFrontViewPosition:animated:
 typedef enum
@@ -56,7 +56,7 @@ typedef enum
 } FrontViewPosition;
 
 
-@interface PTRevealViewController : UIViewController
+@interface SWRevealViewController : UIViewController
 
 // Object instance init and rear view setting
 - (id)initWithRearViewController:(UIViewController *)rearViewController frontViewController:(UIViewController *)frontViewController;
@@ -151,57 +151,57 @@ typedef enum
 // Moreover you can assign a delegate to let the class inform you on positions and animation activity.
 
 // Delegate
-@property (weak, nonatomic) id<PTRevealViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<SWRevealViewControllerDelegate> delegate;
 
 @end
 
 #pragma mark - SWRevealViewControllerDelegate Protocol
 
-@protocol PTRevealViewControllerDelegate<NSObject>
+@protocol SWRevealViewControllerDelegate<NSObject>
 
 @optional
 
 // The following delegate methods will be called before and after the front view moves to a position
-- (void)revealController:(PTRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position;
-- (void)revealController:(PTRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position;
+- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:(FrontViewPosition)position;
+- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:(FrontViewPosition)position;
 
 // This will be called inside the reveal animation, thus you can use it to place your own code that will be animated in sync
-- (void)revealController:(PTRevealViewController *)revealController animateToPosition:(FrontViewPosition)position;
+- (void)revealController:(SWRevealViewController *)revealController animateToPosition:(FrontViewPosition)position;
 
 // Implement this to return NO when you want the pan gesture recognizer to be ignored
-- (BOOL)revealControllerPanGestureShouldBegin:(PTRevealViewController *)revealController;
+- (BOOL)revealControllerPanGestureShouldBegin:(SWRevealViewController *)revealController;
 
 // Called when the gestureRecognizer began and ended
-- (void)revealControllerPanGestureBegan:(PTRevealViewController *)revealController;
-- (void)revealControllerPanGestureEnded:(PTRevealViewController *)revealController;
+- (void)revealControllerPanGestureBegan:(SWRevealViewController *)revealController;
+- (void)revealControllerPanGestureEnded:(SWRevealViewController *)revealController;
 
 // The following methods provide a means to track the evolution of the gesture recognizer.
 // The 'location' parameter is the X origin coordinate of the front view as the user drags it
 // The 'progress' parameter is a positive value from 0 to 1 indicating the front view location relative to the
 // rearRevealWidth or rightRevealWidth. 1 is fully revealed, dragging ocurring in the overDraw region will result in values above 1.
-- (void)revealController:(PTRevealViewController *)revealController panGestureBeganFromLocation:(CGFloat)location progress:(CGFloat)progress;
-- (void)revealController:(PTRevealViewController *)revealController panGestureMovedToLocation:(CGFloat)location progress:(CGFloat)progress;
-- (void)revealController:(PTRevealViewController *)revealController panGestureEndedToLocation:(CGFloat)location progress:(CGFloat)progress;
+- (void)revealController:(SWRevealViewController *)revealController panGestureBeganFromLocation:(CGFloat)location progress:(CGFloat)progress;
+- (void)revealController:(SWRevealViewController *)revealController panGestureMovedToLocation:(CGFloat)location progress:(CGFloat)progress;
+- (void)revealController:(SWRevealViewController *)revealController panGestureEndedToLocation:(CGFloat)location progress:(CGFloat)progress;
 
 @end
 
 
-#pragma mark - UIViewController(PTRevealViewController) Category
+#pragma mark - UIViewController(SWRevealViewController) Category
 
 // We add a category of UIViewController to let childViewControllers easily access their parent SWRevealViewController
-@interface UIViewController(PTRevealViewController)
+@interface UIViewController(SWRevealViewController)
 
-- (PTRevealViewController*)revealViewController;
+- (SWRevealViewController*)revealViewController;
 
 @end
 
 
 // This will allow the class to be defined on a storyboard
-#pragma mark - PTRevealViewControllerSegue
+#pragma mark - SWRevealViewControllerSegue
 
-@interface PTRevealViewControllerSegue : UIStoryboardSegue
+@interface SWRevealViewControllerSegue : UIStoryboardSegue
 
-@property (strong) void(^performBlock)( PTRevealViewControllerSegue* segue, UIViewController* svc, UIViewController* dvc );
+@property (strong) void(^performBlock)( SWRevealViewControllerSegue* segue, UIViewController* svc, UIViewController* dvc );
 
 @end
 
