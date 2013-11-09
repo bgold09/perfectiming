@@ -7,8 +7,10 @@
 //
 
 #import "PTMembershipViewController.h"
+#import "SWRevealViewController.h"
 
 @interface PTMembershipViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @end
 
@@ -26,6 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.menuButton.target = self.revealViewController;
+    self.menuButton.action = @selector(revealToggle:);
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

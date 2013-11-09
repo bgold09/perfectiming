@@ -1,20 +1,20 @@
 //
-//  PTSettingsViewController.m
+//  PTSidebarViewController.m
 //  PerfecTiming
 //
 //  Created by BRIAN J GOLDEN on 11/8/13.
 //  Copyright (c) 2013 BRIAN J GOLDEN. All rights reserved.
 //
 
-#import "PTSettingsViewController.h"
+#import "PTSidebarViewController.h"
 #import "SWRevealViewController.h"
 
-@interface PTSettingsViewController ()
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@interface PTSidebarViewController ()
+@property (strong, nonatomic) NSArray *menuItems;
 
 @end
 
-@implementation PTSettingsViewController
+@implementation PTSidebarViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,9 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.menuButton.target = self.revealViewController;
-    self.menuButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    self.menuItems = @[@"ManagedGroupsCell", @"MembershipCell", @"SettingsCell"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,34 +37,19 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.menuItems count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *CellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
     
     return cell;
 }
@@ -112,8 +95,7 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -121,6 +103,40 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {    
+    if ([segue isKindOfClass:[SWRevealViewControllerSegue class]]) {
+        SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue *) segue;
+        
+        swSegue.performBlock = ^(SWRevealViewControllerSegue *rvc_segue, UIViewController *svc, UIViewController *dvc) {
+//            UINavigationController *navController = (UINavigationController *) self.revealViewController.frontViewController;
+//            [navController setViewControllers:@[dvc] animated:NO];
+//            [self.revealViewController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            
+            NSString *vcName = @"";
+            
+            if ([segue.identifier isEqualToString:@"ManagedGroupsSegue"]) {
+                vcName = @"ManagedGroupsNav";
+            } else if ([segue.identifier isEqualToString:@"MembershipSegue"]) {
+                vcName = @"MembershipNav";
+            } else if ([segue.identifier isEqualToString:@"SettingsSegue"]) {
+                vcName = @"SettingsNav";
+            }
+            
+            if (vcName.length > 0) {
+                NSBundle *bundle = [NSBundle mainBundle];
+                UIViewController *viewController = [[UIStoryboard storyboardWithName:@"MainStoryboard" bundle:bundle] instantiateViewControllerWithIdentifier:vcName];
+                
+                [self.revealViewController setFrontViewController:viewController];
+                [self.revealViewController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            }
+            
+        };
+    }
+    
 }
 
 @end

@@ -23,10 +23,11 @@
 		C83C85BA182DADB40028A722 /* Watches.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85AC182DADB40028A722 /* Watches.png */; };
 		C83C85C2182DB6220028A722 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85C0182DB6210028A722 /* menu.png */; };
 		C83C85C3182DB6220028A722 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85C1182DB6210028A722 /* menu@2x.png */; };
-		C83C85C6182DB6E50028A722 /* PTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83C85C5182DB6E50028A722 /* PTSettingsViewController.m */; };
 		C83C85C9182DB73C0028A722 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83C85C8182DB73C0028A722 /* PTManagedGroupsViewController.m */; };
 		C83C85CC182DB74E0028A722 /* PTMembershipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */; };
 		C83C85CF182DB9BE0028A722 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83C85BF182DB2470028A722 /* SWRevealViewController.m */; };
+		C83C85D2182DBA8A0028A722 /* PTSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */; };
+		C83C85D5182DC22F0028A722 /* PTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */; };
 		C86268D21828781C0092B910 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D11828781C0092B910 /* UIKit.framework */; };
 		C86268D41828781C0092B910 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D31828781C0092B910 /* Foundation.framework */; };
 		C86268D61828781C0092B910 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D51828781C0092B910 /* CoreGraphics.framework */; };
@@ -70,12 +71,14 @@
 		C83C85BF182DB2470028A722 /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C83C85C0182DB6210028A722 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		C83C85C1182DB6210028A722 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
-		C83C85C4182DB6E50028A722 /* PTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSettingsViewController.h; sourceTree = "<group>"; };
-		C83C85C5182DB6E50028A722 /* PTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSettingsViewController.m; sourceTree = "<group>"; };
 		C83C85C7182DB73C0028A722 /* PTManagedGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupsViewController.h; sourceTree = "<group>"; };
 		C83C85C8182DB73C0028A722 /* PTManagedGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTManagedGroupsViewController.m; sourceTree = "<group>"; };
 		C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMembershipViewController.h; sourceTree = "<group>"; };
 		C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMembershipViewController.m; sourceTree = "<group>"; };
+		C83C85D0182DBA890028A722 /* PTSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSidebarViewController.h; sourceTree = "<group>"; };
+		C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSidebarViewController.m; sourceTree = "<group>"; };
+		C83C85D3182DC22F0028A722 /* PTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTSettingsViewController.h; sourceTree = "<group>"; };
+		C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTSettingsViewController.m; sourceTree = "<group>"; };
 		C86268CE1828781C0092B910 /* PerfecTiming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfecTiming.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86268D11828781C0092B910 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C86268D31828781C0092B910 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -231,12 +234,14 @@
 				C83C859C182DA9610028A722 /* PTStartupViewController.m */,
 				C83C85BE182DB2470028A722 /* SWRevealViewController.h */,
 				C83C85BF182DB2470028A722 /* SWRevealViewController.m */,
-				C83C85C4182DB6E50028A722 /* PTSettingsViewController.h */,
-				C83C85C5182DB6E50028A722 /* PTSettingsViewController.m */,
 				C83C85C7182DB73C0028A722 /* PTManagedGroupsViewController.h */,
 				C83C85C8182DB73C0028A722 /* PTManagedGroupsViewController.m */,
 				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
 				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
+				C83C85D0182DBA890028A722 /* PTSidebarViewController.h */,
+				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
+				C83C85D3182DC22F0028A722 /* PTSettingsViewController.h */,
+				C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -328,9 +333,10 @@
 				C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */,
 				C86268EE1828781C0092B910 /* PTViewController.m in Sources */,
 				C83C859D182DA9610028A722 /* PTStartupViewController.m in Sources */,
-				C83C85C6182DB6E50028A722 /* PTSettingsViewController.m in Sources */,
 				C83C85C9182DB73C0028A722 /* PTManagedGroupsViewController.m in Sources */,
 				C83C85CC182DB74E0028A722 /* PTMembershipViewController.m in Sources */,
+				C83C85D2182DBA8A0028A722 /* PTSidebarViewController.m in Sources */,
+				C83C85D5182DC22F0028A722 /* PTSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
