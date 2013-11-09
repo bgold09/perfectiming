@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C83C859D182DA9610028A722 /* PTStartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83C859C182DA9610028A722 /* PTStartupViewController.m */; };
+		C83C85AD182DADB40028A722 /* Book.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C859F182DADB40028A722 /* Book.png */; };
+		C83C85AE182DADB40028A722 /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A0182DADB40028A722 /* Calendar.png */; };
+		C83C85B0182DADB40028A722 /* Clipboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A2182DADB40028A722 /* Clipboard.png */; };
+		C83C85B1182DADB40028A722 /* Compas.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A3182DADB40028A722 /* Compas.png */; };
+		C83C85B2182DADB40028A722 /* Gift-Box.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A4182DADB40028A722 /* Gift-Box.png */; };
+		C83C85B3182DADB40028A722 /* Infinity-Loop.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A5182DADB40028A722 /* Infinity-Loop.png */; };
+		C83C85B4182DADB40028A722 /* Mail.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A6182DADB40028A722 /* Mail.png */; };
+		C83C85B5182DADB40028A722 /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A7182DADB40028A722 /* Map.png */; };
+		C83C85B6182DADB40028A722 /* Pensils.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A8182DADB40028A722 /* Pensils.png */; };
+		C83C85B7182DADB40028A722 /* Pocket.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A9182DADB40028A722 /* Pocket.png */; };
+		C83C85B8182DADB40028A722 /* Retina-Ready.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85AA182DADB40028A722 /* Retina-Ready.png */; };
+		C83C85B9182DADB40028A722 /* Toilet-Paper.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85AB182DADB40028A722 /* Toilet-Paper.png */; };
+		C83C85BA182DADB40028A722 /* Watches.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85AC182DADB40028A722 /* Watches.png */; };
 		C86268D21828781C0092B910 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D11828781C0092B910 /* UIKit.framework */; };
 		C86268D41828781C0092B910 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D31828781C0092B910 /* Foundation.framework */; };
 		C86268D61828781C0092B910 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268D51828781C0092B910 /* CoreGraphics.framework */; };
@@ -31,6 +45,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C83C859B182DA9610028A722 /* PTStartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStartupViewController.h; sourceTree = "<group>"; };
+		C83C859C182DA9610028A722 /* PTStartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStartupViewController.m; sourceTree = "<group>"; };
+		C83C859F182DADB40028A722 /* Book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Book.png; sourceTree = "<group>"; };
+		C83C85A0182DADB40028A722 /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
+		C83C85A2182DADB40028A722 /* Clipboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clipboard.png; sourceTree = "<group>"; };
+		C83C85A3182DADB40028A722 /* Compas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Compas.png; sourceTree = "<group>"; };
+		C83C85A4182DADB40028A722 /* Gift-Box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Gift-Box.png"; sourceTree = "<group>"; };
+		C83C85A5182DADB40028A722 /* Infinity-Loop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Infinity-Loop.png"; sourceTree = "<group>"; };
+		C83C85A6182DADB40028A722 /* Mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mail.png; sourceTree = "<group>"; };
+		C83C85A7182DADB40028A722 /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
+		C83C85A8182DADB40028A722 /* Pensils.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pensils.png; sourceTree = "<group>"; };
+		C83C85A9182DADB40028A722 /* Pocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pocket.png; sourceTree = "<group>"; };
+		C83C85AA182DADB40028A722 /* Retina-Ready.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Retina-Ready.png"; sourceTree = "<group>"; };
+		C83C85AB182DADB40028A722 /* Toilet-Paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Toilet-Paper.png"; sourceTree = "<group>"; };
+		C83C85AC182DADB40028A722 /* Watches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Watches.png; sourceTree = "<group>"; };
+		C83C85BE182DB2470028A722 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		C83C85BF182DB2470028A722 /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		C86268CE1828781C0092B910 /* PerfecTiming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfecTiming.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86268D11828781C0092B910 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C86268D31828781C0092B910 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -83,6 +114,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C83C859E182DADB40028A722 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				C83C859F182DADB40028A722 /* Book.png */,
+				C83C85A0182DADB40028A722 /* Calendar.png */,
+				C83C85A2182DADB40028A722 /* Clipboard.png */,
+				C83C85A3182DADB40028A722 /* Compas.png */,
+				C83C85A4182DADB40028A722 /* Gift-Box.png */,
+				C83C85A5182DADB40028A722 /* Infinity-Loop.png */,
+				C83C85A6182DADB40028A722 /* Mail.png */,
+				C83C85A7182DADB40028A722 /* Map.png */,
+				C83C85A8182DADB40028A722 /* Pensils.png */,
+				C83C85A9182DADB40028A722 /* Pocket.png */,
+				C83C85AA182DADB40028A722 /* Retina-Ready.png */,
+				C83C85AB182DADB40028A722 /* Toilet-Paper.png */,
+				C83C85AC182DADB40028A722 /* Watches.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
 		C86268C51828781C0092B910 = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +185,7 @@
 		C86268D81828781C0092B910 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C83C859E182DADB40028A722 /* icons */,
 				C86268E01828781C0092B910 /* PTAppDelegate.h */,
 				C86268E11828781C0092B910 /* PTAppDelegate.m */,
 				C86268D91828781C0092B910 /* PerfecTiming-Info.plist */,
@@ -159,6 +211,10 @@
 			children = (
 				C86268EC1828781C0092B910 /* PTViewController.h */,
 				C86268ED1828781C0092B910 /* PTViewController.m */,
+				C83C859B182DA9610028A722 /* PTStartupViewController.h */,
+				C83C859C182DA9610028A722 /* PTStartupViewController.m */,
+				C83C85BE182DB2470028A722 /* SWRevealViewController.h */,
+				C83C85BF182DB2470028A722 /* SWRevealViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -220,6 +276,19 @@
 				C86268E61828781C0092B910 /* Default@2x.png in Resources */,
 				C86268E81828781C0092B910 /* Default-568h@2x.png in Resources */,
 				C86268EB1828781C0092B910 /* MainStoryboard.storyboard in Resources */,
+				C83C85AD182DADB40028A722 /* Book.png in Resources */,
+				C83C85AE182DADB40028A722 /* Calendar.png in Resources */,
+				C83C85B0182DADB40028A722 /* Clipboard.png in Resources */,
+				C83C85B1182DADB40028A722 /* Compas.png in Resources */,
+				C83C85B2182DADB40028A722 /* Gift-Box.png in Resources */,
+				C83C85B3182DADB40028A722 /* Infinity-Loop.png in Resources */,
+				C83C85B4182DADB40028A722 /* Mail.png in Resources */,
+				C83C85B5182DADB40028A722 /* Map.png in Resources */,
+				C83C85B6182DADB40028A722 /* Pensils.png in Resources */,
+				C83C85B7182DADB40028A722 /* Pocket.png in Resources */,
+				C83C85B8182DADB40028A722 /* Retina-Ready.png in Resources */,
+				C83C85B9182DADB40028A722 /* Toilet-Paper.png in Resources */,
+				C83C85BA182DADB40028A722 /* Watches.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +302,7 @@
 				C86268DE1828781C0092B910 /* main.m in Sources */,
 				C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */,
 				C86268EE1828781C0092B910 /* PTViewController.m in Sources */,
+				C83C859D182DA9610028A722 /* PTStartupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
