@@ -410,6 +410,35 @@
         <image name="Pensils.png" width="200" height="200"/>
         <image name="menu.png" width="28" height="20"/>
     </resources>
+    <classes>
+        <class className="PTManagedGroupsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTManagedGroupsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="PTMembershipViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTMembershipViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="PTSettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="PTSidebarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTSidebarViewController.h"/>
+        </class>
+        <class className="PTStartupViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTStartupViewController.h"/>
+        </class>
+        <class className="SWRevealViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SWRevealViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
