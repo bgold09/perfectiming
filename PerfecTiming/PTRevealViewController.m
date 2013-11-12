@@ -9,7 +9,6 @@
 #import "PTRevealViewController.h"
 
 @interface PTRevealViewController ()
-@property (strong, nonatomic) PFLogInViewController *logInViewController;
 
 @end
 
@@ -18,7 +17,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _logInViewController = [[PFLogInViewController alloc] init];
+        
     }
     
     return self;
@@ -26,18 +25,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-    if (![PFUser currentUser]) {
-        self.logInViewController.delegate = self;
-        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
-        signUpViewController.delegate = self;
-        [self.logInViewController setSignUpController:signUpViewController];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self presentViewController:self.logInViewController animated:YES completion:NULL];
+    
+    if (![PFUser currentUser]) {
+        PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
+        logInViewController.delegate = self;
+        
+        PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        signUpViewController.delegate = self;
+        
+        [logInViewController setSignUpController:signUpViewController];
+        [self presentViewController:logInViewController animated:YES completion:NULL];
+    }    
 }
 
 #pragma mark - PFLogInViewController Delegate

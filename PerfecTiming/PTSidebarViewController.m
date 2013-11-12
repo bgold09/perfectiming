@@ -25,15 +25,6 @@
     return self;
 }
 
-//- (id)initWithCoder:(NSCoder *)aDecoder {
-//    self = [self initWithCoder:aDecoder];
-//    if (self) {
-//        _logInViewController = [[PFLogInViewController alloc] init];
-//    }
-//    
-//    return self;
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
