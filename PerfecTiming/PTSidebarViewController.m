@@ -20,14 +20,24 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
 
+//- (id)initWithCoder:(NSCoder *)aDecoder {
+//    self = [self initWithCoder:aDecoder];
+//    if (self) {
+//        _logInViewController = [[PFLogInViewController alloc] init];
+//    }
+//    
+//    return self;
+//}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.menuItems = @[@"ManagedGroupsCell", @"MembershipCell", @"SettingsCell"];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -35,6 +45,10 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 #pragma mark - Table view data source
@@ -111,11 +125,7 @@
     if ([segue isKindOfClass:[SWRevealViewControllerSegue class]]) {
         SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue *) segue;
         
-        swSegue.performBlock = ^(SWRevealViewControllerSegue *rvc_segue, UIViewController *svc, UIViewController *dvc) {
-//            UINavigationController *navController = (UINavigationController *) self.revealViewController.frontViewController;
-//            [navController setViewControllers:@[dvc] animated:NO];
-//            [self.revealViewController setFrontViewPosition:FrontViewPositionLeft animated:YES];
-            
+        swSegue.performBlock = ^(SWRevealViewControllerSegue *rvc_segue, UIViewController *svc, UIViewController *dvc) {            
             NSString *vcName = @"";
             
             if ([segue.identifier isEqualToString:@"ManagedGroupsSegue"]) {

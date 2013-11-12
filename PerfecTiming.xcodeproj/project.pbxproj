@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C83C859D182DA9610028A722 /* PTStartupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C83C859C182DA9610028A722 /* PTStartupViewController.m */; };
+		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C83C85AD182DADB40028A722 /* Book.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C859F182DADB40028A722 /* Book.png */; };
 		C83C85AE182DADB40028A722 /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A0182DADB40028A722 /* Calendar.png */; };
 		C83C85B0182DADB40028A722 /* Clipboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A2182DADB40028A722 /* Clipboard.png */; };
@@ -52,8 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C83C859B182DA9610028A722 /* PTStartupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTStartupViewController.h; sourceTree = "<group>"; };
-		C83C859C182DA9610028A722 /* PTStartupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTStartupViewController.m; sourceTree = "<group>"; };
+		C811084E1831AF690045BD85 /* PTRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRevealViewController.h; sourceTree = "<group>"; };
+		C811084F1831AF690045BD85 /* PTRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRevealViewController.m; sourceTree = "<group>"; };
 		C83C859F182DADB40028A722 /* Book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Book.png; sourceTree = "<group>"; };
 		C83C85A0182DADB40028A722 /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
 		C83C85A2182DADB40028A722 /* Clipboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clipboard.png; sourceTree = "<group>"; };
@@ -230,8 +230,8 @@
 			children = (
 				C86268EC1828781C0092B910 /* PTViewController.h */,
 				C86268ED1828781C0092B910 /* PTViewController.m */,
-				C83C859B182DA9610028A722 /* PTStartupViewController.h */,
-				C83C859C182DA9610028A722 /* PTStartupViewController.m */,
+				C811084E1831AF690045BD85 /* PTRevealViewController.h */,
+				C811084F1831AF690045BD85 /* PTRevealViewController.m */,
 				C83C85BE182DB2470028A722 /* SWRevealViewController.h */,
 				C83C85BF182DB2470028A722 /* SWRevealViewController.m */,
 				C83C85C7182DB73C0028A722 /* PTManagedGroupsViewController.h */,
@@ -332,11 +332,11 @@
 				C86268DE1828781C0092B910 /* main.m in Sources */,
 				C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */,
 				C86268EE1828781C0092B910 /* PTViewController.m in Sources */,
-				C83C859D182DA9610028A722 /* PTStartupViewController.m in Sources */,
 				C83C85C9182DB73C0028A722 /* PTManagedGroupsViewController.m in Sources */,
 				C83C85CC182DB74E0028A722 /* PTMembershipViewController.m in Sources */,
 				C83C85D2182DBA8A0028A722 /* PTSidebarViewController.m in Sources */,
 				C83C85D5182DC22F0028A722 /* PTSettingsViewController.m in Sources */,
+				C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
