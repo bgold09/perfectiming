@@ -12,6 +12,7 @@
 
 @interface PTManagedGroupsViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+- (IBAction)addButtonPressed:(id)sender;
 
 @end
 
@@ -124,17 +125,14 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
- 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the object from Parse and reload the table view
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, and save it to Parse
- }
- }
- */
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the object from Parse and reload the table view
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, and save it to Parse
+    }
+}
 
 /*
  // Override to support rearranging the table view.
@@ -154,6 +152,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddManagedGroupSegue"]) {
+        
+    }
+}
+
+- (IBAction)addButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"AddManagedGroupSegue" sender:self];
 }
 
 @end

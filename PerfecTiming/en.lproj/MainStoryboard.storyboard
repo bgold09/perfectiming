@@ -138,6 +138,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Managed Groups" id="FX9-Qa-baW">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="5e5-Wb-jzW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ckx-rD-W9L">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="XwM-ML-vXq" id="YjY-Nf-y80"/>
+                                <segue destination="3A2-Uz-rL7" kind="modal" identifier="AddManagedGroupSegue" id="VrT-ah-9Nv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="5e5-Wb-jzW" id="099-U0-LrO"/>
@@ -146,6 +152,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWQ-FT-2rk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5544" y="-4788"/>
+        </scene>
+        <!--View Controller - Add Group-->
+        <scene sceneID="jMI-mm-geM">
+            <objects>
+                <viewController id="btq-Tv-gje" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H0Q-Ao-ZSk">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" minimumFontSize="17" id="Nft-LB-fvJ">
+                                <rect key="frame" x="46" y="183" width="228" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mcv-ck-Q6u">
+                                <rect key="frame" x="20" y="20" width="280" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Create a new group! Give the group a name and you will be presented with a PIN to distribute to your group members to join the group.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Group" id="OUW-Dz-62e">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7aq-tB-vPs"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0JX-o1-XRM"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzG-5m-t1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4241" y="-5173"/>
         </scene>
         <!--Membership View Controller - Membership-->
         <scene sceneID="e1u-JQ-LkV">
@@ -272,6 +312,24 @@
             </objects>
             <point key="canvasLocation" x="-7310" y="-4788"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bjD-lP-WBy">
+            <objects>
+                <navigationController id="3A2-Uz-rL7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Y2-DX-6oc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="btq-Tv-gje" kind="relationship" relationship="rootViewController" id="sdk-Yp-vmu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dg9-ZK-uUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4767" y="-5173"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Clipboard.png" width="200" height="200"/>
@@ -279,38 +337,6 @@
         <image name="Pensils.png" width="200" height="200"/>
         <image name="menu.png" width="28" height="20"/>
     </resources>
-    <classes>
-        <class className="PFQueryTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFQueryTableViewController.h"/>
-        </class>
-        <class className="PTManagedGroupsViewController" superclassName="PFQueryTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTManagedGroupsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="PTMembershipViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTMembershipViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="PTRevealViewController" superclassName="SWRevealViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTRevealViewController.h"/>
-        </class>
-        <class className="PTSettingsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="PTSidebarViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTSidebarViewController.h"/>
-        </class>
-        <class className="SWRevealViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SWRevealViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
