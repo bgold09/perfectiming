@@ -10,6 +10,7 @@
 		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */; };
 		C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99E1832D98A000FFD65 /* PTGroup.m */; };
+		C830B9A51832E2C2000FFD65 /* PTAddManagedGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B9A41832E2C2000FFD65 /* PTAddManagedGroupViewController.m */; };
 		C83C85AD182DADB40028A722 /* Book.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C859F182DADB40028A722 /* Book.png */; };
 		C83C85AE182DADB40028A722 /* Calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A0182DADB40028A722 /* Calendar.png */; };
 		C83C85B0182DADB40028A722 /* Clipboard.png in Resources */ = {isa = PBXBuildFile; fileRef = C83C85A2182DADB40028A722 /* Clipboard.png */; };
@@ -59,6 +60,8 @@
 		C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTManagedGroupsViewController.m; sourceTree = "<group>"; };
 		C830B99D1832D98A000FFD65 /* PTGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTGroup.h; sourceTree = "<group>"; };
 		C830B99E1832D98A000FFD65 /* PTGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTGroup.m; sourceTree = "<group>"; };
+		C830B9A31832E2C2000FFD65 /* PTAddManagedGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTAddManagedGroupViewController.h; sourceTree = "<group>"; };
+		C830B9A41832E2C2000FFD65 /* PTAddManagedGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAddManagedGroupViewController.m; sourceTree = "<group>"; };
 		C83C859F182DADB40028A722 /* Book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Book.png; sourceTree = "<group>"; };
 		C83C85A0182DADB40028A722 /* Calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Calendar.png; sourceTree = "<group>"; };
 		C83C85A2182DADB40028A722 /* Clipboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clipboard.png; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 				C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */,
 				C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */,
 				C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */,
+				C830B9A31832E2C2000FFD65 /* PTAddManagedGroupViewController.h */,
+				C830B9A41832E2C2000FFD65 /* PTAddManagedGroupViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */,
 				C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */,
 				C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */,
+				C830B9A51832E2C2000FFD65 /* PTAddManagedGroupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

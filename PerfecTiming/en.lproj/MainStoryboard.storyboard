@@ -98,7 +98,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DdJ-zs-66o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6722" y="-4104"/>
+            <point key="canvasLocation" x="-4874" y="-968"/>
         </scene>
         <!--Managed Groups View Controller - Managed Groups-->
         <scene sceneID="WUT-JS-FP5">
@@ -151,24 +151,24 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWQ-FT-2rk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5544" y="-4788"/>
+            <point key="canvasLocation" x="-3696" y="-1652"/>
         </scene>
-        <!--View Controller - Add Group-->
+        <!--Add Managed Group View Controller - Add Group-->
         <scene sceneID="jMI-mm-geM">
             <objects>
-                <viewController id="btq-Tv-gje" sceneMemberID="viewController">
+                <viewController id="btq-Tv-gje" customClass="PTAddManagedGroupViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H0Q-Ao-ZSk">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" minimumFontSize="17" id="Nft-LB-fvJ">
-                                <rect key="frame" x="46" y="183" width="228" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" minimumFontSize="17" clearButtonMode="whileEditing" id="Nft-LB-fvJ">
+                                <rect key="frame" x="46" y="152" width="228" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mcv-ck-Q6u">
-                                <rect key="frame" x="20" y="20" width="280" height="122"/>
+                                <rect key="frame" x="20" y="7" width="280" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">Create a new group! Give the group a name and you will be presented with a PIN to distribute to your group members to join the group.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -179,13 +179,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Group" id="OUW-Dz-62e">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7aq-tB-vPs"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0JX-o1-XRM"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7aq-tB-vPs">
+                            <connections>
+                                <action selector="cancelPressed:" destination="btq-Tv-gje" id="wmJ-U7-dOG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="0JX-o1-XRM">
+                            <connections>
+                                <action selector="savePressed:" destination="btq-Tv-gje" id="kKm-3l-99B"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="groupNameField" destination="Nft-LB-fvJ" id="86L-4u-kvd"/>
+                        <outlet property="saveButton" destination="0JX-o1-XRM" id="kmB-IF-xyx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzG-5m-t1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4241" y="-5173"/>
+            <point key="canvasLocation" x="-2393" y="-2037"/>
         </scene>
         <!--Membership View Controller - Membership-->
         <scene sceneID="e1u-JQ-LkV">
@@ -216,7 +228,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VA0-NM-Ikh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5544" y="-4089"/>
+            <point key="canvasLocation" x="-3696" y="-953"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HLc-jt-t9L">
@@ -231,7 +243,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za6-J9-4dT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6078" y="-4089"/>
+            <point key="canvasLocation" x="-4230" y="-953"/>
         </scene>
         <!--Settings View Controller - Settings-->
         <scene sceneID="vmm-Gt-u0O">
@@ -262,7 +274,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGL-Lt-HMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5544" y="-3399"/>
+            <point key="canvasLocation" x="-3696" y="-263"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NAP-E9-KHc">
@@ -277,7 +289,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgb-b1-zkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6078" y="-3399"/>
+            <point key="canvasLocation" x="-4230" y="-263"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kTJ-v3-X5f">
@@ -292,7 +304,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRe-4d-PBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6078" y="-4788"/>
+            <point key="canvasLocation" x="-4230" y="-1652"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="b5m-qZ-qbn">
@@ -310,7 +322,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZz-64-axl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7310" y="-4788"/>
+            <point key="canvasLocation" x="-5462" y="-1652"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bjD-lP-WBy">
@@ -328,7 +340,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dg9-ZK-uUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4767" y="-5173"/>
+            <point key="canvasLocation" x="-2919" y="-2037"/>
         </scene>
     </scenes>
     <resources>
@@ -337,6 +349,48 @@
         <image name="Pensils.png" width="200" height="200"/>
         <image name="menu.png" width="28" height="20"/>
     </resources>
+    <classes>
+        <class className="PFQueryTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PFQueryTableViewController.h"/>
+        </class>
+        <class className="PTAddManagedGroupViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTAddManagedGroupViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelPressed:"/>
+                <relationship kind="action" name="savePressed:"/>
+                <relationship kind="outlet" name="groupNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="PTManagedGroupsViewController" superclassName="PFQueryTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTManagedGroupsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addButtonPressed:"/>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="PTMembershipViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTMembershipViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="PTRevealViewController" superclassName="SWRevealViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTRevealViewController.h"/>
+        </class>
+        <class className="PTSettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="PTSidebarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PTSidebarViewController.h"/>
+        </class>
+        <class className="SWRevealViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SWRevealViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

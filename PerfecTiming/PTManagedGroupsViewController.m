@@ -22,7 +22,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // The className to query on
-        self.parseClassName = @"Groups";
+        self.parseClassName = @"Group";
         
         // The key of the PFObject to display in the label of the default cell style
         self.textKey = @"name";
@@ -44,19 +44,21 @@
     self.menuButton.target = self.revealViewController;
     self.menuButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:@"AddedGroupNotification" object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Notifcation Handlers
+
+- (void)refreshTable:(NSNotification *)notification {
+    [self loadObjects];
 }
 
 #pragma mark - PFQueryTableViewController Delegate
 
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    [query whereKey:@"manager" equalTo:[[PFUser currentUser] username]];
+    [query whereKey:@"manager" equalTo:[PFUser currentUser]];
     
     // If Pull To Refresh is enabled, query against the network by default.
     if (self.pullToRefreshEnabled) {
@@ -69,7 +71,7 @@
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-    [query orderByDescending:@"name"];
+    [query orderByAscending:@"name"];
     
     return query;
 }
@@ -85,10 +87,11 @@
         cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    PTGroup *group = (PTGroup *) object;
+//    PTGroup *group = (PTGroup *) object;
     
     // Configure the cell
-    cell.textLabel.text = group.name;
+//    cell.textLabel.text = group.name;
+    cell.textLabel.text = [object objectForKey:@"name"];
     cell.detailTextLabel.text = @"Placeholder";
 //    PFRelation *manager = group.manager;
 //    cell.detailTextLabel.text = [manager objectForKey:@"name"];
