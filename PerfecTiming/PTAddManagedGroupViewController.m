@@ -53,10 +53,38 @@
     }
 }
 
+- (BOOL)groupExistsWithName:(NSString *)name {
+    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+    [query whereKey:@"name" equalTo:name];
+    
+    NSError *error;
+    NSInteger count = [query countObjects:&error];
+    
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return YES;
+    }
+    
+    if (count > 0) {
+        NSString *message = [NSString stringWithFormat:@"A group with the name '%@' already exists.", name];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Duplicate Group Name" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (void)createManagedGroup {
-    PFUser *currentUser = [PFUser currentUser];
     NSString *groupName = self.groupNameField.text;
     
+    if ([self groupExistsWithName:groupName]) {
+        return;
+    }
+    
+    PFUser *currentUser = [PFUser currentUser];
     PFObject *group = [PFObject objectWithClassName:@"Group"];
     [group setObject:groupName forKey:@"name"];
     [group setObject:currentUser forKey:@"manager"];
