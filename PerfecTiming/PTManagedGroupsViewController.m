@@ -58,7 +58,10 @@
 
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    [query whereKey:@"manager" equalTo:[PFUser currentUser]];
+    
+    if ([PFUser currentUser]) {
+        [query whereKey:@"manager" equalTo:[PFUser currentUser]];
+    }
     
     // If Pull To Refresh is enabled, query against the network by default.
     if (self.pullToRefreshEnabled) {
