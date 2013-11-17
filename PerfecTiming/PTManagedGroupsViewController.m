@@ -22,10 +22,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // The className to query on
-        self.parseClassName = @"Group";
-        
-        // The key of the PFObject to display in the label of the default cell style
-        self.textKey = @"name";
+        self.parseClassName = [PTGroup parseClassName];
         
         // Uncomment the following line to specify the key of a PFFile on the PFObject to display in the imageView of the default cell style
         // self.imageKey = @"image";
