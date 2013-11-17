@@ -64,6 +64,11 @@
     
     NSError *error;
     NSInteger count = [query countObjects:&error];
+    UIProgressView
+    [query countObjectsInBackgroundWithBlock:^(NSInteger number, NSError *error) {
+        
+    }];
+    
     
     if (error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

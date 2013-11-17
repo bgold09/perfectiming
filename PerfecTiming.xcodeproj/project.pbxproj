@@ -185,19 +185,19 @@
 		C86268D01828781C0092B910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C8626904182879410092B910 /* StoreKit.framework */,
-				C86269021828793B0092B910 /* Security.framework */,
-				C8626900182879360092B910 /* QuartzCore.framework */,
-				C86268FE1828792E0092B910 /* MobileCoreServices.framework */,
-				C86268FC182879250092B910 /* libz.1.1.3.dylib */,
-				C8626906182879480092B910 /* SystemConfiguration.framework */,
-				C86268FA1828791A0092B910 /* CoreLocation.framework */,
-				C86268F8182879040092B910 /* CFNetwork.framework */,
 				C86268F6182878FE0092B910 /* AudioToolbox.framework */,
-				C86268F4182878900092B910 /* Parse.framework */,
-				C86268D11828781C0092B910 /* UIKit.framework */,
-				C86268D31828781C0092B910 /* Foundation.framework */,
+				C86268F8182879040092B910 /* CFNetwork.framework */,
 				C86268D51828781C0092B910 /* CoreGraphics.framework */,
+				C86268FA1828791A0092B910 /* CoreLocation.framework */,
+				C86268D31828781C0092B910 /* Foundation.framework */,
+				C86268FC182879250092B910 /* libz.1.1.3.dylib */,
+				C86268FE1828792E0092B910 /* MobileCoreServices.framework */,
+				C86268F4182878900092B910 /* Parse.framework */,
+				C8626900182879360092B910 /* QuartzCore.framework */,
+				C86269021828793B0092B910 /* Security.framework */,
+				C8626904182879410092B910 /* StoreKit.framework */,
+				C8626906182879480092B910 /* SystemConfiguration.framework */,
+				C86268D11828781C0092B910 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -216,20 +216,22 @@
 		C86268D81828781C0092B910 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2F63EF3A18374D58004137C7 /* Constants.h */,
+				2F63EF3B18374D58004137C7 /* Constants.m */,
+				C86268E71828781C0092B910 /* Default-568h@2x.png */,
+				C86268E31828781C0092B910 /* Default.png */,
+				C86268E51828781C0092B910 /* Default@2x.png */,
 				C83C859E182DADB40028A722 /* icons */,
-				C86268E01828781C0092B910 /* PTAppDelegate.h */,
-				C86268E11828781C0092B910 /* PTAppDelegate.m */,
+				C86268DA1828781C0092B910 /* InfoPlist.strings */,
+				C86268DD1828781C0092B910 /* main.m */,
 				2F63EF3D18393ECC004137C7 /* MBProgressHUD.h */,
 				2F63EF3E18393ECC004137C7 /* MBProgressHUD.m */,
 				C86268D91828781C0092B910 /* PerfecTiming-Info.plist */,
-				C86268DA1828781C0092B910 /* InfoPlist.strings */,
-				C86268DD1828781C0092B910 /* main.m */,
 				C86268DF1828781C0092B910 /* PerfecTiming-Prefix.pch */,
-				C86268E31828781C0092B910 /* Default.png */,
-				C86268E51828781C0092B910 /* Default@2x.png */,
-				C86268E71828781C0092B910 /* Default-568h@2x.png */,
-				2F63EF3A18374D58004137C7 /* Constants.h */,
-				2F63EF3B18374D58004137C7 /* Constants.m */,
+				C86268E01828781C0092B910 /* PTAppDelegate.h */,
+				C86268E11828781C0092B910 /* PTAppDelegate.m */,
+				C83C85BE182DB2470028A722 /* SWRevealViewController.h */,
+				C83C85BF182DB2470028A722 /* SWRevealViewController.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -246,22 +248,20 @@
 		C862690918287B280092B910 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C86268EC1828781C0092B910 /* PTViewController.h */,
-				C86268ED1828781C0092B910 /* PTViewController.m */,
-				C811084E1831AF690045BD85 /* PTRevealViewController.h */,
-				C811084F1831AF690045BD85 /* PTRevealViewController.m */,
-				C83C85BE182DB2470028A722 /* SWRevealViewController.h */,
-				C83C85BF182DB2470028A722 /* SWRevealViewController.m */,
-				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
-				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
-				C83C85D0182DBA890028A722 /* PTSidebarViewController.h */,
-				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
-				C83C85D3182DC22F0028A722 /* PTSettingsViewController.h */,
-				C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */,
-				C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */,
-				C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */,
 				C830B9A31832E2C2000FFD65 /* PTAddManagedGroupViewController.h */,
 				C830B9A41832E2C2000FFD65 /* PTAddManagedGroupViewController.m */,
+				C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */,
+				C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */,
+				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
+				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
+				C811084E1831AF690045BD85 /* PTRevealViewController.h */,
+				C811084F1831AF690045BD85 /* PTRevealViewController.m */,
+				C83C85D3182DC22F0028A722 /* PTSettingsViewController.h */,
+				C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */,
+				C83C85D0182DBA890028A722 /* PTSidebarViewController.h */,
+				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
+				C86268EC1828781C0092B910 /* PTViewController.h */,
+				C86268ED1828781C0092B910 /* PTViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
