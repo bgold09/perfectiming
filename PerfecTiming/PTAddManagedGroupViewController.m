@@ -26,15 +26,6 @@
 
 @implementation PTAddManagedGroupViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -64,29 +55,22 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     [query whereKey:@"name" equalTo:name];
     
-    __block NSError *error;
-    __block NSInteger count;
-    __block BOOL groupExists = NO;
+    NSError *error;
+    BOOL groupExists = NO;
+    NSInteger count = [query countObjects:&error];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        count = [query countObjects:&error];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (error) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            groupExists = YES;
-        }
-        
-        if (count > 0) {
-            NSString *message = [NSString stringWithFormat:@"A group with the name '%@' already exists.", name];
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Duplicate Group Name" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            groupExists = YES;
-        }
-    });
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        groupExists = YES;
+    }
+    
+    if (count > 0) {
+        NSString *message = [NSString stringWithFormat:@"A group with the name '%@' already exists.", name];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Duplicate Group Name" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        groupExists = YES;
+    }
     
     return groupExists;
 }
@@ -107,7 +91,7 @@
     
     PFACL *groupACL = [PFACL ACL];
     groupACL.publicReadAccess = YES;
-    groupACL.publicWriteAccess = NO;
+    groupACL.publicWriteAccess = YES;
     group.ACL = groupACL;
     
     [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

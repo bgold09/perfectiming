@@ -12,8 +12,6 @@
 #import "Constants.h"
 
 @interface PTManagedGroupsViewController ()
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
-- (IBAction)addButtonPressed:(id)sender;
 
 @end
 
@@ -42,11 +40,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.menuButton.target = self.revealViewController;
-    self.menuButton.action = @selector(revealToggle:);
+    self.navigationItem.rightBarButtonItems = @[self.editButtonItem];
+    [self placeMenuButton];
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTAddGroupNotification object:nil];
+}
+
+- (void)placeMenuButton {
+    UIImage *menuImage = [UIImage imageNamed:@"menu.png"];
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:menuImage style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
+    [self.navigationItem setLeftBarButtonItems:@[menuButton] animated:YES];
 }
 
 #pragma mark - Notifcation Handlers
@@ -80,26 +84,16 @@
     return query;
 }
 
-// Override to customize the look of a cell representing an object. The default is to display
-// a UITableViewCellStyleDefault style cell with the label being the textKey in the object,
-// and the imageView being the imageKey in the object.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     static NSString *CellIdentifier = @"Cell";
     
     PFTableViewCell *cell = (PFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-//    PTGroup *group = (PTGroup *) object;
-    
-    // Configure the cell
-//    cell.textLabel.text = group.name;
-    cell.textLabel.text = [object objectForKey:@"name"];
-    cell.detailTextLabel.text = @"Placeholder";
-//    PFRelation *manager = group.manager;
-//    cell.detailTextLabel.text = [manager objectForKey:@"name"];
-//    cell.imageView.file = [object objectForKey:self.imageKey];
+    PTGroup *group = (PTGroup *) object;
+    cell.textLabel.text = group.name;
     
     return cell;
 }
@@ -135,7 +129,16 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the object from Parse and reload the table view
+        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error) {
+                NSLog(@"%@", error);
+            }
+            
+            if (succeeded) {
+                [self loadObjects];
+            }
+        }];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, and save it to Parse
     }
@@ -161,6 +164,22 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
+#pragma mark - Editing
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:animated];
+    
+    if (editing) {
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+        [self.navigationItem setLeftBarButtonItems:@[addButton] animated:YES];
+        [self.view removeGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    } else {
+        [self placeMenuButton];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+}
+
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -169,8 +188,12 @@
     }
 }
 
-- (IBAction)addButtonPressed:(id)sender {
+- (IBAction)addButtonPressed {
     [self performSegueWithIdentifier:@"AddManagedGroupSegue" sender:self];
+}
+
+- (void)menuButtonPressed {
+    
 }
 
 @end

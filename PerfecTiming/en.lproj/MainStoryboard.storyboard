@@ -107,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="sLg-Y3-xSO" detailTextLabel="DEX-g0-LaF" style="IBUITableViewCellStyleSubtitle" id="can-oP-tQQ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="sLg-Y3-xSO" style="IBUITableViewCellStyleDefault" id="can-oP-tQQ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="can-oP-tQQ" id="RHj-36-Ywo">
@@ -115,17 +115,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sLg-Y3-xSO">
-                                            <rect key="frame" x="10" y="2" width="36" height="22"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DEX-g0-LaF">
-                                            <rect key="frame" x="10" y="24" width="50" height="17"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
@@ -134,17 +127,12 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Managed Groups" id="FX9-Qa-baW">
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="5e5-Wb-jzW"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ckx-rD-W9L">
                             <connections>
-                                <action selector="addButtonPressed:" destination="XwM-ML-vXq" id="YjY-Nf-y80"/>
                                 <segue destination="3A2-Uz-rL7" kind="modal" identifier="AddManagedGroupSegue" id="VrT-ah-9Nv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="menuButton" destination="5e5-Wb-jzW" id="099-U0-LrO"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWQ-FT-2rk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
