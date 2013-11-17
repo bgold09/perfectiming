@@ -132,7 +132,9 @@
         PFObject *object = [self.objects objectAtIndex:indexPath.row];
         [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {
-                NSLog(@"%@", error);
+                NSString *message = [NSString stringWithFormat:@"%@", error];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Creating Group" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
             }
             
             if (succeeded) {
