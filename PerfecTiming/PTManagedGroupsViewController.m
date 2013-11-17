@@ -9,6 +9,7 @@
 #import "PTManagedGroupsViewController.h"
 #import "PTRevealViewController.h"
 #import "PTGroup.h"
+#import "Constants.h"
 
 @interface PTManagedGroupsViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
@@ -45,7 +46,7 @@
     self.menuButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:@"AddedGroupNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTAddGroupNotification object:nil];
 }
 
 #pragma mark - Notifcation Handlers

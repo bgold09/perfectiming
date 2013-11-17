@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F63EF3C18374D58004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3E18393ECC004137C7 /* MBProgressHUD.m */; };
+		2F63EF40183943F7004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */; };
 		C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99E1832D98A000FFD65 /* PTGroup.m */; };
@@ -353,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F63EF40183943F7004137C7 /* Constants.m in Sources */,
 				C83C85CF182DB9BE0028A722 /* SWRevealViewController.m in Sources */,
 				C86268DE1828781C0092B910 /* main.m in Sources */,
 				C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */,
@@ -365,7 +366,6 @@
 				2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */,
 				C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */,
 				C830B9A51832E2C2000FFD65 /* PTAddManagedGroupViewController.m in Sources */,
-				2F63EF3C18374D58004137C7 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

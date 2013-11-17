@@ -17,6 +17,7 @@
 @interface PTAddManagedGroupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *groupNameField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (strong, nonatomic) MBProgressHUD *progressHUD;
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)savePressed:(id)sender;
 
@@ -62,29 +63,31 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Group"];
     [query whereKey:@"name" equalTo:name];
     
-    NSError *error;
-    NSInteger count = [query countObjects:&error];
-    UIProgressView
-    [query countObjectsInBackgroundWithBlock:^(NSInteger number, NSError *error) {
+    __block NSError *error;
+    __block NSInteger count;
+    __block BOOL groupExists = NO;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        count = [query countObjects:&error];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            groupExists = YES;
+        }
         
-    }];
+        if (count > 0) {
+            NSString *message = [NSString stringWithFormat:@"A group with the name '%@' already exists.", name];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Duplicate Group Name" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            groupExists = YES;
+        }
+    });
     
-    
-    if (error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return YES;
-    }
-    
-    if (count > 0) {
-        NSString *message = [NSString stringWithFormat:@"A group with the name '%@' already exists.", name];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Duplicate Group Name" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        return YES;
-    }
-    
-    return NO;
+    return groupExists;
 }
 
 - (void)createManagedGroup {
@@ -122,7 +125,7 @@
     
 }
 - (void)fireNotification {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPTAddGroupNotificaton object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPTAddGroupNotification object:self];
 }
 
 #pragma mark - Notification Handlers
