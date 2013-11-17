@@ -205,7 +205,7 @@
     }
 }
 
-- (IBAction)addButtonPressed {
+- (void)addButtonPressed {
     [self performSegueWithIdentifier:@"AddManagedGroupSegue" sender:self];
 }
 
