@@ -8,6 +8,11 @@
 
 #import "PTAddManagedGroupViewController.h"
 #import <Parse/Parse.h>
+#import "PTGroup.h"
+#import "Constants.h"
+
+#define kPINLowerBound 1000
+#define kPINUpperBound 9999
 
 @interface PTAddManagedGroupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *groupNameField;
@@ -84,10 +89,12 @@
         return;
     }
     
-    PFUser *currentUser = [PFUser currentUser];
-    PFObject *group = [PFObject objectWithClassName:@"Group"];
-    [group setObject:groupName forKey:@"name"];
-    [group setObject:currentUser forKey:@"manager"];
+    NSInteger pin = kPINLowerBound + arc4random() % (kPINUpperBound - kPINLowerBound);
+    
+    PTGroup *group = [PTGroup object];
+    group.name = groupName;
+    group.manager = [PFUser currentUser];
+    group.pin = pin;
     
     PFACL *groupACL = [PFACL ACL];
     groupACL.publicReadAccess = YES;
@@ -110,7 +117,7 @@
     
 }
 - (void)fireNotification {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"AddedGroupNotification" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPTAddGroupNotificaton object:self];
 }
 
 #pragma mark - Notification Handlers

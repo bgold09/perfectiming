@@ -8,11 +8,14 @@
 
 #import "PTAppDelegate.h"
 #import <Parse/Parse.h>
+#import "PTGroup.h"
 
 @implementation PTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [PTGroup registerSubclass];
+    
     [Parse setApplicationId:@"H6LlCn8JqUr6xoPvoX5I3gNktXgGvjUtRlX9cIGy"
                   clientKey:@"8NOwQ3Quk4UbemJujJWpjjrPZEXhEkHgIImIy7KW"];
     

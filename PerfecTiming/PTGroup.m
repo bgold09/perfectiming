@@ -13,6 +13,7 @@
 
 @dynamic name;
 @dynamic manager;
+@dynamic pin;
 
 + (NSString *)parseClassName {
     return @"Group";

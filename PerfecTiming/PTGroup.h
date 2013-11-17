@@ -11,7 +11,8 @@
 @interface PTGroup : PFObject <PFSubclassing>
 
 @property (retain) NSString *name;
-@property (retain) PFRelation *manager;
+@property (retain) PFUser *manager;
+@property NSInteger pin;
 + (NSString *)parseClassName;
 
 @end

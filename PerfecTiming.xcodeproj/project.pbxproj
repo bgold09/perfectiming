@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F63EF3C18374D58004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */; };
 		C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99E1832D98A000FFD65 /* PTGroup.m */; };
@@ -54,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F63EF3A18374D58004137C7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		2F63EF3B18374D58004137C7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		C811084E1831AF690045BD85 /* PTRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRevealViewController.h; sourceTree = "<group>"; };
 		C811084F1831AF690045BD85 /* PTRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRevealViewController.m; sourceTree = "<group>"; };
 		C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupsViewController.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				C86268E31828781C0092B910 /* Default.png */,
 				C86268E51828781C0092B910 /* Default@2x.png */,
 				C86268E71828781C0092B910 /* Default-568h@2x.png */,
+				2F63EF3A18374D58004137C7 /* Constants.h */,
+				2F63EF3B18374D58004137C7 /* Constants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -285,6 +290,11 @@
 				CLASSPREFIX = PT;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "BRIAN J GOLDEN";
+				TargetAttributes = {
+					C86268CD1828781C0092B910 = {
+						DevelopmentTeam = L38GWSMVUV;
+					};
+				};
 			};
 			buildConfigurationList = C86268C91828781C0092B910 /* Build configuration list for PBXProject "PerfecTiming" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -349,6 +359,7 @@
 				C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */,
 				C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */,
 				C830B9A51832E2C2000FFD65 /* PTAddManagedGroupViewController.m in Sources */,
+				2F63EF3C18374D58004137C7 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,8 +444,8 @@
 		C86268F21828781C0092B910 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Golden (34VJJ2N978)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Golden (34VJJ2N978)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -443,7 +454,7 @@
 				GCC_PREFIX_HEADER = "PerfecTiming/PerfecTiming-Prefix.pch";
 				INFOPLIST_FILE = "PerfecTiming/PerfecTiming-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ECE9000-01F9-4070-89F1-8BB429824D08";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3ECE9000-01F9-4070-89F1-8BB429824D08";
 				WRAPPER_EXTENSION = app;
 			};
@@ -452,8 +463,8 @@
 		C86268F31828781C0092B910 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Golden (34VJJ2N978)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Golden (34VJJ2N978)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -462,7 +473,7 @@
 				GCC_PREFIX_HEADER = "PerfecTiming/PerfecTiming-Prefix.pch";
 				INFOPLIST_FILE = "PerfecTiming/PerfecTiming-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ECE9000-01F9-4070-89F1-8BB429824D08";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3ECE9000-01F9-4070-89F1-8BB429824D08";
 				WRAPPER_EXTENSION = app;
 			};
