@@ -9,6 +9,7 @@
 #import "PTAddManagedGroupViewController.h"
 #import <Parse/Parse.h>
 #import "PTGroup.h"
+#import "MBProgressHUD.h"
 #import "Constants.h"
 
 #define kPINLowerBound 1000
