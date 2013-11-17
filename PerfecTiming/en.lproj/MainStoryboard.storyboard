@@ -205,6 +205,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Membership" id="YLR-pt-AFt">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="f9L-4z-SyQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NZx-RK-4yi"/>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="f9L-4z-SyQ" id="rk0-Pw-DyD"/>

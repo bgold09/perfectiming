@@ -11,5 +11,6 @@
 @implementation Constants
 
 NSString * const kPTAddGroupNotification = @"AddedGroupNotification";
+NSString * const kPTAddMembershipNotification = @"AddedMembershipNotification";
 
 @end
