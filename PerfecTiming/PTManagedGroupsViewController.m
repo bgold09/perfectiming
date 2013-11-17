@@ -12,6 +12,7 @@
 #import "Constants.h"
 
 @interface PTManagedGroupsViewController ()
+@property (strong, nonatomic) NSIndexPath *deleteIndexPath;
 
 @end
 
@@ -129,18 +130,12 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        PFObject *object = [self.objects objectAtIndex:indexPath.row];
-        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (error) {
-                NSString *message = [NSString stringWithFormat:@"%@", error];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Creating Group" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-            }
-            
-            if (succeeded) {
-                [self loadObjects];
-            }
-        }];
+        PTGroup *group = [self.objects objectAtIndex:indexPath.row];
+        
+        self.deleteIndexPath = indexPath;
+        NSString *confirmMessage = [NSString stringWithFormat:@"Are you sure you want to delete the group '%@'?", group.name];
+        UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"Confirm Delete" message:confirmMessage delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        [confirmAlert show];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, and save it to Parse
     }
@@ -164,6 +159,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+#pragma mark - UIAlertView Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+        PTGroup *group =  (PTGroup *) [self objectAtIndexPath:self.deleteIndexPath];
+        
+        [group deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error) {
+                NSString *message = [NSString stringWithFormat:@"%@", error];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Deleting Group" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+            
+            if (succeeded) {
+                [self loadObjects];
+            }
+        }];
+    }
 }
 
 #pragma mark - Editing
@@ -192,10 +207,6 @@
 
 - (IBAction)addButtonPressed {
     [self performSegueWithIdentifier:@"AddManagedGroupSegue" sender:self];
-}
-
-- (void)menuButtonPressed {
-    
 }
 
 @end

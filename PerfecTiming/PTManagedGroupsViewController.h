@@ -8,6 +8,6 @@
 
 #import <Parse/Parse.h>
 
-@interface PTManagedGroupsViewController : PFQueryTableViewController
+@interface PTManagedGroupsViewController : PFQueryTableViewController <UIAlertViewDelegate>
 
 @end
