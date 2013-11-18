@@ -48,7 +48,6 @@
 		C86268E61828781C0092B910 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86268E51828781C0092B910 /* Default@2x.png */; };
 		C86268E81828781C0092B910 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86268E71828781C0092B910 /* Default-568h@2x.png */; };
 		C86268EB1828781C0092B910 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86268E91828781C0092B910 /* MainStoryboard.storyboard */; };
-		C86268EE1828781C0092B910 /* PTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86268ED1828781C0092B910 /* PTViewController.m */; };
 		C86268F5182878900092B910 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268F4182878900092B910 /* Parse.framework */; };
 		C86268F7182878FE0092B910 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268F6182878FE0092B910 /* AudioToolbox.framework */; };
 		C86268F9182879040092B910 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268F8182879040092B910 /* CFNetwork.framework */; };
@@ -123,8 +122,6 @@
 		C86268E51828781C0092B910 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C86268E71828781C0092B910 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C86268EA1828781C0092B910 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		C86268EC1828781C0092B910 /* PTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTViewController.h; sourceTree = "<group>"; };
-		C86268ED1828781C0092B910 /* PTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTViewController.m; sourceTree = "<group>"; };
 		C86268F4182878900092B910 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C86268F6182878FE0092B910 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C86268F8182879040092B910 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -161,6 +158,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F63EF58183AB6B2004137C7 /* Managed Groups */ = {
+			isa = PBXGroup;
+			children = (
+				C830B9A31832E2C2000FFD65 /* PTAddManagedGroupViewController.h */,
+				C830B9A41832E2C2000FFD65 /* PTAddManagedGroupViewController.m */,
+				2F63EF4A1839B759004137C7 /* PTManagedGroupInfoViewController.h */,
+				2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */,
+				C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */,
+				C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */,
+			);
+			name = "Managed Groups";
+			sourceTree = "<group>";
+		};
+		2F63EF59183AB6BA004137C7 /* Managed Meetings */ = {
+			isa = PBXGroup;
+			children = (
+				2F63EF55183AB18D004137C7 /* PTAddMeetingViewController.h */,
+				2F63EF56183AB18D004137C7 /* PTAddMeetingViewController.m */,
+				2F63EF4E183A6E59004137C7 /* PTManagedMeetingsViewController.h */,
+				2F63EF4F183A6E59004137C7 /* PTManagedMeetingsViewController.m */,
+			);
+			name = "Managed Meetings";
+			sourceTree = "<group>";
+		};
+		2F63EF5A183AB735004137C7 /* Group Membership */ = {
+			isa = PBXGroup;
+			children = (
+				2F63EF441839937E004137C7 /* PTAddMembershipViewController.h */,
+				2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */,
+				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
+				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
+			);
+			name = "Group Membership";
+			sourceTree = "<group>";
+		};
 		C83C859E182DADB40028A722 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,28 +302,15 @@
 		C862690918287B280092B910 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C830B9A31832E2C2000FFD65 /* PTAddManagedGroupViewController.h */,
-				C830B9A41832E2C2000FFD65 /* PTAddManagedGroupViewController.m */,
-				2F63EF55183AB18D004137C7 /* PTAddMeetingViewController.h */,
-				2F63EF56183AB18D004137C7 /* PTAddMeetingViewController.m */,
-				2F63EF441839937E004137C7 /* PTAddMembershipViewController.h */,
-				2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */,
-				2F63EF4A1839B759004137C7 /* PTManagedGroupInfoViewController.h */,
-				2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */,
-				C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */,
-				C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */,
-				2F63EF4E183A6E59004137C7 /* PTManagedMeetingsViewController.h */,
-				2F63EF4F183A6E59004137C7 /* PTManagedMeetingsViewController.m */,
-				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
-				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
+				2F63EF5A183AB735004137C7 /* Group Membership */,
+				2F63EF58183AB6B2004137C7 /* Managed Groups */,
+				2F63EF59183AB6BA004137C7 /* Managed Meetings */,
 				C811084E1831AF690045BD85 /* PTRevealViewController.h */,
 				C811084F1831AF690045BD85 /* PTRevealViewController.m */,
 				C83C85D3182DC22F0028A722 /* PTSettingsViewController.h */,
 				C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */,
 				C83C85D0182DBA890028A722 /* PTSidebarViewController.h */,
 				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
-				C86268EC1828781C0092B910 /* PTViewController.h */,
-				C86268ED1828781C0092B910 /* PTViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -390,7 +409,6 @@
 				C83C85CF182DB9BE0028A722 /* SWRevealViewController.m in Sources */,
 				C86268DE1828781C0092B910 /* main.m in Sources */,
 				C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */,
-				C86268EE1828781C0092B910 /* PTViewController.m in Sources */,
 				C83C85CC182DB74E0028A722 /* PTMembershipViewController.m in Sources */,
 				C83C85D2182DBA8A0028A722 /* PTSidebarViewController.m in Sources */,
 				C83C85D5182DC22F0028A722 /* PTSettingsViewController.m in Sources */,
