@@ -134,7 +134,7 @@
 }
 
 - (void)fireNotification {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPTAddMembershipNotification object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPTMembershipAddedNotification object:self];
 }
 
 #pragma mark - Notification Handlers

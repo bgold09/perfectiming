@@ -96,7 +96,7 @@
     
 }
 - (void)fireNotification {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPTAddGroupNotification object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPTGroupAddedNotification object:self];
 }
 
 #pragma mark - Notification Handlers

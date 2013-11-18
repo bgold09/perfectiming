@@ -41,7 +41,7 @@
 }
 
 - (void)fireNotification {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPTDeletedGroupNotification object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPTGroupDeletedNotification object:self];
 }
 
 #pragma mark - UIAlertView Delegate

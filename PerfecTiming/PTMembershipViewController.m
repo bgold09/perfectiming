@@ -41,7 +41,7 @@
     [self placeMenuButton];
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTAddGroupNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMembershipAddedNotification object:nil];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
