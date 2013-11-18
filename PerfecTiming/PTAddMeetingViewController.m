@@ -2,7 +2,7 @@
 //  PTAddMeetingViewController.m
 //  PerfecTiming
 //
-//  Created by MTSS User on 11/18/13.
+//  Created by BRIAN J GOLDEN on 11/18/13.
 //  Copyright (c) 2013 BRIAN J GOLDEN. All rights reserved.
 //
 
@@ -58,7 +58,11 @@
 }
 
 - (void)createMeeting {
-    PTMeeting *meeting = [PTMeeting meetingWithName:self.nameField.text group:self.group location:self.locationField.text];
+    NSString *meetingName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    
+    
+    PTMeeting *meeting = [PTMeeting meetingWithName:meetingName group:self.group location:self.locationField.text];
     
     PFACL *meetingACL = [PFACL ACL];
     meetingACL.publicReadAccess = YES;

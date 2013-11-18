@@ -97,7 +97,7 @@
 }
 
 - (void)createGroupMembership {
-    NSString *groupName = self.nameField.text;
+    NSString *groupName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if ([self userIsMemberOfGroupWithName:groupName]) {
         return;
     }

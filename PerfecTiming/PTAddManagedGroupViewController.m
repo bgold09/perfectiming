@@ -65,8 +65,7 @@
 }
 
 - (void)createManagedGroup {
-    NSString *groupName = self.groupNameField.text;
-    
+    NSString *groupName = [self.groupNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if ([self groupExistsWithName:groupName]) {
         return;
     }
