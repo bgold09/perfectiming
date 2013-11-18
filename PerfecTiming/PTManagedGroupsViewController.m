@@ -45,6 +45,7 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTGroupAddedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTGroupDeletedNotification object:nil];
 }
 
 - (void)placeMenuButton {
