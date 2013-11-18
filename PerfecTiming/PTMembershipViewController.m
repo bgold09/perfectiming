@@ -42,9 +42,8 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMembershipAddedNotification object:nil];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTUserLoggedOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTUserLoggedInNotification object:nil];
 }
 
 - (void)placeMenuButton {
@@ -62,12 +61,13 @@
 #pragma mark - PFQueryTableViewController Delegate
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    
-    if ([PFUser currentUser]) {
-        [query whereKey:@"user" equalTo:[PFUser currentUser]];
-        [query includeKey:@"group"];
+    if (![PFUser currentUser]) {
+        return nil;
     }
+
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query includeKey:@"group"];
     
     // If Pull To Refresh is enabled, query against the network by default.
     if (self.pullToRefreshEnabled) {

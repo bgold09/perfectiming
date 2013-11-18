@@ -15,5 +15,7 @@ FOUNDATION_EXPORT NSString * const kPTGroupDeletedNotification;
 FOUNDATION_EXPORT NSString * const kPTMembershipAddedNotification;
 FOUNDATION_EXPORT NSString * const kPTMeetingAddedNotification;
 FOUNDATION_EXPORT NSString * const kPTMeetingDeletedNotification;
+FOUNDATION_EXPORT NSString * const kPTUserLoggedInNotification;
+FOUNDATION_EXPORT NSString * const kPTUserLoggedOutNotification;
 
 @end

@@ -15,5 +15,7 @@ NSString * const kPTGroupDeletedNotification = @"DeletedGroupNotification";
 NSString * const kPTMembershipAddedNotification = @"AddedMembershipNotification";
 NSString * const kPTMeetingAddedNotification = @"MeetingAddedNotification";
 NSString * const kPTMeetingDeletedNotification = @"MeetingDeletedNotification";
+NSString * const kPTUserLoggedInNotification = @"UserLoggedInNotification";
+NSString * const kPTUserLoggedOutNotification = @"UserLoggedOutNotification";
 
 @end

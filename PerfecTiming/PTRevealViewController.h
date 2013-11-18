@@ -11,4 +11,6 @@
 
 @interface PTRevealViewController : SWRevealViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
+- (void)presentWelomeView;
+
 @end

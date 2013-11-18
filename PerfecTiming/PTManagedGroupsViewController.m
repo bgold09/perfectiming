@@ -46,6 +46,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTGroupAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTGroupDeletedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTUserLoggedOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTUserLoggedInNotification object:nil];
 }
 
 - (void)placeMenuButton {
@@ -63,11 +65,12 @@
 #pragma mark - PFQueryTableViewController Delegate
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    
-    if ([PFUser currentUser]) {
-        [query whereKey:@"manager" equalTo:[PFUser currentUser]];
+    if (![PFUser currentUser]) {
+        return nil;
     }
+    
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query whereKey:@"manager" equalTo:[PFUser currentUser]];
     
     // If Pull To Refresh is enabled, query against the network by default.
     if (self.pullToRefreshEnabled) {

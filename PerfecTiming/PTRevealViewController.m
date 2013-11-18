@@ -7,6 +7,7 @@
 //
 
 #import "PTRevealViewController.h"
+#import "Constants.h"
 
 @interface PTRevealViewController ()
 
@@ -25,11 +26,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentWelomeView) name:kPTUserLoggedOutNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    [self presentWelomeView];
+}
+
+#pragma mark - Public Methods
+
+- (void)presentWelomeView {
     if (![PFUser currentUser]) {
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         logInViewController.delegate = self;
@@ -39,7 +46,7 @@
         
         [logInViewController setSignUpController:signUpViewController];
         [self presentViewController:logInViewController animated:YES completion:NULL];
-    }    
+    }
 }
 
 #pragma mark - PFLogInViewController Delegate

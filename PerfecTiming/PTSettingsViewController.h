@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PTSettingsViewController : UITableViewController
+@interface PTSettingsViewController : UITableViewController <UIAlertViewDelegate>
 
 @end
