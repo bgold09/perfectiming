@@ -7,10 +7,11 @@
 //
 
 #import "PTGroupMembersViewController.h"
+#import "PTGroupMemberInfoViewController.h"
 #import "PTMembership.h"
 
 @interface PTGroupMembersViewController ()
-@property (strong, nonatomic) NSIndexPath *infoIndexPath;
+@property (strong, nonatomic) NSIndexPath *memberIndexPath;
 
 @end
 
@@ -118,14 +119,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    self.infoIndexPath = indexPath;
-    //    [self performSegueWithIdentifier:@"ManagedMeetingInfoSegue" sender:self];
+    self.memberIndexPath = indexPath;
 }
 
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
+    if ([segue.identifier isEqualToString:@"GroupMemberInfoSegue"]) {
+        PTGroupMemberInfoViewController *infoViewController = segue.destinationViewController;
+        infoViewController.membership = (PTMembership *) [self objectAtIndexPath:self.memberIndexPath];
+    }
 }
 
 @end

@@ -360,7 +360,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="kRj-Kb-Ufo" kind="push" identifier="GroupMemberInfoSegue" id="cwy-rh-seU"/>
+                                    <segue destination="kRj-Kb-Ufo" kind="push" identifier="GroupMemberInfoSegue" id="ft2-4L-8c5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -375,10 +375,10 @@
             </objects>
             <point key="canvasLocation" x="693" y="-1678"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Group Member Info View Controller - User Info-->
         <scene sceneID="jFg-WB-kZb">
             <objects>
-                <tableViewController id="kRj-Kb-Ufo" sceneMemberID="viewController">
+                <tableViewController id="kRj-Kb-Ufo" customClass="PTGroupMemberInfoViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="JDW-7O-0fX">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -436,7 +436,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="User Since" id="zze-QG-jhF">
+                            <tableViewSection headerTitle="Member Since" id="zze-QG-jhF">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="wQL-Fj-6w1" style="IBUITableViewCellStyleDefault" id="gou-ke-wTa">
                                         <rect key="frame" x="0.0" y="182" width="320" height="46"/>
@@ -463,7 +463,12 @@
                             <outlet property="delegate" destination="kRj-Kb-Ufo" id="U0L-bt-Fkl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="uJO-NL-fat"/>
+                    <navigationItem key="navigationItem" title="User Info" id="uJO-NL-fat"/>
+                    <connections>
+                        <outlet property="emailCell" destination="VPG-zb-AIj" id="b2r-IG-7rb"/>
+                        <outlet property="memberSinceCell" destination="gou-ke-wTa" id="6SE-O4-DWj"/>
+                        <outlet property="nameCell" destination="OaN-MZ-l8f" id="aBK-C1-iIz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZn-5j-WlX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
