@@ -11,6 +11,7 @@
 		2F63EF40183943F7004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		2F63EF431839806E004137C7 /* PTMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF421839806E004137C7 /* PTMembership.m */; };
 		2F63EF461839937E004137C7 /* PTAddMembershipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */; };
+		2F63EF4C1839B759004137C7 /* PTManagedGroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */; };
 		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */; };
 		C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99E1832D98A000FFD65 /* PTGroup.m */; };
@@ -66,6 +67,8 @@
 		2F63EF421839806E004137C7 /* PTMembership.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMembership.m; sourceTree = "<group>"; };
 		2F63EF441839937E004137C7 /* PTAddMembershipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTAddMembershipViewController.h; sourceTree = "<group>"; };
 		2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAddMembershipViewController.m; sourceTree = "<group>"; };
+		2F63EF4A1839B759004137C7 /* PTManagedGroupInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupInfoViewController.h; sourceTree = "<group>"; };
+		2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTManagedGroupInfoViewController.m; sourceTree = "<group>"; };
 		C811084E1831AF690045BD85 /* PTRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRevealViewController.h; sourceTree = "<group>"; };
 		C811084F1831AF690045BD85 /* PTRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRevealViewController.m; sourceTree = "<group>"; };
 		C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupsViewController.h; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
 				C86268EC1828781C0092B910 /* PTViewController.h */,
 				C86268ED1828781C0092B910 /* PTViewController.m */,
+				2F63EF4A1839B759004137C7 /* PTManagedGroupInfoViewController.h */,
+				2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */,
 				2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */,
 				C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */,
+				2F63EF4C1839B759004137C7 /* PTManagedGroupInfoViewController.m in Sources */,
 				C830B9A51832E2C2000FFD65 /* PTAddManagedGroupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,7 @@
 @interface Constants : NSObject
 
 FOUNDATION_EXPORT NSString * const kPTAddGroupNotification;
+FOUNDATION_EXPORT NSString * const kPTDeletedGroupNotification;
 FOUNDATION_EXPORT NSString * const kPTAddMembershipNotification;
 
 @end

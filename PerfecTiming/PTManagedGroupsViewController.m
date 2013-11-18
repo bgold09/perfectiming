@@ -8,11 +8,13 @@
 
 #import "PTManagedGroupsViewController.h"
 #import "PTRevealViewController.h"
+#import "PTManagedGroupInfoViewController.h"
 #import "PTGroup.h"
 #import "Constants.h"
 
 @interface PTManagedGroupsViewController ()
 @property (strong, nonatomic) NSIndexPath *deleteIndexPath;
+@property (strong, nonatomic) NSIndexPath *infoIndexPath;
 
 @end
 
@@ -156,6 +158,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    self.infoIndexPath = indexPath;
+    [self performSegueWithIdentifier:@"ManagedGroupInfoSegue" sender:self];
 }
 
 #pragma mark - UIAlertView Delegate
@@ -199,6 +203,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"AddManagedGroupSegue"]) {
         
+    } else if ([segue.identifier isEqualToString:@"ManagedGroupInfoSegue"]) {
+        PTManagedGroupInfoViewController *infoViewController = segue.destinationViewController;
+        PTGroup *group = (PTGroup *) [self objectAtIndexPath:self.infoIndexPath];
+        infoViewController.group = group;
     }
 }
 

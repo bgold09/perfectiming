@@ -123,28 +123,28 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="cS6-q1-j1o" kind="push" identifier="ManagedGroupSegue" id="tUO-hj-zlu"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Managed Groups" id="FX9-Qa-baW">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ckx-rD-W9L">
                             <connections>
-                                <segue destination="3A2-Uz-rL7" kind="modal" identifier="AddManagedGroupSegue" id="VrT-ah-9Nv"/>
+                                <segue destination="3A2-Uz-rL7" kind="modal" identifier="" id="VrT-ah-9Nv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="cS6-q1-j1o" kind="push" identifier="ManagedGroupInfoSegue" id="CU2-KJ-riG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWQ-FT-2rk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3688" y="-2165"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Managed Group Info View Controller-->
         <scene sceneID="31j-WM-AM9">
             <objects>
-                <tableViewController id="cS6-q1-j1o" sceneMemberID="viewController">
+                <tableViewController id="cS6-q1-j1o" customClass="PTManagedGroupInfoViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6Rs-ha-aF3">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,7 +152,7 @@
                         <sections>
                             <tableViewSection headerTitle="Group Info" id="WMm-Qf-6wZ">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="xS2-sq-Rk6" detailTextLabel="mVm-7b-LWI" style="IBUITableViewCellStyleValue2" id="xKZ-bD-dcC">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="xS2-sq-Rk6" detailTextLabel="mVm-7b-LWI" style="IBUITableViewCellStyleValue2" id="xKZ-bD-dcC">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xKZ-bD-dcC" id="gX0-OE-wD3">
@@ -176,7 +176,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="IPQ-Vl-kej" detailTextLabel="3GJ-Oe-aXz" style="IBUITableViewCellStyleValue2" id="mI5-h5-IQl">
+                                    <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="IPQ-Vl-kej" detailTextLabel="3GJ-Oe-aXz" style="IBUITableViewCellStyleValue2" id="mI5-h5-IQl">
                                         <rect key="frame" x="0.0" y="91" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mI5-h5-IQl" id="laT-hd-eMx">
@@ -247,12 +247,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="tlI-aq-JkQ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="phh-pb-Q9e"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="phh-pb-Q9e">
+                            <connections>
+                                <action selector="deletePressed:" destination="cS6-q1-j1o" id="ZqD-Je-7jc"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameCell" destination="xKZ-bD-dcC" id="E2W-OO-1S6"/>
+                        <outlet property="pinCell" destination="mI5-h5-IQl" id="Z2M-Sc-YMw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juy-CS-pkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3153" y="-2020"/>
+            <point key="canvasLocation" x="-3153" y="-2050"/>
         </scene>
         <!--Add Managed Group View Controller - Add Group-->
         <scene sceneID="jMI-mm-geM">
