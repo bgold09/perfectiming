@@ -263,6 +263,8 @@
 				C830B9A41832E2C2000FFD65 /* PTAddManagedGroupViewController.m */,
 				2F63EF441839937E004137C7 /* PTAddMembershipViewController.h */,
 				2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */,
+				2F63EF4A1839B759004137C7 /* PTManagedGroupInfoViewController.h */,
+				2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */,
 				C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */,
 				C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */,
 				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
@@ -275,8 +277,6 @@
 				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
 				C86268EC1828781C0092B910 /* PTViewController.h */,
 				C86268ED1828781C0092B910 /* PTViewController.m */,
-				2F63EF4A1839B759004137C7 /* PTManagedGroupInfoViewController.h */,
-				2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
