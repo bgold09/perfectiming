@@ -52,27 +52,16 @@
 }
 
 - (BOOL)groupExistsWithName:(NSString *)name {
-    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-    [query whereKey:@"name" equalTo:name];
+    PTGroup *group = [PTGroup groupWithName:name];
     
-    NSError *error;
-    BOOL groupExists = NO;
-    NSInteger count = [query countObjects:&error];
-    
-    if (error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        groupExists = YES;
-    }
-    
-    if (count > 0) {
+    if (group) {
         NSString *message = [NSString stringWithFormat:@"A group with the name '%@' already exists.", name];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Duplicate Group Name" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
-        groupExists = YES;
+        return YES;
     }
-    
-    return groupExists;
+
+    return NO;
 }
 
 - (void)createManagedGroup {
@@ -84,10 +73,7 @@
     
     NSInteger pin = kPINLowerBound + arc4random() % (kPINUpperBound - kPINLowerBound);
     
-    PTGroup *group = [PTGroup object];
-    group.name = groupName;
-    group.manager = [PFUser currentUser];
-    group.pin = pin;
+    PTGroup *group = [[PTGroup alloc] initWithName:groupName manager:[PFUser currentUser] pin:pin];
     
     PFACL *groupACL = [PFACL ACL];
     groupACL.publicReadAccess = YES;

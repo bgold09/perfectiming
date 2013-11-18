@@ -22,15 +22,13 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        // The className to query on
         self.parseClassName = [PTMembership parseClassName];
-        
-        // Uncomment the following line to specify the key of a PFFile on the PFObject to display in the imageView of the default cell style
-        // self.imageKey = @"image";
-        
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.objectsPerPage = 25;
+        
+        // Uncomment the following line to specify the key of a PFFile on the PFObject to display in the imageView of the default cell style
+        // self.imageKey = @"image";
     }
     
     return self;
@@ -68,6 +66,7 @@
     
     if ([PFUser currentUser]) {
         [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [query includeKey:@"group"];
     }
     
     // If Pull To Refresh is enabled, query against the network by default.
@@ -200,10 +199,8 @@
 
 #pragma mark - Segues
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"AddMembershipSegue"]) {
-        
-    }
+- (void)addButtonPressed {
+    [self performSegueWithIdentifier:@"AddMembershipSegue" sender:self];
 }
 
 @end

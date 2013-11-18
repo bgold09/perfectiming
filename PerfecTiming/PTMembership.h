@@ -14,5 +14,6 @@
 @property (retain) PFUser *user;
 @property (retain) PTGroup *group;
 + (NSString *)parseClassName;
++ (PTMembership *)membershipWithGroup:(PTGroup *)group user:(PFUser *)user;
 
 @end

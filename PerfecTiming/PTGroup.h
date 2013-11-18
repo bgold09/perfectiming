@@ -14,5 +14,7 @@
 @property (retain) PFUser *manager;
 @property NSInteger pin;
 + (NSString *)parseClassName;
++ (PTGroup *)groupWithName:(NSString *)name;
+- (id)initWithName:(NSString *)name manager:(PFUser *)manager pin:(NSInteger)pin;
 
 @end

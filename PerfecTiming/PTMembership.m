@@ -18,4 +18,11 @@
     return @"Membership";
 }
 
++ (PTMembership *)membershipWithGroup:(PTGroup *)group user:(PFUser *)user {
+    PTMembership *membership = [PTMembership object];
+    membership.group = group;
+    membership.user = user;
+    return membership;
+}
+
 @end
