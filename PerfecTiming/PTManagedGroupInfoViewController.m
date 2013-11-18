@@ -8,6 +8,7 @@
 
 #import "PTManagedGroupInfoViewController.h"
 #import "PTManagedMeetingsViewController.h"
+#import "PTGroupMembersViewController.h"
 #import "Constants.h"
 
 @interface PTManagedGroupInfoViewController ()
@@ -70,6 +71,9 @@
     if ([segue.identifier isEqualToString:@"ManagedMeetingsSegue"]) {
         PTManagedMeetingsViewController *viewController = segue.destinationViewController;
         viewController.group = self.group;
+    } else if ([segue.identifier isEqualToString:@"GroupMembersSegue"]) {
+        PTGroupMembersViewController *membersViewController = segue.destinationViewController;
+        membersViewController.group = self.group;
     }
 }
 

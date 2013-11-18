@@ -224,15 +224,15 @@
                                             <segue destination="cyc-zh-WcZ" kind="push" identifier="ManagedMeetingsSegue" id="7R1-cW-3hQ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="dJu-sD-7vV" style="IBUITableViewCellStyleDefault" id="COB-Hp-lZo">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="dJu-sD-7vV" style="IBUITableViewCellStyleDefault" id="COB-Hp-lZo">
                                         <rect key="frame" x="0.0" y="227" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="COB-Hp-lZo" id="1O7-Sn-SIA">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Group Members" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dJu-sD-7vV">
-                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -240,6 +240,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bFr-9J-VIf" kind="push" identifier="GroupMembersSegue" id="mXi-Gh-W5g"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -263,7 +266,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juy-CS-pkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="-1810"/>
+            <point key="canvasLocation" x="167" y="-2226"/>
         </scene>
         <!--Managed Meetings View Controller - Meetings-->
         <scene sceneID="jqW-7S-Y9k">
@@ -329,7 +332,45 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Hb-wk-zP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693" y="-1810"/>
+            <point key="canvasLocation" x="693" y="-2372"/>
+        </scene>
+        <!--Group Members View Controller - Group Members-->
+        <scene sceneID="eR5-Tn-XWc">
+            <objects>
+                <tableViewController id="bFr-9J-VIf" customClass="PTGroupMembersViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3sP-Y9-Mdx">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="aNb-nn-lEv" style="IBUITableViewCellStyleDefault" id="fYS-5x-YXO">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fYS-5x-YXO" id="xzE-IX-pNH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aNb-nn-lEv">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bFr-9J-VIf" id="UE5-Xe-B9m"/>
+                            <outlet property="delegate" destination="bFr-9J-VIf" id="uwr-7T-jAH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Group Members" id="1jI-dW-xOv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T0B-ni-IX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693" y="-1678"/>
         </scene>
         <!--Table View Controller - Potential Times-->
         <scene sceneID="jES-Jn-ri3">
@@ -376,7 +417,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFS-Jl-wCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="-1810"/>
+            <point key="canvasLocation" x="1257" y="-2372"/>
         </scene>
         <!--Add Managed Group View Controller - New Group-->
         <scene sceneID="jMI-mm-geM">
@@ -422,7 +463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzG-5m-t1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693" y="-2697"/>
+            <point key="canvasLocation" x="693" y="-3069"/>
         </scene>
         <!--Add Meeting View Controller-->
         <scene sceneID="fbm-QW-bJT">
@@ -473,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhV-Ml-uZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="-2519"/>
+            <point key="canvasLocation" x="1257" y="-3081"/>
         </scene>
         <!--Membership View Controller - Membership-->
         <scene sceneID="e1u-JQ-LkV">
@@ -505,7 +546,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VA0-NM-Ikh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-376" y="-881"/>
+            <point key="canvasLocation" x="-376" y="-896"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HLc-jt-t9L">
@@ -520,7 +561,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Za6-J9-4dT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-910" y="-881"/>
+            <point key="canvasLocation" x="-910" y="-896"/>
         </scene>
         <!--Settings View Controller - Settings-->
         <scene sceneID="vmm-Gt-u0O">
@@ -550,7 +591,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGL-Lt-HMC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-376" y="-191"/>
+            <point key="canvasLocation" x="-368" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NAP-E9-KHc">
@@ -565,7 +606,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tgb-b1-zkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-910" y="-191"/>
+            <point key="canvasLocation" x="-902" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kTJ-v3-X5f">
@@ -616,7 +657,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dg9-ZK-uUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="-2697"/>
+            <point key="canvasLocation" x="167" y="-3069"/>
         </scene>
         <!--Add Membership View Controller-->
         <scene sceneID="B4R-DH-25P">
@@ -675,7 +716,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2T-dM-Lh2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="-981"/>
+            <point key="canvasLocation" x="167" y="-949"/>
         </scene>
     </scenes>
     <resources>
