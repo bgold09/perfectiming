@@ -13,5 +13,7 @@
 NSString * const kPTGroupAddedNotification = @"AddedGroupNotification";
 NSString * const kPTGroupDeletedNotification = @"DeletedGroupNotification";
 NSString * const kPTMembershipAddedNotification = @"AddedMembershipNotification";
+NSString * const kPTMeetingAddedNotification = @"MeetingAddedNotification";
+NSString * const kPTMeetingDeletedNotification = @"MeetingDeletedNotification";
 
 @end

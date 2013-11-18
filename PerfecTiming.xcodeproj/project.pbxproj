@@ -12,6 +12,9 @@
 		2F63EF431839806E004137C7 /* PTMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF421839806E004137C7 /* PTMembership.m */; };
 		2F63EF461839937E004137C7 /* PTAddMembershipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */; };
 		2F63EF4C1839B759004137C7 /* PTManagedGroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */; };
+		2F63EF50183A6E59004137C7 /* PTManagedMeetingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF4F183A6E59004137C7 /* PTManagedMeetingsViewController.m */; };
+		2F63EF53183A6F6A004137C7 /* PTMeeting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF52183A6F6A004137C7 /* PTMeeting.m */; };
+		2F63EF57183AB18D004137C7 /* PTAddMeetingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF56183AB18D004137C7 /* PTAddMeetingViewController.m */; };
 		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */; };
 		C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99E1832D98A000FFD65 /* PTGroup.m */; };
@@ -69,6 +72,12 @@
 		2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAddMembershipViewController.m; sourceTree = "<group>"; };
 		2F63EF4A1839B759004137C7 /* PTManagedGroupInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupInfoViewController.h; sourceTree = "<group>"; };
 		2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTManagedGroupInfoViewController.m; sourceTree = "<group>"; };
+		2F63EF4E183A6E59004137C7 /* PTManagedMeetingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedMeetingsViewController.h; sourceTree = "<group>"; };
+		2F63EF4F183A6E59004137C7 /* PTManagedMeetingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTManagedMeetingsViewController.m; sourceTree = "<group>"; };
+		2F63EF51183A6F6A004137C7 /* PTMeeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMeeting.h; sourceTree = "<group>"; };
+		2F63EF52183A6F6A004137C7 /* PTMeeting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeeting.m; sourceTree = "<group>"; };
+		2F63EF55183AB18D004137C7 /* PTAddMeetingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTAddMeetingViewController.h; sourceTree = "<group>"; };
+		2F63EF56183AB18D004137C7 /* PTAddMeetingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTAddMeetingViewController.m; sourceTree = "<group>"; };
 		C811084E1831AF690045BD85 /* PTRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRevealViewController.h; sourceTree = "<group>"; };
 		C811084F1831AF690045BD85 /* PTRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRevealViewController.m; sourceTree = "<group>"; };
 		C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupsViewController.h; sourceTree = "<group>"; };
@@ -250,6 +259,8 @@
 			children = (
 				C830B99D1832D98A000FFD65 /* PTGroup.h */,
 				C830B99E1832D98A000FFD65 /* PTGroup.m */,
+				2F63EF51183A6F6A004137C7 /* PTMeeting.h */,
+				2F63EF52183A6F6A004137C7 /* PTMeeting.m */,
 				2F63EF411839806E004137C7 /* PTMembership.h */,
 				2F63EF421839806E004137C7 /* PTMembership.m */,
 			);
@@ -261,12 +272,16 @@
 			children = (
 				C830B9A31832E2C2000FFD65 /* PTAddManagedGroupViewController.h */,
 				C830B9A41832E2C2000FFD65 /* PTAddManagedGroupViewController.m */,
+				2F63EF55183AB18D004137C7 /* PTAddMeetingViewController.h */,
+				2F63EF56183AB18D004137C7 /* PTAddMeetingViewController.m */,
 				2F63EF441839937E004137C7 /* PTAddMembershipViewController.h */,
 				2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */,
 				2F63EF4A1839B759004137C7 /* PTManagedGroupInfoViewController.h */,
 				2F63EF4B1839B759004137C7 /* PTManagedGroupInfoViewController.m */,
 				C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */,
 				C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */,
+				2F63EF4E183A6E59004137C7 /* PTManagedMeetingsViewController.h */,
+				2F63EF4F183A6E59004137C7 /* PTManagedMeetingsViewController.m */,
 				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
 				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
 				C811084E1831AF690045BD85 /* PTRevealViewController.h */,
@@ -369,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F63EF461839937E004137C7 /* PTAddMembershipViewController.m in Sources */,
+				2F63EF53183A6F6A004137C7 /* PTMeeting.m in Sources */,
 				2F63EF40183943F7004137C7 /* Constants.m in Sources */,
 				2F63EF431839806E004137C7 /* PTMembership.m in Sources */,
 				C83C85CF182DB9BE0028A722 /* SWRevealViewController.m in Sources */,
@@ -378,10 +394,12 @@
 				C83C85CC182DB74E0028A722 /* PTMembershipViewController.m in Sources */,
 				C83C85D2182DBA8A0028A722 /* PTSidebarViewController.m in Sources */,
 				C83C85D5182DC22F0028A722 /* PTSettingsViewController.m in Sources */,
+				2F63EF50183A6E59004137C7 /* PTManagedMeetingsViewController.m in Sources */,
 				C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */,
 				C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */,
 				2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */,
 				C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */,
+				2F63EF57183AB18D004137C7 /* PTAddMeetingViewController.m in Sources */,
 				2F63EF4C1839B759004137C7 /* PTManagedGroupInfoViewController.m in Sources */,
 				C830B9A51832E2C2000FFD65 /* PTAddManagedGroupViewController.m in Sources */,
 			);

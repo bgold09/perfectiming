@@ -7,6 +7,7 @@
 //
 
 #import "PTManagedGroupInfoViewController.h"
+#import "PTManagedMeetingsViewController.h"
 #import "Constants.h"
 
 @interface PTManagedGroupInfoViewController ()
@@ -61,6 +62,14 @@
         }];
         
         [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ManagedMeetingsSegue"]) {
+        PTManagedMeetingsViewController *viewController = segue.destinationViewController;
+        viewController.group = self.group;
     }
 }
 

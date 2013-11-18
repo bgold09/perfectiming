@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "PTGroup.h"
 #import "PTMembership.h"
+#import "PTMeeting.h"
 
 @implementation PTAppDelegate
 
@@ -17,6 +18,7 @@
 {
     [PTGroup registerSubclass];
     [PTMembership registerSubclass];
+    [PTMeeting registerSubclass];
     
     [Parse setApplicationId:@"H6LlCn8JqUr6xoPvoX5I3gNktXgGvjUtRlX9cIGy"
                   clientKey:@"8NOwQ3Quk4UbemJujJWpjjrPZEXhEkHgIImIy7KW"];
