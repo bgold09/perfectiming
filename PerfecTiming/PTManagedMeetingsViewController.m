@@ -10,6 +10,7 @@
 #import "PTRevealViewController.h"
 #import "PTAddMeetingViewController.h"
 #import "PTManagedMeetingInfoViewController.h"
+#import "PTManagedMeetingTimesViewController.h"
 #import "PTMeeting.h"
 #import "Constants.h"
 
@@ -105,25 +106,6 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
     return [self.objects objectAtIndex:indexPath.row];
 }
 
-/*
- // Override to customize the look of the cell that allows the user to load the next page of objects.
- // The default implementation is a UITableViewCellStyleDefault cell with simple labels.
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
- static NSString *CellIdentifier = @"NextPage";
- 
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
- 
- if (cell == nil) {
- cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
- }
- 
- cell.selectionStyle = UITableViewCellSelectionStyleNone;
- cell.textLabel.text = @"Load more...";
- 
- return cell;
- }
- */
-
 #pragma mark - UITableViewDataSource Delegate
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -165,6 +147,11 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    self.infoIndexPath = indexPath;
+    [self performSegueWithIdentifier:@"MeetingTimesSegue" sender:self];
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     self.infoIndexPath = indexPath;
     [self performSegueWithIdentifier:@"ManagedMeetingInfoSegue" sender:self];
 }
@@ -217,6 +204,9 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
     } else if ([segue.identifier isEqualToString:@"ManagedMeetingInfoSegue"]) {
         PTManagedMeetingInfoViewController *infoViewController = segue.destinationViewController;
         infoViewController.meeting = (PTMeeting *) [self objectAtIndex:self.infoIndexPath];
+    } else if ([segue.identifier isEqualToString:@"MeetingTimesSegue"]) {
+        PTManagedMeetingTimesViewController *timesViewController = segue.destinationViewController;
+        timesViewController.meeting = (PTMeeting *) [self objectAtIndex:self.infoIndexPath];
     }
 }
 

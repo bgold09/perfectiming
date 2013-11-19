@@ -9,6 +9,7 @@
 #import "PTManagedGroupsViewController.h"
 #import "PTRevealViewController.h"
 #import "PTManagedGroupInfoViewController.h"
+#import "PTManagedMeetingsViewController.h"
 #import "PTGroup.h"
 #import "Constants.h"
 
@@ -163,7 +164,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     self.infoIndexPath = indexPath;
-    [self performSegueWithIdentifier:@"ManagedGroupInfoSegue" sender:self];
 }
 
 #pragma mark - UIAlertView Delegate
@@ -211,6 +211,10 @@
         PTManagedGroupInfoViewController *infoViewController = segue.destinationViewController;
         PTGroup *group = (PTGroup *) [self objectAtIndexPath:self.infoIndexPath];
         infoViewController.group = group;
+    } else if ([segue.identifier isEqualToString:@"ManagedMeetingsSegue"]) {
+        PTManagedMeetingsViewController *meetingsViewController = segue.destinationViewController;
+        PTGroup *group = (PTGroup *) [self objectAtIndexPath:self.infoIndexPath];
+        meetingsViewController.group = group;
     }
 }
 
