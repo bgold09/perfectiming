@@ -11,6 +11,7 @@
 #import "PTGroup.h"
 #import "PTMembership.h"
 #import "PTMeeting.h"
+#import "PTMeetingTime.h"
 
 @implementation PTAppDelegate
 
@@ -19,6 +20,7 @@
     [PTGroup registerSubclass];
     [PTMembership registerSubclass];
     [PTMeeting registerSubclass];
+    [PTMeetingTime registerSubclass];
     
     [Parse setApplicationId:@"H6LlCn8JqUr6xoPvoX5I3gNktXgGvjUtRlX9cIGy"
                   clientKey:@"8NOwQ3Quk4UbemJujJWpjjrPZEXhEkHgIImIy7KW"];
@@ -26,7 +28,6 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge |
                                                     UIRemoteNotificationTypeAlert |
                                                     UIRemoteNotificationTypeSound];
-    
     
     return YES;
 }

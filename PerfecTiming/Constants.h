@@ -2,7 +2,7 @@
 //  Constants.h
 //  PerfecTiming
 //
-//  Created by MTSS User on 11/16/13.
+//  Created by BRIAN J GOLDEN on 11/16/13.
 //  Copyright (c) 2013 BRIAN J GOLDEN. All rights reserved.
 //
 
@@ -15,6 +15,7 @@ FOUNDATION_EXPORT NSString * const kPTGroupDeletedNotification;
 FOUNDATION_EXPORT NSString * const kPTMembershipAddedNotification;
 FOUNDATION_EXPORT NSString * const kPTMeetingAddedNotification;
 FOUNDATION_EXPORT NSString * const kPTMeetingDeletedNotification;
+FOUNDATION_EXPORT NSString * const kPTMeetingTimeCreatedNotification;
 FOUNDATION_EXPORT NSString * const kPTUserLoggedInNotification;
 FOUNDATION_EXPORT NSString * const kPTUserLoggedOutNotification;
 

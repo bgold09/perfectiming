@@ -9,6 +9,7 @@
 #import "PTManagedMeetingsViewController.h"
 #import "PTRevealViewController.h"
 #import "PTAddMeetingViewController.h"
+#import "PTManagedMeetingInfoViewController.h"
 #import "PTMeeting.h"
 #import "Constants.h"
 
@@ -165,7 +166,7 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     self.infoIndexPath = indexPath;
-//    [self performSegueWithIdentifier:@"ManagedMeetingInfoSegue" sender:self];
+    [self performSegueWithIdentifier:@"ManagedMeetingInfoSegue" sender:self];
 }
 
 #pragma mark - UIAlertView Delegate
@@ -213,6 +214,9 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
     if ([segue.identifier isEqualToString:@"AddMeetingSegue"]) {
         PTAddMeetingViewController *addMeetingViewController = segue.destinationViewController;
         addMeetingViewController.group = self.group;
+    } else if ([segue.identifier isEqualToString:@"ManagedMeetingInfoSegue"]) {
+        PTManagedMeetingInfoViewController *infoViewController = segue.destinationViewController;
+        infoViewController.meeting = (PTMeeting *) [self objectAtIndex:self.infoIndexPath];
     }
 }
 
