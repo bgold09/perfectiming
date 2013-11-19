@@ -32,7 +32,18 @@ static NSString * const kCreateMeetingTimeNotification = @"CreateMeetingTimeNoti
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.meetingTimePicker.minimumDate = [NSDate date];
+    [self.meetingTimePicker addTarget:self action:@selector(dateChanged) forControlEvents:UIControlEventValueChanged];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createMeetingTimeActual) name:kCreateMeetingTimeNotification object:nil];
+}
+
+- (void)dateChanged {
+    NSDate *selectedDate = self.meetingTimePicker.date;
+    NSDate *minDate = self.meetingTimePicker.minimumDate;
+    
+    if ([selectedDate compare:minDate] == NSOrderedAscending) {
+        [self.meetingTimePicker setDate:minDate animated:YES];
+    }
 }
 
 - (void)meetingTimeExists {
