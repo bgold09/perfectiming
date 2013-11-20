@@ -10,9 +10,10 @@
 #import "PTMeeting.h"
 
 typedef NS_ENUM(NSInteger, PTMeetingAttendeeAvailability) {
-    PTMeetingAttendeeAvailabilityFull,     // available
-    PTMeetingAttendeeAvailabilityPartial,  // partially available
-    PTMeetingAttendeeAvailabilityNot       // unavailable
+    PTMeetingAttendeeAvailabilityFull,         // available
+    PTMeetingAttendeeAvailabilityPartial,      // partially available
+    PTMeetingAttendeeAvailabilityNot,          // unavailable
+    PTMeetingAttendeeAvailabilityNotResponded  // request not responded to
 };
 
 @interface PTMeetingAttendee : PFObject <PFSubclassing>

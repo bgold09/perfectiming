@@ -33,8 +33,13 @@
                                                                options:NSJSONReadingMutableContainers
                                                                  error:&error];
     
-    PTMeetingAttendeeAvailability availabilityLevel = [[dictionary objectForKey:self.meeting.objectId] integerValue];
-    return availabilityLevel;
+    NSNumber *availabilityNumber = [dictionary objectForKey:self.meeting.objectId];
+    
+    if (availabilityNumber) {
+        return [availabilityNumber integerValue];
+    }
+    
+    return PTMeetingAttendeeAvailabilityNotResponded;
 }
 
 @end

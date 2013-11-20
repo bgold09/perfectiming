@@ -12,6 +12,7 @@
 static NSString * const CellIdentifierUnavailable = @"UnavailableCell";
 static NSString * const CellIdentifierPartiallyAvailable = @"PartiallyAvailableCell";
 static NSString * const CellIdentifierAvailable = @"AvailableCell";
+static NSString * const CellIdentifierNotResponded = @"UnrespondedCell";
 
 @interface PTMeetingAttendeeAvailabilitiesViewController ()
 
@@ -86,6 +87,9 @@ static NSString * const CellIdentifierAvailable = @"AvailableCell";
             break;
         case PTMeetingAttendeeAvailabilityNot:
             CellIdentifier = CellIdentifierUnavailable;
+            break;
+        case PTMeetingAttendeeAvailabilityNotResponded:
+            CellIdentifier = CellIdentifierNotResponded;
             break;
         default:
             CellIdentifier = CellIdentifierUnavailable;
