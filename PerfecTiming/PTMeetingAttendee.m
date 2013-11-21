@@ -20,6 +20,13 @@
     return @"MeetingAttendee";
 }
 
++ (PTMeetingAttendee *)meetingAttendeeWithUser:(PFUser *)user meeting:(PTMeeting *)meeting {
+    PTMeetingAttendee *attendee = [PTMeetingAttendee object];
+    attendee.user = user;
+    attendee.meeting = meeting;
+    return attendee;
+}
+
 - (BOOL)hasSubmittedAvailability {
     if (self.availability && self.availability.length > 0) {
         return YES;

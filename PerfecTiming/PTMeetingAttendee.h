@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, PTMeetingAttendeeAvailability) {
 @property BOOL isRequiredAttendee;
 
 + (NSString *)parseClassName;
++ (PTMeetingAttendee *)meetingAttendeeWithUser:(PFUser *)user meeting:(PTMeeting *)meeting;
 - (BOOL)hasSubmittedAvailability;
 - (PTMeetingAttendeeAvailability)availabilityForMeeting:(PTMeeting *)meeting;
 

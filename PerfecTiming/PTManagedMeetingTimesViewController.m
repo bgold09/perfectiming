@@ -9,6 +9,8 @@
 #import "PTManagedMeetingTimesViewController.h"
 #import "PTCreateMeetingTimeViewController.h"
 #import "PTMeetingTime.h"
+#import "PTMembership.h"
+#import "PTMeetingAttendee.h"
 #import "Constants.h"
 
 static NSString * const CellIdentifierRed = @"RedCell";
@@ -42,12 +44,65 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMeetingTimeCreatedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMeetingAttendees:) name:kPTMeetingTimeCreatedNotification object:nil];
 }
 
 #pragma mark - Notifcation Handlers
 
 - (void)refreshTable:(NSNotification *)notification {
     [self loadObjects];
+}
+
+- (void)handleMeetingAttendees:(NSNotification *)notification {
+    // a new meeting time was created
+    // if first meeting time, create new MeetingAttendees
+    // if not first meeting time, upadte existing MeetingAttendees for this meeting asking for availabilities
+
+    if (self.objects.count == 0) {
+        // first meeting time
+        PTGroup *group = self.meeting.group;
+        // get members of the group and create attendees
+        [self findGroupMembersAndCreateAttendeesForGroup:group];
+    } else {
+        // not first meeting time
+        // update existing
+    }
+}
+
+- (void)findGroupMembersAndCreateAttendeesForGroup:(PTGroup *)group {
+    PFQuery *query = [PFQuery queryWithClassName:[PTMembership parseClassName]];
+    [query whereKey:@"group" equalTo:group];
+    [query includeKey:@"user"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            return;
+        }
+        
+        [self createMeetingAttendeesForMemberships:objects];
+    }];
+}
+
+- (void)createMeetingAttendeesForMemberships:(NSArray *)memberships {
+    NSMutableArray *attendees = [NSMutableArray array];
+    for (PTMembership *membership in memberships) {
+        PFUser *user = membership.user;
+        PTMeetingAttendee *attendee = [PTMeetingAttendee meetingAttendeeWithUser:user meeting:self.meeting];
+        [attendees addObject:attendee];
+    }
+    
+    [PFObject saveAllInBackground:attendees block:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            // delete meeting time?
+            [self performSelectorOnMainThread:@selector(showCreationErrorAlertWithError:) withObject:error waitUntilDone:YES];
+            return;
+        }
+    }];
+}
+
+- (void)showCreationErrorAlertWithError:(NSError *)error {
+    NSString *message = [NSString stringWithFormat:@"%@", error];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Creating Attendees" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 #pragma mark - PFQueryTableViewController Delegate
