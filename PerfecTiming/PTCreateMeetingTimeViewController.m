@@ -76,7 +76,7 @@ static NSString * const kCreateMeetingTimeNotification = @"CreateMeetingTimeNoti
 - (void)createMeetingTimeActual {
     NSDate *meetingDate = self.meetingDateTime;
 
-    PTMeetingTime *meetingTime = [PTMeetingTime meetingTimeWithMeeting:self.meeting date:meetingDate];
+    PTMeetingTime *meetingTime = [PTMeetingTime meetingTimeWithMeeting:self.meeting startDate:[NSDate date] endDate:meetingDate];
     
     PFACL *meetingTimeACL = [PFACL ACL];
     meetingTimeACL.publicReadAccess = YES;

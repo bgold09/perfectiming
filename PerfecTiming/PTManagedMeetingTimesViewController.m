@@ -147,7 +147,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *dateString = [dateFormatter stringFromDate:meetingTime.datetime];
+    NSString *dateString = [dateFormatter stringFromDate:meetingTime.startDatetime];
     
     cell.textLabel.text = dateString;
     
