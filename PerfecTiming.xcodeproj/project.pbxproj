@@ -24,6 +24,8 @@
 		2F63EF73183BFC9E004137C7 /* PTMeetingAttendee.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF72183BFC9E004137C7 /* PTMeetingAttendee.m */; };
 		2F63EF7C183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF7B183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m */; };
 		2F63EF7F183EA757004137C7 /* PTMembershipMeetingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF7E183EA757004137C7 /* PTMembershipMeetingsViewController.m */; };
+		2F63EF82183F0E47004137C7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F63EF80183F0E47004137C7 /* EventKit.framework */; };
+		2F63EF83183F0E47004137C7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F63EF81183F0E47004137C7 /* EventKitUI.framework */; };
 		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */; };
 		C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99E1832D98A000FFD65 /* PTGroup.m */; };
@@ -104,6 +106,8 @@
 		2F63EF7B183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingAttendeeAvailabilitiesViewController.m; sourceTree = "<group>"; };
 		2F63EF7D183EA757004137C7 /* PTMembershipMeetingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMembershipMeetingsViewController.h; sourceTree = "<group>"; };
 		2F63EF7E183EA757004137C7 /* PTMembershipMeetingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMembershipMeetingsViewController.m; sourceTree = "<group>"; };
+		2F63EF80183F0E47004137C7 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		2F63EF81183F0E47004137C7 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		C811084E1831AF690045BD85 /* PTRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRevealViewController.h; sourceTree = "<group>"; };
 		C811084F1831AF690045BD85 /* PTRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRevealViewController.m; sourceTree = "<group>"; };
 		C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupsViewController.h; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F63EF82183F0E47004137C7 /* EventKit.framework in Frameworks */,
+				2F63EF83183F0E47004137C7 /* EventKitUI.framework in Frameworks */,
 				C8626907182879480092B910 /* SystemConfiguration.framework in Frameworks */,
 				C8626905182879410092B910 /* StoreKit.framework in Frameworks */,
 				C86269031828793B0092B910 /* Security.framework in Frameworks */,
@@ -280,6 +286,8 @@
 				C86268F8182879040092B910 /* CFNetwork.framework */,
 				C86268D51828781C0092B910 /* CoreGraphics.framework */,
 				C86268FA1828791A0092B910 /* CoreLocation.framework */,
+				2F63EF80183F0E47004137C7 /* EventKit.framework */,
+				2F63EF81183F0E47004137C7 /* EventKitUI.framework */,
 				C86268D31828781C0092B910 /* Foundation.framework */,
 				C86268FC182879250092B910 /* libz.1.1.3.dylib */,
 				C86268FE1828792E0092B910 /* MobileCoreServices.framework */,
