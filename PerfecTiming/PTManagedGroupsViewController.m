@@ -214,6 +214,7 @@
     } else if ([segue.identifier isEqualToString:@"ManagedMeetingsSegue"]) {
         PTManagedMeetingsViewController *meetingsViewController = segue.destinationViewController;
         PTGroup *group = (PTGroup *) [self objectAtIndexPath:self.infoIndexPath];
+        
         meetingsViewController.group = group;
     }
 }

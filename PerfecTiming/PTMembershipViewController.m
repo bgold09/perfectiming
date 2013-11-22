@@ -8,11 +8,13 @@
 
 #import "PTMembershipViewController.h"
 #import "PTRevealViewController.h"
+#import "PTMembershipMeetingsViewController.h"
 #import "PTMembership.h"
 #import "Constants.h"
 
 @interface PTMembershipViewController ()
 @property (strong, nonatomic) NSIndexPath *deleteIndexPath;
+@property (strong, nonatomic) NSIndexPath *meetingIndexPath;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @end
@@ -159,6 +161,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    self.meetingIndexPath = indexPath;
 }
 
 #pragma mark - UIAlertView Delegate
@@ -201,6 +204,14 @@
 
 - (void)addButtonPressed {
     [self performSegueWithIdentifier:@"AddMembershipSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"MembershipMeetingsSegue"]) {
+        PTMembershipMeetingsViewController *meetingsViewController = segue.destinationViewController;
+        PTMembership *membership = (PTMembership *) [self objectAtIndexPath:self.meetingIndexPath];
+        meetingsViewController.group = membership.group;
+    }
 }
 
 @end

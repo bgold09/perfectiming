@@ -23,6 +23,7 @@
 		2F63EF6D183B2E59004137C7 /* PTCreateMeetingTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF6C183B2E59004137C7 /* PTCreateMeetingTimeViewController.m */; };
 		2F63EF73183BFC9E004137C7 /* PTMeetingAttendee.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF72183BFC9E004137C7 /* PTMeetingAttendee.m */; };
 		2F63EF7C183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF7B183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m */; };
+		2F63EF7F183EA757004137C7 /* PTMembershipMeetingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF7E183EA757004137C7 /* PTMembershipMeetingsViewController.m */; };
 		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */; };
 		C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99E1832D98A000FFD65 /* PTGroup.m */; };
@@ -101,6 +102,8 @@
 		2F63EF72183BFC9E004137C7 /* PTMeetingAttendee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingAttendee.m; sourceTree = "<group>"; };
 		2F63EF7A183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMeetingAttendeeAvailabilitiesViewController.h; sourceTree = "<group>"; };
 		2F63EF7B183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingAttendeeAvailabilitiesViewController.m; sourceTree = "<group>"; };
+		2F63EF7D183EA757004137C7 /* PTMembershipMeetingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMembershipMeetingsViewController.h; sourceTree = "<group>"; };
+		2F63EF7E183EA757004137C7 /* PTMembershipMeetingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMembershipMeetingsViewController.m; sourceTree = "<group>"; };
 		C811084E1831AF690045BD85 /* PTRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRevealViewController.h; sourceTree = "<group>"; };
 		C811084F1831AF690045BD85 /* PTRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRevealViewController.m; sourceTree = "<group>"; };
 		C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupsViewController.h; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 				2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */,
 				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
 				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
+				2F63EF7D183EA757004137C7 /* PTMembershipMeetingsViewController.h */,
+				2F63EF7E183EA757004137C7 /* PTMembershipMeetingsViewController.m */,
 			);
 			name = "Group Membership";
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				C86268DE1828781C0092B910 /* main.m in Sources */,
 				C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */,
 				C83C85CC182DB74E0028A722 /* PTMembershipViewController.m in Sources */,
+				2F63EF7F183EA757004137C7 /* PTMembershipMeetingsViewController.m in Sources */,
 				C83C85D2182DBA8A0028A722 /* PTSidebarViewController.m in Sources */,
 				C83C85D5182DC22F0028A722 /* PTSettingsViewController.m in Sources */,
 				2F63EF50183A6E59004137C7 /* PTManagedMeetingsViewController.m in Sources */,
