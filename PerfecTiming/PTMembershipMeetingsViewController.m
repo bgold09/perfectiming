@@ -120,11 +120,58 @@
     }
 }
 
+#pragma mark - Calendar Chooser
+
+- (void)prepareForCalendarChooser {
+    EKEventStore *eventStore = [[EKEventStore alloc] init];
+    
+    if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError* error) {
+            if (!granted) {
+                NSString *message = @"Hey! I Can't access your Calendar... check your privacy settings to let me in!";
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Warning"
+                                                                   message:message
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Ok"
+                                                         otherButtonTitles:nil];
+                [alertView show];
+            } else {
+                [self performSelectorOnMainThread:@selector(displayCalendarChooserWithEventStore:) withObject:eventStore waitUntilDone:YES];
+            }
+        }];
+    }
+}
+
+- (void)displayCalendarChooserWithEventStore:(EKEventStore *)eventStore {
+    EKCalendarChooser *calendarChooser = [[EKCalendarChooser alloc]
+                                          initWithSelectionStyle:EKCalendarChooserSelectionStyleMultiple
+                                          displayStyle:EKCalendarChooserDisplayAllCalendars
+                                          eventStore:eventStore];
+    
+    calendarChooser.showsDoneButton = YES;
+    calendarChooser.showsCancelButton = YES;
+    calendarChooser.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    calendarChooser.delegate = self;
+    
+    UINavigationController *cntrol = [[UINavigationController alloc] initWithRootViewController:calendarChooser];
+    [self presentViewController:cntrol animated:YES completion:NULL];
+}
+
+#pragma mark - EKCalendarChooserDelegate methods
+
+- (void)calendarChooserDidCancel:(EKCalendarChooser *)calendarChooser {
+    [calendarChooser dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)calendarChooserDidFinish:(EKCalendarChooser *)calendarChooser {
+    
+}
+
 #pragma mark - UIAlertViewDelegate methods
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != alertView.cancelButtonIndex) {
-        
+        [self prepareForCalendarChooser];
     }
 }
 

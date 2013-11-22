@@ -7,9 +7,10 @@
 //
 
 #import <Parse/Parse.h>
+#import <EventKitUI/EventKitUI.h>
 #import "PTGroup.h"
 
-@interface PTMembershipMeetingsViewController : PFQueryTableViewController <UIAlertViewDelegate>
+@interface PTMembershipMeetingsViewController : PFQueryTableViewController <UIAlertViewDelegate, EKCalendarChooserDelegate>
 @property (strong, nonatomic) PTGroup *group;
 
 @end
