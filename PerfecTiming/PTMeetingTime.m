@@ -12,16 +12,18 @@
 @implementation PTMeetingTime
 
 @dynamic meeting;
-@dynamic datetime;
+@dynamic startDatetime;
+@dynamic endDatetime;
 
 + (NSString *)parseClassName {
     return @"MeetingTime";
 }
 
-+ (PTMeetingTime *)meetingTimeWithMeeting:(PTMeeting *)meeting date:(NSDate *)date {
++ (PTMeetingTime *)meetingTimeWithMeeting:(PTMeeting *)meeting startDate:(NSDate *)startDate endDate:(NSDate *)endDate  {
     PTMeetingTime *meetingTime = [PTMeetingTime object];
     meetingTime.meeting = meeting;
-    meetingTime.datetime = date;
+    meetingTime.startDatetime = startDate;
+    meetingTime.endDatetime = endDate;
     return meetingTime;
 }
 

@@ -12,9 +12,10 @@
 @interface PTMeetingTime : PFObject <PFSubclassing>
 
 @property (retain) PTMeeting *meeting;
-@property (retain) NSDate *datetime;
+@property (retain) NSDate *startDatetime;
+@property (retain) NSDate *endDatetime;
 
 + (NSString *)parseClassName;
-+ (PTMeetingTime *)meetingTimeWithMeeting:(PTMeeting *)meeting date:(NSDate *)date;
++ (PTMeetingTime *)meetingTimeWithMeeting:(PTMeeting *)meeting startDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 
 @end
