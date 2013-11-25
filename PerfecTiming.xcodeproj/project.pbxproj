@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1F1E041842FCC300C77BC8 /* PTMeetingDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F1E031842FCC300C77BC8 /* PTMeetingDateRange.m */; };
 		2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3E18393ECC004137C7 /* MBProgressHUD.m */; };
 		2F63EF40183943F7004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		2F63EF431839806E004137C7 /* PTMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF421839806E004137C7 /* PTMembership.m */; };
@@ -73,6 +74,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F1F1E021842FCC300C77BC8 /* PTMeetingDateRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMeetingDateRange.h; sourceTree = "<group>"; };
+		2F1F1E031842FCC300C77BC8 /* PTMeetingDateRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingDateRange.m; sourceTree = "<group>"; };
 		2F63EF3A18374D58004137C7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2F63EF3B18374D58004137C7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2F63EF3D18393ECC004137C7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -216,14 +219,14 @@
 			children = (
 				2F63EF55183AB18D004137C7 /* PTAddMeetingViewController.h */,
 				2F63EF56183AB18D004137C7 /* PTAddMeetingViewController.m */,
+				2F63EF6B183B2E59004137C7 /* PTCreateMeetingTimeViewController.h */,
+				2F63EF6C183B2E59004137C7 /* PTCreateMeetingTimeViewController.m */,
 				2F63EF65183AEF65004137C7 /* PTManagedMeetingInfoViewController.h */,
 				2F63EF66183AEF65004137C7 /* PTManagedMeetingInfoViewController.m */,
 				2F63EF4E183A6E59004137C7 /* PTManagedMeetingsViewController.h */,
 				2F63EF4F183A6E59004137C7 /* PTManagedMeetingsViewController.m */,
 				2F63EF62183AEDFF004137C7 /* PTManagedMeetingTimesViewController.h */,
 				2F63EF63183AEDFF004137C7 /* PTManagedMeetingTimesViewController.m */,
-				2F63EF6B183B2E59004137C7 /* PTCreateMeetingTimeViewController.h */,
-				2F63EF6C183B2E59004137C7 /* PTCreateMeetingTimeViewController.m */,
 				2F63EF7A183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.h */,
 				2F63EF7B183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m */,
 			);
@@ -353,6 +356,8 @@
 				2F63EF69183AF493004137C7 /* PTMeetingTime.m */,
 				2F63EF411839806E004137C7 /* PTMembership.h */,
 				2F63EF421839806E004137C7 /* PTMembership.m */,
+				2F1F1E021842FCC300C77BC8 /* PTMeetingDateRange.h */,
+				2F1F1E031842FCC300C77BC8 /* PTMeetingDateRange.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				2F63EF50183A6E59004137C7 /* PTManagedMeetingsViewController.m in Sources */,
 				C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */,
 				C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */,
+				2F1F1E041842FCC300C77BC8 /* PTMeetingDateRange.m in Sources */,
 				2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */,
 				C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */,
 				2F63EF57183AB18D004137C7 /* PTAddMeetingViewController.m in Sources */,

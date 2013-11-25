@@ -18,5 +18,8 @@ NSString * const kPTMeetingDeletedNotification = @"MeetingDeletedNotification";
 NSString * const kPTMeetingTimeCreatedNotification = @"MeetingTimeCreatedNotification";
 NSString * const kPTUserLoggedInNotification = @"UserLoggedInNotification";
 NSString * const kPTUserLoggedOutNotification = @"UserLoggedOutNotification";
+NSString * const kPTAvailabilityReadyNotification = @"AvailabilityReadyNotification";
+NSString * const kPTAvailabilityFailedNotification = @"AvailabilityFailedNotification";
+NSString * const kPTAvailabilitySentNotification = @"AvailabilitySentNotification";
 
 @end

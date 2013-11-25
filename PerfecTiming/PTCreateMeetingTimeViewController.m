@@ -10,11 +10,11 @@
 #import "PTMeetingTime.h"
 #import "Constants.h"
 
-static NSString * const kCreateMeetingTimeNotification = @"CreateMeetingTimeNotification";
-
 @interface PTCreateMeetingTimeViewController ()
-@property (strong, nonatomic) NSDate *meetingDateTime;
-@property (weak, nonatomic) IBOutlet UIDatePicker *meetingTimePicker;
+@property (strong, nonatomic) NSDate *startTime;
+@property (strong, nonatomic) NSDate *endTime;
+@property (weak, nonatomic) IBOutlet UIDatePicker *startTimePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)savePressed:(id)sender;
 
@@ -32,24 +32,16 @@ static NSString * const kCreateMeetingTimeNotification = @"CreateMeetingTimeNoti
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.meetingTimePicker.minimumDate = [NSDate date];
-    [self.meetingTimePicker addTarget:self action:@selector(dateChanged) forControlEvents:UIControlEventValueChanged];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createMeetingTimeActual) name:kCreateMeetingTimeNotification object:nil];
-}
-
-- (void)dateChanged {
-    NSDate *selectedDate = self.meetingTimePicker.date;
-    NSDate *minDate = self.meetingTimePicker.minimumDate;
-    
-    if ([selectedDate compare:minDate] == NSOrderedAscending) {
-        [self.meetingTimePicker setDate:minDate animated:YES];
-    }
+    self.startTimePicker.minimumDate = [NSDate date];
+    [self.startTimePicker addTarget:self action:@selector(startDateChanged) forControlEvents:UIControlEventValueChanged];
+    [self.endDatePicker addTarget:self action:@selector(endDateChanged) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)meetingTimeExists {
     PFQuery *query = [PFQuery queryWithClassName:[PTMeeting parseClassName]];
     [query whereKey:@"meeting" equalTo:self.meeting];
-    [query whereKey:@"date" equalTo:self.meetingDateTime];
+    [query whereKey:@"startDatetime" equalTo:self.startTime];
+    [query whereKey:@"endDatetime" equalTo:self.endTime];
     
     [query countObjectsInBackgroundWithBlock:^(NSInteger count, NSError *error) {
         if (error) {
@@ -64,46 +56,62 @@ static NSString * const kCreateMeetingTimeNotification = @"CreateMeetingTimeNoti
             return;
         }
         
-        [self performSelectorOnMainThread:@selector(fireStartMeetingTimeCreationNotification) withObject:self waitUntilDone:NO];
+        [self performSelectorInBackground:@selector(createMeetingTimeActual) withObject:nil];
     }];
 }
 
 - (void)createMeetingTime {
-    self.meetingDateTime = self.meetingTimePicker.date;
+    self.startTime = self.startTimePicker.date;
+    self.endTime = self.endDatePicker.date;
     [self meetingTimeExists];
 }
 
 - (void)createMeetingTimeActual {
-    NSDate *meetingDate = self.meetingDateTime;
+    NSDate *startDate = self.startTime;
+    NSDate *endDate = self.endTime;
 
-    PTMeetingTime *meetingTime = [PTMeetingTime meetingTimeWithMeeting:self.meeting startDate:[NSDate date] endDate:meetingDate];
+    PTMeetingTime *meetingTime = [PTMeetingTime meetingTimeWithMeeting:self.meeting startDate:startDate endDate:endDate];
     
     PFACL *meetingTimeACL = [PFACL ACL];
     meetingTimeACL.publicReadAccess = YES;
     meetingTimeACL.publicWriteAccess = YES;
     meetingTime.ACL = meetingTimeACL;
     
-    [meetingTime saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            return;
-        }
-        
-        if (succeeded) {
-            [self performSelectorOnMainThread:@selector(fireMeetingTimeCreatedNotification) withObject:nil waitUntilDone:YES];
-        }
-    }];
+    NSError *error;
+    [meetingTime save:&error];
     
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    [self performSelectorOnMainThread:@selector(fireMeetingTimeCreatedNotification) withObject:nil waitUntilDone:YES];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)fireStartMeetingTimeCreationNotification {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kCreateMeetingTimeNotification object:self];
-}
+#pragma mark - Notifications
 
 - (void)fireMeetingTimeCreatedNotification {
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTMeetingTimeCreatedNotification object:self];
+}
+
+#pragma mark - Target Actions
+
+- (void)startDateChanged {
+    NSDate *selectedDate = self.startTimePicker.date;
+    NSDate *minDate = self.startTimePicker.minimumDate;
+    
+    if ([selectedDate compare:minDate] == NSOrderedAscending) {
+        [self.startTimePicker setDate:minDate animated:YES];
+    } else if ([selectedDate compare:self.endDatePicker.date] == NSOrderedDescending) {
+        NSDate *newEndDate = [self.startTimePicker.date dateByAddingTimeInterval:60*60];
+        [self.endDatePicker setDate:newEndDate];
+    }
+}
+
+- (void)endDateChanged {
+    
 }
 
 - (IBAction)cancelPressed:(id)sender {

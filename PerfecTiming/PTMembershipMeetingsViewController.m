@@ -8,8 +8,13 @@
 
 #import "PTMembershipMeetingsViewController.h"
 #import "PTMeetingAttendee.h"
+#import "PTMeetingAvailabilityModel.h"
+#import "Constants.h"
 
 @interface PTMembershipMeetingsViewController ()
+@property (strong, nonatomic) PTMeetingAvailabilityModel *availabilityModel;
+@property (strong, nonatomic) NSIndexPath *attendeeIndexPath;
+@property (strong, nonatomic) EKEventStore *eventStore;
 
 @end
 
@@ -22,6 +27,7 @@
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.objectsPerPage = 25;
+        _availabilityModel = [PTMeetingAvailabilityModel sharedInstance];
     }
     
     return self;
@@ -29,12 +35,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFailAlert:) name:kPTAvailabilityFailedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAvailability:) name:kPTAvailabilityReadyNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSuccessAlert:) name:kPTAvailabilitySentNotification object:nil];
 }
 
 #pragma mark - Notifcation Handlers
 
 - (void)refreshTable:(NSNotification *)notification {
     [self loadObjects];
+}
+
+- (void)showFailAlert:(NSNotification *)notification {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sending Failed" message:@"There was an error sending your availability. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)showSuccessAlert:(NSNotification *)notification {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Send Succeeded" message:@"Your availability was sent to the grouip manager." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    // update cell appearance?
+}
+
+- (void)sendAvailability:(NSNotification *)notification {
+    NSDictionary *dictionary = notification.object;
+    PTMeetingAttendee *attendee = (PTMeetingAttendee *) [self objectAtIndexPath:self.attendeeIndexPath];
+    [self.availabilityModel sendAvailabilityForMeetingAttendee:attendee availability:dictionary];
 }
 
 #pragma mark - PFQueryTableViewController Delegate
@@ -85,29 +112,11 @@
     return [self.objects objectAtIndex:indexPath.row];
 }
 
-/*
- // Override to customize the look of the cell that allows the user to load the next page of objects.
- // The default implementation is a UITableViewCellStyleDefault cell with simple labels.
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
- static NSString *CellIdentifier = @"NextPage";
- 
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
- 
- if (cell == nil) {
- cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
- }
- 
- cell.selectionStyle = UITableViewCellSelectionStyleNone;
- cell.textLabel.text = @"Load more...";
- 
- return cell;
- }
- */
-
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    self.attendeeIndexPath = indexPath;
     
     PTMeetingAttendee *attendee = (PTMeetingAttendee *) [self objectAtIndex:indexPath];
     if (attendee.availability && attendee.availability.length > 0) {
@@ -143,15 +152,16 @@
 }
 
 - (void)displayCalendarChooserWithEventStore:(EKEventStore *)eventStore {
-    EKCalendarChooser *calendarChooser = [[EKCalendarChooser alloc]
-                                          initWithSelectionStyle:EKCalendarChooserSelectionStyleMultiple
-                                          displayStyle:EKCalendarChooserDisplayAllCalendars
-                                          eventStore:eventStore];
+    EKCalendarChooser *calendarChooser = [[EKCalendarChooser alloc] initWithSelectionStyle:EKCalendarChooserSelectionStyleMultiple
+                                                                              displayStyle:EKCalendarChooserDisplayAllCalendars
+                                                                                eventStore:eventStore];
     
     calendarChooser.showsDoneButton = YES;
     calendarChooser.showsCancelButton = YES;
     calendarChooser.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     calendarChooser.delegate = self;
+    calendarChooser.selectedCalendars = [[NSSet alloc] init];
+    self.eventStore = eventStore;
     
     UINavigationController *cntrol = [[UINavigationController alloc] initWithRootViewController:calendarChooser];
     [self presentViewController:cntrol animated:YES completion:NULL];
@@ -164,6 +174,14 @@
 }
 
 - (void)calendarChooserDidFinish:(EKCalendarChooser *)calendarChooser {
+    PTMeetingAttendee *attendee = (PTMeetingAttendee *) [self objectAtIndexPath:self.attendeeIndexPath];
+    PTMeeting *meeting = attendee.meeting;
+    
+    [self.availabilityModel buildAvailabilityForMeeting:meeting calendarStore:self.eventStore calendars:calendarChooser.selectedCalendars];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)calendarChooserSelectionDidChange:(EKCalendarChooser *)calendarChooser {
     
 }
 

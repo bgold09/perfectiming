@@ -78,7 +78,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
             return;
         }
         
-        [self createMeetingAttendeesForMemberships:objects];
+        [self performSelectorInBackground:@selector(createMeetingAttendeesForMemberships:) withObject:objects];
     }];
 }
 
@@ -86,8 +86,18 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     NSMutableArray *attendees = [NSMutableArray array];
     for (PTMembership *membership in memberships) {
         PFUser *user = membership.user;
-        PTMeetingAttendee *attendee = [PTMeetingAttendee meetingAttendeeWithUser:user meeting:self.meeting];
-        [attendees addObject:attendee];
+        PFQuery *query = [PFQuery queryWithClassName:[PTMeetingAttendee parseClassName]];
+        [query whereKey:@"user" equalTo:user];
+        [query whereKey:@"meeting" equalTo:self.meeting];
+        
+        NSError *error;
+        PFObject *object = [query getFirstObject:&error];
+        
+        if (object) {
+            // create the MeetingAttendee object if one does not already exist for this user and meeting
+            PTMeetingAttendee *attendee = [PTMeetingAttendee meetingAttendeeWithUser:user meeting:self.meeting];
+            [attendees addObject:attendee];
+        }
     }
     
     [PFObject saveAllInBackground:attendees block:^(BOOL succeeded, NSError *error) {
