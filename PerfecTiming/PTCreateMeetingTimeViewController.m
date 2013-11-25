@@ -8,6 +8,7 @@
 
 #import "PTCreateMeetingTimeViewController.h"
 #import "PTMeetingTime.h"
+#import "NSDate+Compare.h"
 #import "Constants.h"
 
 @interface PTCreateMeetingTimeViewController ()
@@ -96,9 +97,9 @@
     NSDate *selectedDate = self.startTimePicker.date;
     NSDate *minDate = self.startTimePicker.minimumDate;
     
-    if ([selectedDate compare:minDate] == NSOrderedAscending) {
+    if ([selectedDate isLessThanDate:minDate]) {
         [self.startTimePicker setDate:minDate animated:YES];
-    } else if ([selectedDate compare:self.endDatePicker.date] == NSOrderedDescending) {
+    } else if ([selectedDate isGreaterThanDate:self.endDatePicker.date]) {
         NSDate *newEndDate = [self.startTimePicker.date dateByAddingTimeInterval:60*60];
         [self.endDatePicker setDate:newEndDate];
     }

@@ -7,6 +7,7 @@
 //
 
 #import "PTMeetingDateRange.h"
+#import "NSDate+Compare.h"
 
 @implementation PTMeetingDateRange
 
@@ -24,22 +25,8 @@
 }
 
 - (PTDateConflict)conflictForStartDate:(NSDate *)startDate endDate:(NSDate *)endDate {
-    BOOL condA;
-    BOOL condB;
-    
-    if ([self.startDate compare:endDate] == NSOrderedDescending) {
-        condA = NO;
-    } else {
-        condA = YES;
-    }
-    
-    if ([self.endDate compare:startDate] == NSOrderedAscending) {
-        condB = NO;
-    } else {
-        condB = YES;
-    }
-    
-    if (condA && condB) {
+    // (StartDate1 <= EndDate2) and (StartDate2 <= EndDate1)
+    if ([self.startDate isLessThanDate:endDate] && [startDate isGreaterThanDate:self.endDate]) {
         return PTDateConflictFull;
     } else {
         return PTDateConflictNone;
