@@ -8,6 +8,7 @@
 
 #import "PTManagedMeetingTimesViewController.h"
 #import "PTCreateMeetingTimeViewController.h"
+#import "PTMeetingAttendeeAvailabilitiesViewController.h"
 #import "PTMeetingTime.h"
 #import "PTMembership.h"
 #import "PTMeetingAttendee.h"
@@ -192,7 +193,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     self.meetingTimeIndexPath = indexPath;
-//    [self performSegueWithIdentifier:@"ManagedMeetingInfoSegue" sender:self];
+    [self performSegueWithIdentifier:@"MeetingAvailabilitiesSegue" sender:self];
 }
 
 //#pragma mark - UIAlertView Delegate
@@ -221,8 +222,10 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     if ([segue.identifier isEqualToString:@"AddMeetingTimeSegue"]) {
         PTCreateMeetingTimeViewController *createMeetingTimeViewController = segue.destinationViewController;
         createMeetingTimeViewController.meeting = self.meeting;
-    } else if ([segue.identifier isEqualToString:@"ManagedMeetingInfoSegue"]) {
-        
+    } else if ([segue.identifier isEqualToString:@"MeetingAvailabilitiesSegue"]) {
+        PTMeetingAttendeeAvailabilitiesViewController *availabilitiesViewController = segue.destinationViewController;
+        PTMeetingTime *meetingTime = (PTMeetingTime *) [self objectAtIndexPath:self.meetingTimeIndexPath];
+        availabilitiesViewController.meetingTime = meetingTime;
     }
 }
 

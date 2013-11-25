@@ -7,9 +7,9 @@
 //
 
 #import <Parse/Parse.h>
-#import "PTMeeting.h"
+#import "PTMeetingTime.h"
 
 @interface PTMeetingAttendeeAvailabilitiesViewController : PFQueryTableViewController
-@property (strong, nonatomic) PTMeeting *meeting;
+@property (strong, nonatomic) PTMeetingTime *meetingTime;
 
 @end

@@ -27,9 +27,6 @@ static NSString * const CellIdentifierNotResponded = @"UnrespondedCell";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.objectsPerPage = 25;
-        
-        // Uncomment the following line to specify the key of a PFFile on the PFObject to display in the imageView of the default cell style
-        // self.imageKey = @"image";
     }
     
     return self;
@@ -37,12 +34,6 @@ static NSString * const CellIdentifierNotResponded = @"UnrespondedCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
-#pragma mark - Notifcation Handlers
-
-- (void)refreshTable:(NSNotification *)notification {
-    [self loadObjects];
 }
 
 #pragma mark - PFQueryTableViewController Delegate
@@ -53,8 +44,7 @@ static NSString * const CellIdentifierNotResponded = @"UnrespondedCell";
     }
     
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    [query whereKey:@"meeting" equalTo:self.meeting];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"meeting" equalTo:self.meetingTime.meeting];
     [query includeKey:@"user"];
     
     // If Pull To Refresh is enabled, query against the network by default.
@@ -75,7 +65,7 @@ static NSString * const CellIdentifierNotResponded = @"UnrespondedCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     PTMeetingAttendee *attendee = (PTMeetingAttendee *) object;
-    PTMeetingAttendeeAvailability availabilityLevel = [attendee availabilityForMeeting:self.meeting];
+    PTMeetingAttendeeAvailability availabilityLevel = [attendee availabilityForMeeting];
     
     NSString *CellIdentifier;
     switch (availabilityLevel) {
@@ -96,7 +86,7 @@ static NSString * const CellIdentifierNotResponded = @"UnrespondedCell";
             break;
     }
     
-    PFTableViewCell *cell = (PFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    PFTableViewCell *cell = (PFTableViewCell *) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.textLabel.text = attendee.user.username;
     
     return cell;

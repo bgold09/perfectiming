@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 #import "PTMeeting.h"
+#import "PTMeetingTime.h"
 
 typedef NS_ENUM(NSInteger, PTMeetingAttendeeAvailability) {
     PTMeetingAttendeeAvailabilityFull,         // available
@@ -26,6 +27,7 @@ typedef NS_ENUM(NSInteger, PTMeetingAttendeeAvailability) {
 + (NSString *)parseClassName;
 + (PTMeetingAttendee *)meetingAttendeeWithUser:(PFUser *)user meeting:(PTMeeting *)meeting;
 - (BOOL)hasSubmittedAvailability;
-- (PTMeetingAttendeeAvailability)availabilityForMeeting:(PTMeeting *)meeting;
+- (PTMeetingAttendeeAvailability)availabilityForMeeting;
+- (PTMeetingAttendeeAvailability)availabilityForMeetingTime:(PTMeetingTime *)meetingTime response:(NSDictionary *)response;
 
 @end

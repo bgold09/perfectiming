@@ -7,6 +7,7 @@
 //
 
 #import "PTMeetingAttendee.h"
+#import "PTMeetingDateRange.h"
 #import <Parse/PFObject+Subclass.h>
 
 @implementation PTMeetingAttendee
@@ -39,13 +40,27 @@
     return NO;
 }
 
-- (PTMeetingAttendeeAvailability)availabilityForMeeting:(PTMeeting *)meeting {
+- (PTMeetingAttendeeAvailability)availabilityForMeeting {
     NSError *error;
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:[self.availability dataUsingEncoding:NSUTF8StringEncoding]
                                                                options:NSJSONReadingMutableContainers
                                                                  error:&error];
     
-    NSNumber *availabilityNumber = [dictionary objectForKey:self.meeting.objectId];
+    __block PTMeetingAttendeeAvailability attendeeAvailability = PTMeetingAttendeeAvailabilityFull;
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSNumber *availabilityLevel = obj;
+        PTDateConflict availability = [availabilityLevel integerValue];
+        if (availability != PTDateConflictNone) {
+            attendeeAvailability = PTMeetingAttendeeAvailabilityNot;
+             *stop = YES;
+        }
+    }];
+
+    return attendeeAvailability;
+}
+
+- (PTMeetingAttendeeAvailability)availabilityForMeetingTime:(PTMeetingTime *)meetingTime response:(NSDictionary *)response {
+    NSNumber *availabilityNumber = [response objectForKey:meetingTime.objectId];
     
     if (availabilityNumber) {
         return [availabilityNumber integerValue];
