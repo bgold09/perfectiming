@@ -146,20 +146,16 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     // get meeting availability numbers for subtitle and cell color
     
     NSString *CellIdentifier = CellIdentifierRed;
-//    if (meeting.location && meeting.location.length > 0) {
-//        CellIdentifier = kCellIdentifierWithLocation;
-//    } else {
-//        CellIdentifier = kCellIdentifierWithoutLocation;
-//    }
     
     PFTableViewCell *cell = (PFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *dateString = [dateFormatter stringFromDate:meetingTime.startDatetime];
+    NSString *startDateString = [dateFormatter stringFromDate:meetingTime.startDatetime];
+    NSString *endDateString = [dateFormatter stringFromDate:meetingTime.endDatetime];
     
-    cell.textLabel.text = dateString;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", startDateString, endDateString];
     
     return cell;
 }
@@ -190,20 +186,6 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 //        // Create a new instance of the appropriate class, and save it to Parse
 //    }
 //}
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - UITableViewDelegate
 
@@ -239,7 +221,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     if ([segue.identifier isEqualToString:@"AddMeetingTimeSegue"]) {
         PTCreateMeetingTimeViewController *createMeetingTimeViewController = segue.destinationViewController;
         createMeetingTimeViewController.meeting = self.meeting;
-    } else if ([segue.identifier isEqualToString:@""]) {
+    } else if ([segue.identifier isEqualToString:@"ManagedMeetingInfoSegue"]) {
         
     }
 }
