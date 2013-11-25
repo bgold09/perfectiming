@@ -22,6 +22,12 @@
     PTMembership *membership = [PTMembership object];
     membership.group = group;
     membership.user = user;
+    
+    PFACL *ACL = [PFACL ACL];
+    ACL.publicReadAccess = YES;
+    ACL.publicWriteAccess = YES;
+    membership.ACL = ACL;
+    
     return membership;
 }
 

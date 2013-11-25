@@ -24,16 +24,14 @@
     [query whereKey:@"name" equalTo:name];
     
     NSError *error;
-    NSArray *results = [query findObjects:&error];
+    PTGroup *group = (PTGroup *) [query getFirstObject:&error];
     
     if (error) {
         NSLog(@"%@", error);
         return nil;
-    } else if (results.count == 0) {
-        return nil;
     }
     
-    return results[0];
+    return group;
 }
 
 - (id)initWithName:(NSString *)name manager:(PFUser *)manager pin:(NSInteger)pin {
@@ -43,6 +41,11 @@
         self.name = name;
         self.manager = manager;
         self.pin = pin;
+        
+        PFACL *ACL = [PFACL ACL];
+        ACL.publicReadAccess = YES;
+        ACL.publicWriteAccess = YES;
+        self.ACL = ACL;
     }
     
     return self;

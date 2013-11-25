@@ -24,6 +24,11 @@
     PTMeetingAttendee *attendee = [PTMeetingAttendee object];
     attendee.user = user;
     attendee.meeting = meeting;
+    
+    PFACL *ACL = [PFACL ACL];
+    ACL.publicReadAccess = YES;
+    ACL.publicWriteAccess = YES;
+    attendee.ACL = ACL;
     return attendee;
 }
 

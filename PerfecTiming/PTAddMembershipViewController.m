@@ -112,12 +112,6 @@
     }
     
     PTMembership *membership = [PTMembership membershipWithGroup:self.group user:[PFUser currentUser]];
-    
-    PFACL *groupACL = [PFACL ACL];
-    groupACL.publicReadAccess = YES;
-    groupACL.publicWriteAccess = YES;
-    membership.ACL = groupACL;
-    
     [membership saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

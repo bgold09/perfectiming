@@ -71,12 +71,6 @@
     NSDate *endDate = self.endTime;
 
     PTMeetingTime *meetingTime = [PTMeetingTime meetingTimeWithMeeting:self.meeting startDate:startDate endDate:endDate];
-    
-    PFACL *meetingTimeACL = [PFACL ACL];
-    meetingTimeACL.publicReadAccess = YES;
-    meetingTimeACL.publicWriteAccess = YES;
-    meetingTime.ACL = meetingTimeACL;
-    
     NSError *error;
     [meetingTime save:&error];
     

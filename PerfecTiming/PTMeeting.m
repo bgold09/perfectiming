@@ -24,6 +24,12 @@
     meeting.name = name;
     meeting.group = group;
     meeting.location = location;
+    
+    PFACL *ACL = [PFACL ACL];
+    ACL.publicReadAccess = YES;
+    ACL.publicWriteAccess = YES;
+    meeting.ACL = ACL;
+    
     return meeting;
 }
 

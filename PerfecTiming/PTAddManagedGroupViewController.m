@@ -74,11 +74,6 @@
     
     PTGroup *group = [[PTGroup alloc] initWithName:groupName manager:[PFUser currentUser] pin:pin];
     
-    PFACL *groupACL = [PFACL ACL];
-    groupACL.publicReadAccess = YES;
-    groupACL.publicWriteAccess = YES;
-    group.ACL = groupACL;
-    
     [group saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

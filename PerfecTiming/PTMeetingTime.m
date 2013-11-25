@@ -24,6 +24,11 @@
     meetingTime.meeting = meeting;
     meetingTime.startDatetime = startDate;
     meetingTime.endDatetime = endDate;
+    
+    PFACL *ACL = [PFACL ACL];
+    ACL.publicReadAccess = YES;
+    ACL.publicWriteAccess = YES;
+    meetingTime.ACL = ACL;
     return meetingTime;
 }
 

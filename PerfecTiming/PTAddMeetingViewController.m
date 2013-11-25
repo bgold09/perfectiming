@@ -59,15 +59,7 @@
 
 - (void)createMeeting {
     NSString *meetingName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    
-    
     PTMeeting *meeting = [PTMeeting meetingWithName:meetingName group:self.group location:self.locationField.text];
-    
-    PFACL *meetingACL = [PFACL ACL];
-    meetingACL.publicReadAccess = YES;
-    meetingACL.publicWriteAccess = YES;
-    meeting.ACL = meetingACL;
     
     [meeting saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
