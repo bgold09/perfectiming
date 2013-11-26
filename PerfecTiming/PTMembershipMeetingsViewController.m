@@ -55,7 +55,7 @@
 - (void)showSuccessAlert:(NSNotification *)notification {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Send Succeeded" message:@"Your availability was sent to the grouip manager." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
-    // update cell appearance?
+    [self loadObjects]; 
 }
 
 - (void)sendAvailability:(NSNotification *)notification {
@@ -105,6 +105,12 @@
     PTMeetingAttendee *attendee = (PTMeetingAttendee *) object;
     cell.textLabel.text = attendee.meeting.name;
     
+    if ([attendee hasSubmittedAvailability]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 
@@ -119,12 +125,13 @@
     self.attendeeIndexPath = indexPath;
     
     PTMeetingAttendee *attendee = (PTMeetingAttendee *) [self objectAtIndex:indexPath];
-    if (attendee.availability && attendee.availability.length > 0) {
-        // already responded to meeting request
+    if ([attendee hasSubmittedAvailability]) {
+        NSString *message = [NSString stringWithFormat:@"You have already sent your availability for the meeting '%@'. Send updated availability?", attendee.meeting.name];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Send", nil];
+        [alert show];
     } else {
-        // yet to respond
         NSString *message = [NSString stringWithFormat:@"Send your availability to the group manager for the meeting '%@'?", attendee.meeting.name];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Respond to meeting?" message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Send", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Send", nil];
         [alert show];
     }
 }
