@@ -12,7 +12,6 @@
 #import "Constants.h"
 
 @interface PTAddMembershipViewController ()
-@property (strong, nonatomic) PTGroup *group;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *pinField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
@@ -59,73 +58,54 @@
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     } else {
-        [self createGroupMembership];
+        [self performSelectorInBackground:@selector(createGroupMembership) withObject:nil];
     }
 }
 
-- (BOOL)userIsMemberOfGroupWithName:(NSString *)groupName {
-    PTGroup *group = [PTGroup groupWithName:groupName];
-    
-    if (!group) {
-        return NO;
-    }
+// calls synchronous functions; should be dispatched on background thread
+- (void)createGroupMembership {
+    NSString *groupName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
     PFQuery *query = [PFQuery queryWithClassName:[PTMembership parseClassName]];
-    [query whereKey:@"group" equalTo:group];
+    [query whereKey:@"name" equalTo:groupName];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     
     NSError *error;
-    BOOL memberOfGroup = NO;
     NSInteger count = [query countObjects:&error];
-    
     if (error) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        memberOfGroup = YES;
+        [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
+        return;
+    } else if (count > 0) {
+        NSString *message = [NSString stringWithFormat:@"You are already a member of the group '%@'", groupName];
+        [self performSelectorOnMainThread:@selector(showAlertWithMessage:) withObject:message waitUntilDone:NO];
+        return;
     }
     
-    if (count > 0) {
-        NSString *message = [NSString stringWithFormat:@"You are already a member of the group '%@' already exists.", group.name];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Duplicate Group Name" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        memberOfGroup = YES;
-    } else {
-        self.group = group;
-    }
-    
-    return memberOfGroup;
-}
-
-- (void)createGroupMembership {
-    NSString *groupName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    if ([self userIsMemberOfGroupWithName:groupName]) {
+    PFQuery *groupQuery = [PFQuery queryWithClassName:[PTGroup parseClassName]];
+    [groupQuery whereKey:@"name" equalTo:groupName];
+    PTGroup *group = (PTGroup *) [groupQuery getFirstObject:&error];
+    if (error) {
+        [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
         return;
     }
     
     NSInteger pin = [self.pinField.text integerValue];
-    
-    if (self.group.pin != pin) {
+    if (group.pin != pin) {
         NSString *message = [NSString stringWithFormat:@"The PIN you entered does not match the PIN for the group '%@'.", groupName];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"PIN Incorrect" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:message waitUntilDone:NO];
         return;
     }
     
-    PTMembership *membership = [PTMembership membershipWithGroup:self.group user:[PFUser currentUser]];
-    [membership saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            return;
-        }
-        
-        if (succeeded) {
-            [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:YES];
-        }
-    }];
-    
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    PTMembership *membership = [PTMembership membershipWithGroup:group user:[PFUser currentUser]];
+    if (![membership save:&error]) {
+        [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
+    } else {
+        [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:YES];
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
+
+#pragma mark - Notifications
 
 - (void)fireNotification {
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTMembershipAddedNotification object:self];
@@ -142,6 +122,18 @@
     }
     
     self.saveButton.enabled = enableSaveButton;
+}
+
+#pragma mark - Alerts
+
+- (void)showFailureAlert:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)showAlertWithMessage:(NSString *)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 #pragma mark - UITextView Delegate

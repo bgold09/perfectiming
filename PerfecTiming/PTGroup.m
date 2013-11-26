@@ -19,19 +19,23 @@
     return @"Group";
 }
 
-+ (PTGroup *)groupWithName:(NSString *)name {
++ (BOOL)groupExistsWithName:(NSString *)name {
     PFQuery *query = [PFQuery queryWithClassName:[self parseClassName]];
     [query whereKey:@"name" equalTo:name];
     
     NSError *error;
-    PTGroup *group = (PTGroup *) [query getFirstObject:&error];
+    NSInteger count = [query countObjects:&error];
     
     if (error) {
         NSLog(@"%@", error);
-        return nil;
+        return NO;
     }
     
-    return group;
+    if (count > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (id)initWithName:(NSString *)name manager:(PFUser *)manager pin:(NSInteger)pin {
