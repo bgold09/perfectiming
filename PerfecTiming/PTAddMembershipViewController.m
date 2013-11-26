@@ -9,6 +9,7 @@
 #import "PTAddMembershipViewController.h"
 #import <Parse/Parse.h>
 #import "PTMembership.h"
+#import "PTPushModel.h"
 #import "Constants.h"
 
 @interface PTAddMembershipViewController ()
@@ -100,14 +101,18 @@
     if (![membership save:&error]) {
         [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
     } else {
-        [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(fireNotification:) withObject:group waitUntilDone:YES];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }
 }
 
 #pragma mark - Notifications
 
-- (void)fireNotification {
+- (void)fireNotification:(PTGroup *)group {
+    PFUser *user = [PFUser currentUser];
+    NSString *message =[NSString stringWithFormat:@"User %@ joined your group '%@'", user.username, group.name];
+    [PTPushModel sendPushToUser:group.manager message:message];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTMembershipAddedNotification object:self];
 }
 

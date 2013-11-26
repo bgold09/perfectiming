@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2F1F1E041842FCC300C77BC8 /* PTMeetingDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F1E031842FCC300C77BC8 /* PTMeetingDateRange.m */; };
 		2F60C1551843EF8600EAA758 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C1541843EF8600EAA758 /* NSDate+Compare.m */; };
+		2F60C158184447E100EAA758 /* PTPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C157184447E100EAA758 /* PTPushModel.m */; };
 		2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3E18393ECC004137C7 /* MBProgressHUD.m */; };
 		2F63EF40183943F7004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		2F63EF431839806E004137C7 /* PTMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF421839806E004137C7 /* PTMembership.m */; };
@@ -79,6 +80,8 @@
 		2F1F1E031842FCC300C77BC8 /* PTMeetingDateRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingDateRange.m; sourceTree = "<group>"; };
 		2F60C1531843EF8600EAA758 /* NSDate+Compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Compare.h"; sourceTree = "<group>"; };
 		2F60C1541843EF8600EAA758 /* NSDate+Compare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compare.m"; sourceTree = "<group>"; };
+		2F60C156184447E100EAA758 /* PTPushModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPushModel.h; sourceTree = "<group>"; };
+		2F60C157184447E100EAA758 /* PTPushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPushModel.m; sourceTree = "<group>"; };
 		2F63EF3A18374D58004137C7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2F63EF3B18374D58004137C7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2F63EF3D18393ECC004137C7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -363,6 +366,8 @@
 				2F63EF69183AF493004137C7 /* PTMeetingTime.m */,
 				2F63EF411839806E004137C7 /* PTMembership.h */,
 				2F63EF421839806E004137C7 /* PTMembership.m */,
+				2F60C156184447E100EAA758 /* PTPushModel.h */,
+				2F60C157184447E100EAA758 /* PTPushModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				2F63EF431839806E004137C7 /* PTMembership.m in Sources */,
 				C83C85CF182DB9BE0028A722 /* SWRevealViewController.m in Sources */,
 				C86268DE1828781C0092B910 /* main.m in Sources */,
+				2F60C158184447E100EAA758 /* PTPushModel.m in Sources */,
 				C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */,
 				C83C85CC182DB74E0028A722 /* PTMembershipViewController.m in Sources */,
 				2F63EF7F183EA757004137C7 /* PTMembershipMeetingsViewController.m in Sources */,

@@ -64,6 +64,10 @@
 }
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation setObject:[PFUser currentUser] forKey:@"user"];
+    [installation saveEventually];
+    
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
