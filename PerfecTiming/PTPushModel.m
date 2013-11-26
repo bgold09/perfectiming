@@ -20,4 +20,14 @@
     [push sendPushInBackground];
 }
 
++ (void)sendPushToManagerForGroup:(PTGroup *)group message:(NSString *)message {
+    PFQuery *query = [PFInstallation query];
+    [query whereKey:@"user" equalTo:group.manager];
+    
+    PFPush *push = [[PFPush alloc] init];
+    [push setQuery:query];
+    [push setMessage:message];
+    [push sendPushInBackground];
+}
+
 @end

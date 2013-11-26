@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "PTGroup.h"
 
 @interface PTPushModel : NSObject
 
 + (void)sendPushToUser:(PFUser *)user message:(NSString *)message;
++ (void)sendPushToManagerForGroup:(PTGroup *)group message:(NSString *)message;
 
 @end
