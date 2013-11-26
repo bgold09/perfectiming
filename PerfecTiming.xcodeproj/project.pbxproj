@@ -11,6 +11,7 @@
 		2F60C1551843EF8600EAA758 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C1541843EF8600EAA758 /* NSDate+Compare.m */; };
 		2F60C158184447E100EAA758 /* PTPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C157184447E100EAA758 /* PTPushModel.m */; };
 		2F60C15B18446F2F00EAA758 /* PTEditSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C15A18446F2F00EAA758 /* PTEditSettingsViewController.m */; };
+		2F60C15F1844776100EAA758 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C15E1844776100EAA758 /* NSString+Email.m */; };
 		2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3E18393ECC004137C7 /* MBProgressHUD.m */; };
 		2F63EF40183943F7004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		2F63EF431839806E004137C7 /* PTMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF421839806E004137C7 /* PTMembership.m */; };
@@ -85,6 +86,8 @@
 		2F60C157184447E100EAA758 /* PTPushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPushModel.m; sourceTree = "<group>"; };
 		2F60C15918446F2F00EAA758 /* PTEditSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEditSettingsViewController.h; sourceTree = "<group>"; };
 		2F60C15A18446F2F00EAA758 /* PTEditSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEditSettingsViewController.m; sourceTree = "<group>"; };
+		2F60C15D1844776100EAA758 /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
+		2F60C15E1844776100EAA758 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		2F63EF3A18374D58004137C7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2F63EF3B18374D58004137C7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2F63EF3D18393ECC004137C7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -215,6 +218,29 @@
 				C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		2F60C160184477D500EAA758 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C830B99D1832D98A000FFD65 /* PTGroup.h */,
+				C830B99E1832D98A000FFD65 /* PTGroup.m */,
+				2F63EF51183A6F6A004137C7 /* PTMeeting.h */,
+				2F63EF52183A6F6A004137C7 /* PTMeeting.m */,
+				2F63EF71183BFC9E004137C7 /* PTMeetingAttendee.h */,
+				2F63EF72183BFC9E004137C7 /* PTMeetingAttendee.m */,
+				2F63EF84183FFE0B004137C7 /* PTMeetingAvailabilityModel.h */,
+				2F63EF85183FFE0B004137C7 /* PTMeetingAvailabilityModel.m */,
+				2F1F1E021842FCC300C77BC8 /* PTMeetingDateRange.h */,
+				2F1F1E031842FCC300C77BC8 /* PTMeetingDateRange.m */,
+				2F63EF68183AF493004137C7 /* PTMeetingTime.h */,
+				2F63EF69183AF493004137C7 /* PTMeetingTime.m */,
+				2F63EF411839806E004137C7 /* PTMembership.h */,
+				2F63EF421839806E004137C7 /* PTMembership.m */,
+				2F60C156184447E100EAA758 /* PTPushModel.h */,
+				2F60C157184447E100EAA758 /* PTPushModel.m */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		2F63EF58183AB6B2004137C7 /* Managed Groups */ = {
@@ -364,24 +390,11 @@
 		C862690818287B100092B910 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2F60C160184477D500EAA758 /* Entities */,
 				2F60C1531843EF8600EAA758 /* NSDate+Compare.h */,
 				2F60C1541843EF8600EAA758 /* NSDate+Compare.m */,
-				C830B99D1832D98A000FFD65 /* PTGroup.h */,
-				C830B99E1832D98A000FFD65 /* PTGroup.m */,
-				2F63EF51183A6F6A004137C7 /* PTMeeting.h */,
-				2F63EF52183A6F6A004137C7 /* PTMeeting.m */,
-				2F63EF71183BFC9E004137C7 /* PTMeetingAttendee.h */,
-				2F63EF72183BFC9E004137C7 /* PTMeetingAttendee.m */,
-				2F63EF84183FFE0B004137C7 /* PTMeetingAvailabilityModel.h */,
-				2F63EF85183FFE0B004137C7 /* PTMeetingAvailabilityModel.m */,
-				2F1F1E021842FCC300C77BC8 /* PTMeetingDateRange.h */,
-				2F1F1E031842FCC300C77BC8 /* PTMeetingDateRange.m */,
-				2F63EF68183AF493004137C7 /* PTMeetingTime.h */,
-				2F63EF69183AF493004137C7 /* PTMeetingTime.m */,
-				2F63EF411839806E004137C7 /* PTMembership.h */,
-				2F63EF421839806E004137C7 /* PTMembership.m */,
-				2F60C156184447E100EAA758 /* PTPushModel.h */,
-				2F60C157184447E100EAA758 /* PTPushModel.m */,
+				2F60C15D1844776100EAA758 /* NSString+Email.h */,
+				2F60C15E1844776100EAA758 /* NSString+Email.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -493,6 +506,7 @@
 				2F63EF67183AEF65004137C7 /* PTManagedMeetingInfoViewController.m in Sources */,
 				2F63EF73183BFC9E004137C7 /* PTMeetingAttendee.m in Sources */,
 				2F63EF86183FFE0B004137C7 /* PTMeetingAvailabilityModel.m in Sources */,
+				2F60C15F1844776100EAA758 /* NSString+Email.m in Sources */,
 				2F63EF64183AEDFF004137C7 /* PTManagedMeetingTimesViewController.m in Sources */,
 				2F63EF40183943F7004137C7 /* Constants.m in Sources */,
 				2F63EF431839806E004137C7 /* PTMembership.m in Sources */,

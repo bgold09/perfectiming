@@ -8,6 +8,7 @@
 
 #import "PTEditSettingsViewController.h"
 #import <Parse/Parse.h>
+#import "NSString+Email.h"
 #import "Constants.h"
 
 @interface PTEditSettingsViewController ()
@@ -41,15 +42,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.emailField];
 }
 
-- (BOOL)stringIsValidEmail:(NSString *)email {
-    BOOL stricterFilter = YES;
-    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
-    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
-    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:email];
-}
-
 #pragma mark - UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -63,7 +55,7 @@
     BOOL enableSaveButton = NO;
     
     if (self.nameField.text && self.nameField.text.length > 0 &&
-        self.emailField.text && [self stringIsValidEmail:self.emailField.text]) {
+        self.emailField.text && [self.emailField.text isValidEmail]) {
         enableSaveButton = YES;
     }
     
