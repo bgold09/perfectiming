@@ -237,8 +237,6 @@
 				2F63EF69183AF493004137C7 /* PTMeetingTime.m */,
 				2F63EF411839806E004137C7 /* PTMembership.h */,
 				2F63EF421839806E004137C7 /* PTMembership.m */,
-				2F60C156184447E100EAA758 /* PTPushModel.h */,
-				2F60C157184447E100EAA758 /* PTPushModel.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -395,6 +393,8 @@
 				2F60C1541843EF8600EAA758 /* NSDate+Compare.m */,
 				2F60C15D1844776100EAA758 /* NSString+Email.h */,
 				2F60C15E1844776100EAA758 /* NSString+Email.m */,
+				2F60C156184447E100EAA758 /* PTPushModel.h */,
+				2F60C157184447E100EAA758 /* PTPushModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
