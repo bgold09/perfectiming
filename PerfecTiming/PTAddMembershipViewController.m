@@ -46,7 +46,7 @@
 - (void)createGroupMembership {
     NSString *groupName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
-    PFQuery *query = [PFQuery queryWithClassName:[PTMembership parseClassName]];
+    PFQuery *query = [PTMembership query];
     [query whereKey:@"name" equalTo:groupName];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     
@@ -61,7 +61,7 @@
         return;
     }
     
-    PFQuery *groupQuery = [PFQuery queryWithClassName:[PTGroup parseClassName]];
+    PFQuery *groupQuery = [PTGroup query];
     [groupQuery whereKey:@"name" equalTo:groupName];
     PTGroup *group = (PTGroup *) [groupQuery getFirstObject:&error];
     if (error) {

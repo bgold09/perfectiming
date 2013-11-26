@@ -39,7 +39,7 @@
 }
 
 - (void)meetingTimeExists {
-    PFQuery *query = [PFQuery queryWithClassName:[PTMeeting parseClassName]];
+    PFQuery *query = [PTMeeting query];
     [query whereKey:@"meeting" equalTo:self.meeting];
     [query whereKey:@"startDatetime" equalTo:self.startTime];
     [query whereKey:@"endDatetime" equalTo:self.endTime];

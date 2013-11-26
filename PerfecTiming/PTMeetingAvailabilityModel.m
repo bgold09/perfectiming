@@ -22,7 +22,7 @@
 }
 
 - (void)buildAvailabilityForMeeting:(PTMeeting *)meeting calendarStore:(EKEventStore *)eventStore calendars:(NSSet *)calendars {
-    PFQuery *query = [PFQuery queryWithClassName:[PTMeetingTime parseClassName]];
+    PFQuery *query = [PTMeetingTime query];
     [query whereKey:@"meeting" equalTo:meeting];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

@@ -72,7 +72,7 @@
     }
     
     // all meeting for this group
-    PFQuery *meetingsQuery = [PFQuery queryWithClassName:[PTMeeting parseClassName]];
+    PFQuery *meetingsQuery = [PTMeeting query];
     [meetingsQuery whereKey:@"group" equalTo:self.group];
     
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];

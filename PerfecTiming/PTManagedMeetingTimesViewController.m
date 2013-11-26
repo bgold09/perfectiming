@@ -28,12 +28,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        // The className to query on
         self.parseClassName = [PTMeetingTime parseClassName];
-        
-        // Uncomment the following line to specify the key of a PFFile on the PFObject to display in the imageView of the default cell style
-        // self.imageKey = @"image";
-        
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.objectsPerPage = 25;
@@ -71,7 +66,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 }
 
 - (void)findGroupMembersAndCreateAttendeesForGroup:(PTGroup *)group {
-    PFQuery *query = [PFQuery queryWithClassName:[PTMembership parseClassName]];
+    PFQuery *query = [PTMembership query];
     [query whereKey:@"group" equalTo:group];
     [query includeKey:@"user"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -87,7 +82,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     NSMutableArray *attendees = [NSMutableArray array];
     for (PTMembership *membership in memberships) {
         PFUser *user = membership.user;
-        PFQuery *query = [PFQuery queryWithClassName:[PTMeetingAttendee parseClassName]];
+        PFQuery *query = [PTMeetingAttendee query];
         [query whereKey:@"user" equalTo:user];
         [query whereKey:@"meeting" equalTo:self.meeting];
         

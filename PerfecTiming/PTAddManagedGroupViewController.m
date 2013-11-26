@@ -35,7 +35,7 @@
 - (void)checkAndCreateManagedGroup {
     NSString *groupName = [self.groupNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
-    PFQuery *query = [PFQuery queryWithClassName:[PTGroup parseClassName]];
+    PFQuery *query = [PTGroup query];
     [query whereKey:@"name" equalTo:groupName];
     
     NSError *error;
