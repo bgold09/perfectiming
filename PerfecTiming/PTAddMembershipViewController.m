@@ -114,7 +114,7 @@
     } else {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeIndeterminate;
-        hud.labelText = @"Loading";
+        hud.labelText = @"Joining Group";
         [self performSelectorInBackground:@selector(createGroupMembership) withObject:nil];
     }
 }
