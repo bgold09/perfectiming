@@ -10,6 +10,7 @@
 		2F1F1E041842FCC300C77BC8 /* PTMeetingDateRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F1E031842FCC300C77BC8 /* PTMeetingDateRange.m */; };
 		2F60C1551843EF8600EAA758 /* NSDate+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C1541843EF8600EAA758 /* NSDate+Compare.m */; };
 		2F60C158184447E100EAA758 /* PTPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C157184447E100EAA758 /* PTPushModel.m */; };
+		2F60C15B18446F2F00EAA758 /* PTEditSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C15A18446F2F00EAA758 /* PTEditSettingsViewController.m */; };
 		2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3E18393ECC004137C7 /* MBProgressHUD.m */; };
 		2F63EF40183943F7004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		2F63EF431839806E004137C7 /* PTMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF421839806E004137C7 /* PTMembership.m */; };
@@ -82,6 +83,8 @@
 		2F60C1541843EF8600EAA758 /* NSDate+Compare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Compare.m"; sourceTree = "<group>"; };
 		2F60C156184447E100EAA758 /* PTPushModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTPushModel.h; sourceTree = "<group>"; };
 		2F60C157184447E100EAA758 /* PTPushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTPushModel.m; sourceTree = "<group>"; };
+		2F60C15918446F2F00EAA758 /* PTEditSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTEditSettingsViewController.h; sourceTree = "<group>"; };
+		2F60C15A18446F2F00EAA758 /* PTEditSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTEditSettingsViewController.m; sourceTree = "<group>"; };
 		2F63EF3A18374D58004137C7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2F63EF3B18374D58004137C7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2F63EF3D18393ECC004137C7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -203,6 +206,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F60C15C18446FD200EAA758 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2F60C15918446F2F00EAA758 /* PTEditSettingsViewController.h */,
+				2F60C15A18446F2F00EAA758 /* PTEditSettingsViewController.m */,
+				C83C85D3182DC22F0028A722 /* PTSettingsViewController.h */,
+				C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		2F63EF58183AB6B2004137C7 /* Managed Groups */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,10 +392,9 @@
 				2F63EF5A183AB735004137C7 /* Group Membership */,
 				2F63EF58183AB6B2004137C7 /* Managed Groups */,
 				2F63EF59183AB6BA004137C7 /* Managed Meetings */,
+				2F60C15C18446FD200EAA758 /* Settings */,
 				C811084E1831AF690045BD85 /* PTRevealViewController.h */,
 				C811084F1831AF690045BD85 /* PTRevealViewController.m */,
-				C83C85D3182DC22F0028A722 /* PTSettingsViewController.h */,
-				C83C85D4182DC22F0028A722 /* PTSettingsViewController.m */,
 				C83C85D0182DBA890028A722 /* PTSidebarViewController.h */,
 				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
 			);
@@ -494,6 +507,7 @@
 				2F63EF50183A6E59004137C7 /* PTManagedMeetingsViewController.m in Sources */,
 				C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */,
 				C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */,
+				2F60C15B18446F2F00EAA758 /* PTEditSettingsViewController.m in Sources */,
 				2F1F1E041842FCC300C77BC8 /* PTMeetingDateRange.m in Sources */,
 				2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */,
 				C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */,

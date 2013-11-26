@@ -21,5 +21,6 @@ FOUNDATION_EXPORT NSString * const kPTUserLoggedOutNotification;
 FOUNDATION_EXPORT NSString * const kPTAvailabilityReadyNotification;
 FOUNDATION_EXPORT NSString * const kPTAvailabilityFailedNotification;
 FOUNDATION_EXPORT NSString * const kPTAvailabilitySentNotification;
+FOUNDATION_EXPORT NSString * const kPTUserSettingsChangedNotification;
 
 @end

@@ -21,5 +21,6 @@ NSString * const kPTUserLoggedOutNotification = @"UserLoggedOutNotification";
 NSString * const kPTAvailabilityReadyNotification = @"AvailabilityReadyNotification";
 NSString * const kPTAvailabilityFailedNotification = @"AvailabilityFailedNotification";
 NSString * const kPTAvailabilitySentNotification = @"AvailabilitySentNotification";
+NSString * const kPTUserSettingsChangedNotification = @"UserSettingsChangedNotification";
 
 @end

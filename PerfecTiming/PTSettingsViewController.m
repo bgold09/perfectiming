@@ -7,6 +7,7 @@
 //
 
 #import "PTSettingsViewController.h"
+#import "PTEditSettingsViewController.h"
 #import "PTRevealViewController.h"
 #import <Parse/Parse.h>
 #import "Constants.h"
@@ -19,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *nameCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *logoutCell;
 - (IBAction)logoutPressed:(id)sender;
-- (IBAction)editPressed:(id)sender;
 
 @end
 
@@ -39,25 +39,27 @@
     self.menuButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
-    self.usernameCell.detailTextLabel.text = [[PFUser currentUser] username];
-    self.emailCell.detailTextLabel.text = [[PFUser currentUser] email];
-    self.nameCell.detailTextLabel.text = [[PFUser currentUser] objectForKey:@"name"];
+    [self setFields:nil];
     
     UIView *backView = [[UIView alloc] initWithFrame:CGRectZero];
     backView.backgroundColor = [UIColor clearColor];
     self.logoutCell.backgroundView = backView;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setFields:) name:kPTUserSettingsChangedNotification object:nil];
+}
+
+#pragma mark - Notification Handlers
+
+- (void)setFields:(NSNotification *)notification {
+    self.usernameCell.detailTextLabel.text = [[PFUser currentUser] username];
+    self.emailCell.detailTextLabel.text = [[PFUser currentUser] email];
+    self.nameCell.detailTextLabel.text = [[PFUser currentUser] objectForKey:@"name"];
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-}
-
-#pragma mark - Editing
-
-- (IBAction)editPressed:(id)sender {
-    
 }
 
 #pragma mark - Logout User
@@ -77,6 +79,23 @@
     if (buttonIndex != alertView.cancelButtonIndex) {
         [PFUser logOut];
         [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:YES];
+    }
+}
+
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"EditSettingsSegue"]) {
+        PTEditSettingsViewController *viewController = segue.destinationViewController;
+        PFUser *user = [PFUser currentUser];
+        
+        NSString *name = [user objectForKey:@"name"];
+        if (!name) {
+            name = @"";
+        }
+        
+        NSDictionary *dictionary = @{@"name": name, @"email": user.email};
+        viewController.dictionary = dictionary;
     }
 }
 
