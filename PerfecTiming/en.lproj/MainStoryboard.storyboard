@@ -1273,6 +1273,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </view>
                     <navigationItem key="navigationItem" id="eDU-PK-ldW"/>
                     <connections>
+                        <outlet property="cancelButton" destination="Drf-CW-ayV" id="3Nz-ZO-xaA"/>
                         <outlet property="nameField" destination="pqF-oo-sNP" id="YSg-Bb-DIZ"/>
                         <outlet property="pinField" destination="PPl-ls-aDr" id="2eG-6m-WfC"/>
                         <outlet property="saveButton" destination="52r-BS-9H4" id="jj9-1U-aEN"/>

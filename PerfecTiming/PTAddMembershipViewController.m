@@ -10,11 +10,13 @@
 #import <Parse/Parse.h>
 #import "PTMembership.h"
 #import "PTPushModel.h"
+#import "MBProgressHUD.h"
 #import "Constants.h"
 
 @interface PTAddMembershipViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *pinField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 - (IBAction)cancelPressed:(id)sender;
 - (IBAction)savePressed:(id)sender;
@@ -40,30 +42,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.pinField];
 }
 
-- (IBAction)cancelPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (IBAction)savePressed:(id)sender {
-    [self.nameField resignFirstResponder];
-    [self.pinField resignFirstResponder];
-    
-    if (!self.nameField.text) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Name Provided"
-                                                        message:@"You must enter the name of the group to join."
-                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    } else if (!self.pinField.text) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No PIN Provided"
-                                                        message:@"You must enter the PIN of the group to join."
-                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    } else {
-        [self performSelectorInBackground:@selector(createGroupMembership) withObject:nil];
-    }
-}
-
-// calls synchronous functions; should be dispatched on background thread
+// calls synchronous methods; should be dispatched on background thread
 - (void)createGroupMembership {
     NSString *groupName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
@@ -106,12 +85,48 @@
     }
 }
 
+#pragma mark - Target Actions
+
+- (IBAction)cancelPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction)savePressed:(id)sender {
+    [self.nameField resignFirstResponder];
+    [self.pinField resignFirstResponder];
+    self.saveButton.enabled = NO;
+    self.cancelButton.enabled = NO;
+    
+    if (!self.nameField.text) {
+        NSDictionary *dictionary = @{@"title": @"No Name Provided",
+                                     @"message": @"You must enter the name of the group to join."};
+        [self showAlert:dictionary];
+        
+        self.saveButton.enabled = YES;
+        self.cancelButton.enabled = YES;
+    } else if (!self.pinField.text) {
+        NSDictionary *dictionary = @{@"title": @"No PIN Provided",
+                                     @"message": @"You must enter the PIN of the group to join."};
+        [self showAlert:dictionary];
+        
+        self.saveButton.enabled = YES;
+        self.cancelButton.enabled = YES;
+    } else {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Loading";
+        [self performSelectorInBackground:@selector(createGroupMembership) withObject:nil];
+    }
+}
+
 #pragma mark - Notifications
 
 - (void)fireNotification:(PTGroup *)group {
     PFUser *user = [PFUser currentUser];
     NSString *message =[NSString stringWithFormat:@"User %@ joined your group '%@'", user.username, group.name];
     [PTPushModel sendPushToUser:group.manager message:message];
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTMembershipAddedNotification object:self];
 }
@@ -134,10 +149,21 @@
 - (void)showFailureAlert:(NSError *)error {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was a problem contacting the server. Please try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
+    self.saveButton.enabled = YES;
+    self.cancelButton.enabled = YES;
 }
 
 - (void)showAlertWithMessage:(NSString *)message {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    self.saveButton.enabled = YES;
+    self.cancelButton.enabled = YES;
+}
+
+- (void)showAlert:(NSDictionary *)content {
+    NSString *title = [content objectForKey:@"title"];
+    NSString *message = [content objectForKey:@"message"];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
 }
 
