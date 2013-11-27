@@ -9,6 +9,7 @@
 #import "PTAddMembershipViewController.h"
 #import <Parse/Parse.h>
 #import "PTMembership.h"
+#import "PTMeetingAttendee.h"
 #import "PTPushModel.h"
 #import "MBProgressHUD.h"
 #import "Constants.h"
@@ -79,10 +80,24 @@
     PTMembership *membership = [PTMembership membershipWithGroup:group user:[PFUser currentUser]];
     if (![membership save:&error]) {
         [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
-    } else {
-        [self performSelectorOnMainThread:@selector(fireNotification:) withObject:group waitUntilDone:YES];
-        [self dismissViewControllerAnimated:YES completion:NULL];
     }
+    
+    // create attendee objects for existing meetings
+    PFQuery *meetingQuery = [PTMeeting query];
+    [query whereKey:@"group" equalTo:group];
+    NSArray *meetings = [meetingQuery findObjects:&error];
+    if (error) {
+        [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
+        return;
+    }
+    
+    for (PTMeeting *meeting in meetings) {
+        PTMeetingAttendee *attendee = [PTMeetingAttendee meetingAttendeeWithUser:[PFUser currentUser] meeting:meeting];
+        [attendee save];
+    }
+    
+    [self performSelectorOnMainThread:@selector(fireNotification:) withObject:group waitUntilDone:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark - Target Actions

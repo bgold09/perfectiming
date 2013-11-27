@@ -55,10 +55,9 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     // if not first meeting time, upadte existing MeetingAttendees for this meeting asking for availabilities
 
     if (self.objects.count == 0) {
-        // first meeting time
         PTGroup *group = self.meeting.group;
         // get members of the group and create attendees
-        [self findGroupMembersAndCreateAttendeesForGroup:group];
+        [self performSelectorInBackground:@selector(findGroupMembersAndCreateAttendeesForGroup:) withObject:group];
     } else {
         // not first meeting time
         // update existing
@@ -69,16 +68,14 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     PFQuery *query = [PTMembership query];
     [query whereKey:@"group" equalTo:group];
     [query includeKey:@"user"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (error) {
-            return;
-        }
-        
-        [self performSelectorInBackground:@selector(createMeetingAttendeesForMemberships:) withObject:objects];
-    }];
-}
-
-- (void)createMeetingAttendeesForMemberships:(NSArray *)memberships {
+    
+    NSError *error;
+    NSArray *memberships = [query findObjects:&error];
+    
+    if (error) {
+        return;
+    }
+    
     NSMutableArray *attendees = [NSMutableArray array];
     for (PTMembership *membership in memberships) {
         PFUser *user = membership.user;
@@ -142,7 +139,6 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     // get meeting availability numbers for subtitle and cell color
     
     NSString *CellIdentifier = CellIdentifierRed;
-    
     PFTableViewCell *cell = (PFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

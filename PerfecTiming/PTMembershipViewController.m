@@ -11,6 +11,7 @@
 #import "PTMembershipMeetingsViewController.h"
 #import "PTMembership.h"
 #import "PTPushModel.h"
+#import "PTMembershipModel.h"
 #import "Constants.h"
 
 @interface PTMembershipViewController ()
@@ -143,13 +144,18 @@
             }
             
             if (succeeded) {
-                PFUser *user = [PFUser currentUser];
-                NSString *message = [NSString stringWithFormat:@"User %@ left your group '%@'.", user.username, membership.group.name];
-                [PTPushModel sendPushToManagerForGroup:membership.group message:message];
-                [self loadObjects];
+                [self deleteMembershipForGroup:membership.group];
             }
         }];
     }
+}
+
+- (void)deleteMembershipForGroup:(PTGroup *)group {
+    PFUser *user = [PFUser currentUser];
+    [PTMembershipModel cleanupMembershipForGroup:group user:user];
+    NSString *message = [NSString stringWithFormat:@"User %@ left your group '%@'.", user.username, group.name];
+    [PTPushModel sendPushToManagerForGroup:group message:message];
+    [self loadObjects];
 }
 
 #pragma mark - Editing
