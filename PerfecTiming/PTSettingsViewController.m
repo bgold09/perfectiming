@@ -46,6 +46,7 @@
     self.logoutCell.backgroundView = backView;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setFields:) name:kPTUserSettingsChangedNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setFields:) name:kPTUserLoggedInNotification object:nil];
 }
 
 #pragma mark - Notification Handlers

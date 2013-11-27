@@ -68,6 +68,8 @@
     [installation setObject:[PFUser currentUser] forKey:@"user"];
     [installation saveEventually];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPTUserLoggedInNotification object:nil];
+    
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
