@@ -10,6 +10,7 @@
 #import "PTRevealViewController.h"
 #import "PTMembershipMeetingsViewController.h"
 #import "PTMembership.h"
+#import "PTPushModel.h"
 #import "Constants.h"
 
 @interface PTMembershipViewController ()
@@ -102,25 +103,6 @@
     return [self.objects objectAtIndex:indexPath.row];
 }
 
-/*
- // Override to customize the look of the cell that allows the user to load the next page of objects.
- // The default implementation is a UITableViewCellStyleDefault cell with simple labels.
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
- static NSString *CellIdentifier = @"NextPage";
- 
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
- 
- if (cell == nil) {
- cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
- }
- 
- cell.selectionStyle = UITableViewCellSelectionStyleNone;
- cell.textLabel.text = @"Load more...";
- 
- return cell;
- }
- */
-
 #pragma mark - UITableViewDataSource Delegate
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,20 +121,6 @@
         // Create a new instance of the appropriate class, and save it to Parse
     }
 }
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 #pragma mark - UITableViewDelegate
 
@@ -175,6 +143,9 @@
             }
             
             if (succeeded) {
+                PFUser *user = [PFUser currentUser];
+                NSString *message = [NSString stringWithFormat:@"User %@ left your group '%@'.", user.username, membership.group.name];
+                [PTPushModel sendPushToManagerForGroup:membership.group message:message];
                 [self loadObjects];
             }
         }];
