@@ -53,7 +53,7 @@
 }
 
 - (void)showSuccessAlert:(NSNotification *)notification {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Send Succeeded" message:@"Your availability was sent to the grouip manager." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Send Succeeded" message:@"Your availability was sent to the group manager." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     [self loadObjects]; 
 }
