@@ -26,17 +26,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentWelomeView) name:kPTUserLoggedOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentWelcomeView) name:kPTUserLoggedOutNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self presentWelomeView];
+    [self presentWelcomeView];
 }
 
 #pragma mark - Public Methods
 
-- (void)presentWelomeView {
+- (void)presentWelcomeView {
     if (![PFUser currentUser]) {
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         logInViewController.delegate = self;
