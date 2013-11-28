@@ -147,6 +147,10 @@
                 [self deleteMembershipForGroup:membership.group];
             }
         }];
+    } else {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        cell.selected = NO;
     }
 }
 
