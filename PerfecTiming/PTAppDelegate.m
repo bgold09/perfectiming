@@ -41,7 +41,9 @@
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"failed to register for notifications: %@", error);
+    if (!([error.domain isEqualToString:NSCocoaErrorDomain] || error.code == 3010)) {
+        NSLog(@"failed to register for notifications: %@", error);
+    }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
