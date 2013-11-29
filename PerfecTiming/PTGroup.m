@@ -55,4 +55,8 @@
     return self;
 }
 
+- (NSComparisonResult)compareToGroup:(PTGroup *)group {
+    return [self.name compare:group.name];
+}
+
 @end

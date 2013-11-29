@@ -13,8 +13,10 @@
 @property (retain) NSString *name;
 @property (retain) PFUser *manager;
 @property NSInteger pin;
+
 + (NSString *)parseClassName;
 + (BOOL)groupExistsWithName:(NSString *)name;
 - (id)initWithName:(NSString *)name manager:(PFUser *)manager pin:(NSInteger)pin;
+- (NSComparisonResult)compareToGroup:(PTGroup *)group;
 
 @end

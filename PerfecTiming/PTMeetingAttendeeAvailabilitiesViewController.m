@@ -58,7 +58,8 @@ static NSString * const CellIdentifierNotResponded = @"UnrespondedCell";
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-//    [query orderByAscending:@"group"];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"meeting" ascending:YES selector:@selector(compareToMeeting:)];
+    [query orderBySortDescriptor:sortDescriptor];
     
     return query;
 }

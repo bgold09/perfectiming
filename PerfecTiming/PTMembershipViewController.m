@@ -80,7 +80,8 @@
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-    [query orderByAscending:@"group"];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"group" ascending:YES selector:@selector(compareToGroup:)];
+    [query orderBySortDescriptor:sortDescriptor];
     
     return query;
 }

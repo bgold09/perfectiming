@@ -29,5 +29,6 @@ typedef NS_ENUM(NSInteger, PTMeetingAttendeeAvailability) {
 - (BOOL)hasSubmittedAvailability;
 - (PTMeetingAttendeeAvailability)availabilityForMeeting;
 - (PTMeetingAttendeeAvailability)availabilityForMeetingTime:(PTMeetingTime *)meetingTime response:(NSDictionary *)response;
+- (NSComparisonResult)compare:(PTMeetingAttendee *)attendee;
 
 @end

@@ -127,7 +127,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-    [query orderByAscending:@"createdAt"];
+    [query orderByAscending:@"startDatetime"];
     
     return query;
 }

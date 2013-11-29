@@ -33,4 +33,8 @@
     return meeting;
 }
 
+- (NSComparisonResult)compareToMeeting:(PTMeeting *)meeting {
+    return [self.name compare:meeting.name];
+}
+
 @end

@@ -71,7 +71,7 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-    [query orderByAscending:@"createdAt"];
+    [query orderByAscending:@"name"];
     
     return query;
 }

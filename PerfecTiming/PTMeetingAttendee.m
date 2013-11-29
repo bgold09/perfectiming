@@ -69,4 +69,8 @@
     return PTMeetingAttendeeAvailabilityNotResponded;
 }
 
+- (NSComparisonResult)compare:(PTMeetingAttendee *)attendee {
+    return [self.meeting.name compare:attendee.meeting.name];
+}
+
 @end
