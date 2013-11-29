@@ -293,6 +293,17 @@
 			name = "Group Membership";
 			sourceTree = "<group>";
 		};
+		2FDBDC9E18485A4E001B24DA /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2F60C1531843EF8600EAA758 /* NSDate+Compare.h */,
+				2F60C1541843EF8600EAA758 /* NSDate+Compare.m */,
+				2F60C15D1844776100EAA758 /* NSString+Email.h */,
+				2F60C15E1844776100EAA758 /* NSString+Email.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		C83C859E182DADB40028A722 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,11 +402,8 @@
 		C862690818287B100092B910 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2FDBDC9E18485A4E001B24DA /* Categories */,
 				2F60C160184477D500EAA758 /* Entities */,
-				2F60C1531843EF8600EAA758 /* NSDate+Compare.h */,
-				2F60C1541843EF8600EAA758 /* NSDate+Compare.m */,
-				2F60C15D1844776100EAA758 /* NSString+Email.h */,
-				2F60C15E1844776100EAA758 /* NSString+Email.m */,
 				2F60C16118458E2C00EAA758 /* PTMembershipModel.h */,
 				2F60C16218458E2C00EAA758 /* PTMembershipModel.m */,
 				2F60C156184447E100EAA758 /* PTPushModel.h */,
