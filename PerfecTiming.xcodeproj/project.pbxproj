@@ -33,6 +33,7 @@
 		2F63EF82183F0E47004137C7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F63EF80183F0E47004137C7 /* EventKit.framework */; };
 		2F63EF83183F0E47004137C7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F63EF81183F0E47004137C7 /* EventKitUI.framework */; };
 		2F63EF86183FFE0B004137C7 /* PTMeetingAvailabilityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF85183FFE0B004137C7 /* PTMeetingAvailabilityModel.m */; };
+		2FDBDCA1184905C4001B24DA /* PFUser+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBDCA0184905C4001B24DA /* PFUser+Compare.m */; };
 		C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C811084F1831AF690045BD85 /* PTRevealViewController.m */; };
 		C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99B1832D259000FFD65 /* PTManagedGroupsViewController.m */; };
 		C830B99F1832D98A000FFD65 /* PTGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = C830B99E1832D98A000FFD65 /* PTGroup.m */; };
@@ -129,6 +130,8 @@
 		2F63EF81183F0E47004137C7 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		2F63EF84183FFE0B004137C7 /* PTMeetingAvailabilityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMeetingAvailabilityModel.h; sourceTree = "<group>"; };
 		2F63EF85183FFE0B004137C7 /* PTMeetingAvailabilityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingAvailabilityModel.m; sourceTree = "<group>"; };
+		2FDBDC9F184905C4001B24DA /* PFUser+Compare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFUser+Compare.h"; sourceTree = "<group>"; };
+		2FDBDCA0184905C4001B24DA /* PFUser+Compare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+Compare.m"; sourceTree = "<group>"; };
 		C811084E1831AF690045BD85 /* PTRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTRevealViewController.h; sourceTree = "<group>"; };
 		C811084F1831AF690045BD85 /* PTRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTRevealViewController.m; sourceTree = "<group>"; };
 		C830B99A1832D259000FFD65 /* PTManagedGroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTManagedGroupsViewController.h; sourceTree = "<group>"; };
@@ -300,6 +303,8 @@
 				2F60C1541843EF8600EAA758 /* NSDate+Compare.m */,
 				2F60C15D1844776100EAA758 /* NSString+Email.h */,
 				2F60C15E1844776100EAA758 /* NSString+Email.m */,
+				2FDBDC9F184905C4001B24DA /* PFUser+Compare.h */,
+				2FDBDCA0184905C4001B24DA /* PFUser+Compare.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 				2F63EF50183A6E59004137C7 /* PTManagedMeetingsViewController.m in Sources */,
 				C81108501831AF690045BD85 /* PTRevealViewController.m in Sources */,
 				C830B99C1832D259000FFD65 /* PTManagedGroupsViewController.m in Sources */,
+				2FDBDCA1184905C4001B24DA /* PFUser+Compare.m in Sources */,
 				2F60C15B18446F2F00EAA758 /* PTEditSettingsViewController.m in Sources */,
 				2F1F1E041842FCC300C77BC8 /* PTMeetingDateRange.m in Sources */,
 				2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */,

@@ -9,6 +9,7 @@
 #import "PTGroupMembersViewController.h"
 #import "PTGroupMemberInfoViewController.h"
 #import "PTMembership.h"
+#import "PFUser+Compare.h"
 
 @interface PTGroupMembersViewController ()
 @property (strong, nonatomic) NSIndexPath *memberIndexPath;
@@ -56,7 +57,8 @@
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-    [query orderByAscending:@"createdAt"];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"user" ascending:YES selector:@selector(compareToUser:)];
+    [query orderBySortDescriptor:sortDescriptor];
     
     return query;
 }
