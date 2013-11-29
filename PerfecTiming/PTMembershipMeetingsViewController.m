@@ -199,8 +199,7 @@
         [self prepareForCalendarChooser];
     } else {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        cell.selected = NO;
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
