@@ -19,7 +19,6 @@ static NSString * const CellIdentifierYellow = @"YellowCell";
 static NSString * const CellIdentifierGreen = @"GreenCell";
 
 @interface PTManagedMeetingTimesViewController ()
-@property (strong, nonatomic) NSIndexPath *meetingTimeIndexPath;
 
 @end
 
@@ -183,7 +182,6 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    self.meetingTimeIndexPath = indexPath;
     [self performSegueWithIdentifier:@"MeetingAvailabilitiesSegue" sender:self];
 }
 
@@ -215,7 +213,8 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
         createMeetingTimeViewController.meeting = self.meeting;
     } else if ([segue.identifier isEqualToString:@"MeetingAvailabilitiesSegue"]) {
         PTMeetingAttendeeAvailabilitiesViewController *availabilitiesViewController = segue.destinationViewController;
-        PTMeetingTime *meetingTime = (PTMeetingTime *) [self objectAtIndexPath:self.meetingTimeIndexPath];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PTMeetingTime *meetingTime = (PTMeetingTime *) [self objectAtIndexPath:indexPath];
         availabilitiesViewController.meetingTime = meetingTime;
     }
 }

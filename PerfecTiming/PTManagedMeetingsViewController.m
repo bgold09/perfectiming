@@ -19,7 +19,6 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
 
 @interface PTManagedMeetingsViewController ()
 @property (strong, nonatomic) NSIndexPath *deleteIndexPath;
-@property (strong, nonatomic) NSIndexPath *infoIndexPath;
 @property (strong, nonatomic) UIBarButtonItem *navButton;
 
 @end
@@ -142,12 +141,10 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    self.infoIndexPath = indexPath;
     [self performSegueWithIdentifier:@"MeetingTimesSegue" sender:self];
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    self.infoIndexPath = indexPath;
     [self performSegueWithIdentifier:@"ManagedMeetingInfoSegue" sender:self];
 }
 
@@ -198,10 +195,12 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
         addMeetingViewController.group = self.group;
     } else if ([segue.identifier isEqualToString:@"ManagedMeetingInfoSegue"]) {
         PTManagedMeetingInfoViewController *infoViewController = segue.destinationViewController;
-        infoViewController.meeting = (PTMeeting *) [self objectAtIndex:self.infoIndexPath];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        infoViewController.meeting = (PTMeeting *) [self objectAtIndex:indexPath];
     } else if ([segue.identifier isEqualToString:@"MeetingTimesSegue"]) {
         PTManagedMeetingTimesViewController *timesViewController = segue.destinationViewController;
-        timesViewController.meeting = (PTMeeting *) [self objectAtIndex:self.infoIndexPath];
+                NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        timesViewController.meeting = (PTMeeting *) [self objectAtIndex:indexPath];
     }
 }
 

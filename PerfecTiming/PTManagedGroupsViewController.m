@@ -15,7 +15,6 @@
 
 @interface PTManagedGroupsViewController ()
 @property (strong, nonatomic) NSIndexPath *deleteIndexPath;
-@property (strong, nonatomic) NSIndexPath *infoIndexPath;
 
 @end
 
@@ -158,7 +157,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    self.infoIndexPath = indexPath;
 }
 
 #pragma mark - UIAlertView Delegate
@@ -204,12 +202,13 @@
         
     } else if ([segue.identifier isEqualToString:@"ManagedGroupInfoSegue"]) {
         PTManagedGroupInfoViewController *infoViewController = segue.destinationViewController;
-        PTGroup *group = (PTGroup *) [self objectAtIndexPath:self.infoIndexPath];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PTGroup *group = (PTGroup *) [self objectAtIndexPath:indexPath];
         infoViewController.group = group;
     } else if ([segue.identifier isEqualToString:@"ManagedMeetingsSegue"]) {
         PTManagedMeetingsViewController *meetingsViewController = segue.destinationViewController;
-        PTGroup *group = (PTGroup *) [self objectAtIndexPath:self.infoIndexPath];
-        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PTGroup *group = (PTGroup *) [self objectAtIndexPath:indexPath];
         meetingsViewController.group = group;
     }
 }
