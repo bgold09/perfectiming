@@ -19,6 +19,7 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
 
 @interface PTManagedMeetingsViewController ()
 @property (strong, nonatomic) NSIndexPath *deleteIndexPath;
+@property (strong, nonatomic) NSIndexPath *infoIndexPath;
 @property (strong, nonatomic) UIBarButtonItem *navButton;
 
 @end
@@ -54,11 +55,12 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
 #pragma mark - PFQueryTableViewController Delegate
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    
-    if ([PFUser currentUser]) {
-        [query whereKey:@"group" equalTo:self.group];
+    if (![PFUser currentUser]) {
+        return nil;
     }
+    
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query whereKey:@"group" equalTo:self.group];
     
     // If Pull To Refresh is enabled, query against the network by default.
     if (self.pullToRefreshEnabled) {
@@ -123,20 +125,6 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
     }
 }
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -145,7 +133,7 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"ManagedMeetingInfoSegue" sender:self];
+    [self performSegueWithIdentifier:@"ManagedMeetingInfoSegue" sender:indexPath];
 }
 
 #pragma mark - UIAlertView Delegate
@@ -195,8 +183,9 @@ static NSString * const kCellIdentifierWithoutLocation = @"CellWithoutLocation";
         addMeetingViewController.group = self.group;
     } else if ([segue.identifier isEqualToString:@"ManagedMeetingInfoSegue"]) {
         PTManagedMeetingInfoViewController *infoViewController = segue.destinationViewController;
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        infoViewController.meeting = (PTMeeting *) [self objectAtIndex:indexPath];
+        NSIndexPath *indexPath = (NSIndexPath *) sender;
+        PTMeeting *meeting = (PTMeeting *) [self objectAtIndex:indexPath];
+        infoViewController.meeting = meeting;
     } else if ([segue.identifier isEqualToString:@"MeetingTimesSegue"]) {
         PTManagedMeetingTimesViewController *timesViewController = segue.destinationViewController;
                 NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
