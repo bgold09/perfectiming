@@ -10,6 +10,10 @@
 
 @implementation Constants
 
+NSString * const kPTMeetingTimeCellIdentifier = @"PTMeetingTimeCell";
+
+#pragma mark - Notification Names
+
 NSString * const kPTGroupAddedNotification = @"AddedGroupNotification";
 NSString * const kPTGroupDeletedNotification = @"DeletedGroupNotification";
 NSString * const kPTMembershipAddedNotification = @"AddedMembershipNotification";
@@ -22,5 +26,6 @@ NSString * const kPTAvailabilityReadyNotification = @"AvailabilityReadyNotificat
 NSString * const kPTAvailabilityFailedNotification = @"AvailabilityFailedNotification";
 NSString * const kPTAvailabilitySentNotification = @"AvailabilitySentNotification";
 NSString * const kPTUserSettingsChangedNotification = @"UserSettingsChangedNotification";
+NSString * const kPTMeetingAvailabilityReadyNotification = @"MeetingAvailabilityReadyNotification";
 
 @end

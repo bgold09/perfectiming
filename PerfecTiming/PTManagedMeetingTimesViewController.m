@@ -9,6 +9,7 @@
 #import "PTManagedMeetingTimesViewController.h"
 #import "PTCreateMeetingTimeViewController.h"
 #import "PTMeetingAttendeeAvailabilitiesViewController.h"
+#import "PTMeetingTimeCell.h"
 #import "PTMeetingTime.h"
 #import "PTMembership.h"
 #import "PTMeetingAttendee.h"
@@ -38,6 +39,9 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.tableView registerClass:[PTMeetingTimeCell class] forCellReuseIdentifier:kPTMeetingTimeCellIdentifier];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMeetingTimeCreatedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMeetingAttendees:) name:kPTMeetingTimeCreatedNotification object:nil];
 }
@@ -135,20 +139,20 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     PTMeetingTime *meetingTime = (PTMeetingTime *) object;
     
-    // get meeting availability numbers for subtitle and cell color
+//    PTMeetingTimeCell *cell = (PTMeetingTimeCell *)[tableView dequeueReusableCellWithIdentifier:kPTMeetingTimeCellIdentifier];
+//    if (!cell) {
+    PTMeetingTimeCell *cell ;
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:kPTMeetingTimeCellIdentifier owner:self options:nil];
+        cell = [topLevelObjects objectAtIndex:0];
+//    }
     
-    NSString *CellIdentifier = CellIdentifierRed;
-    PFTableViewCell *cell = (PFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    NSString *startDateString = [dateFormatter stringFromDate:meetingTime.startDatetime];
-    NSString *endDateString = [dateFormatter stringFromDate:meetingTime.endDatetime];
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", startDateString, endDateString];
+    [cell setupWithMeetingTime:meetingTime];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [indexPath row] * 100;
 }
 
 - (PFObject *)objectAtIndex:(NSIndexPath *)indexPath {

@@ -17,5 +17,7 @@
 
 + (NSString *)parseClassName;
 + (PTMeetingTime *)meetingTimeWithMeeting:(PTMeeting *)meeting startDate:(NSDate *)startDate endDate:(NSDate *)endDate;
+- (void)getAvailabilityForAllAttendees;
+- (NSString *)availabilityReadyForMeetingTimeNotificationName;
 
 @end
