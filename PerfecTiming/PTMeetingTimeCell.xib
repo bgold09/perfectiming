@@ -34,11 +34,16 @@
                         <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="00A-t8-lvz">
+                        <rect key="frame" x="263" y="41" width="37" height="37"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </activityIndicatorView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="availabilityNumberLabel" destination="P9K-vE-2ri" id="qoG-6X-oJh"/>
                 <outlet property="endLabel" destination="tYy-rv-V9x" id="b3w-FL-wxb"/>
+                <outlet property="indicatorView" destination="00A-t8-lvz" id="SQN-BS-MqY"/>
                 <outlet property="startLabel" destination="G4F-p9-RbH" id="oTu-Ny-YdZ"/>
             </connections>
         </tableViewCell>

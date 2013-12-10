@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *startLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
 @property (weak, nonatomic) IBOutlet UILabel *availabilityNumberLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorView;
 
 - (void)setupWithMeetingTime:(PTMeetingTime *)meetingTime;
 

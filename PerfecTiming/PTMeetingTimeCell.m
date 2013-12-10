@@ -38,7 +38,10 @@
     _availabilityNumberLabel.text = @"Retrieving meeting availability...";
     
     NSString *notificationName = [meetingTime availabilityReadyForMeetingTimeNotificationName];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateColorWithPercentage:) name:notificationName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateCellWithPercentage:) name:notificationName object:nil];
+    
+    [_indicatorView startAnimating];
+    [_indicatorView setHidesWhenStopped:YES];
     
     [self performSelectorInBackground:@selector(getAvailabilityForMeetingTime:) withObject:meetingTime];
 }
@@ -55,9 +58,11 @@
 
 #pragma mark - Notification Handlers
 
-- (void)updateColorWithPercentage:(NSNotification *)notification {
+- (void)updateCellWithPercentage:(NSNotification *)notification {
     NSNumber *number = notification.object;
     CGFloat percentage = [number floatValue];
+    
+    self.availabilityNumberLabel.text = [NSString stringWithFormat:@"%.0f%% available", percentage * 100];
     
     if (percentage < kYellowThreshhold) {
         self.backgroundColor = [UIColor redColor];
@@ -66,6 +71,8 @@
     } else {
         self.backgroundColor = [UIColor greenColor];
     }
+    
+    [self.indicatorView stopAnimating];
 }
 
 #pragma mark - Private Methods
