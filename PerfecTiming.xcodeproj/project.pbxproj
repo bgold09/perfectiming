@@ -293,10 +293,10 @@
 			children = (
 				2F63EF441839937E004137C7 /* PTAddMembershipViewController.h */,
 				2F63EF451839937E004137C7 /* PTAddMembershipViewController.m */,
-				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
-				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
 				2F63EF7D183EA757004137C7 /* PTMembershipMeetingsViewController.h */,
 				2F63EF7E183EA757004137C7 /* PTMembershipMeetingsViewController.m */,
+				C83C85CA182DB74E0028A722 /* PTMembershipViewController.h */,
+				C83C85CB182DB74E0028A722 /* PTMembershipViewController.m */,
 			);
 			name = "Group Membership";
 			sourceTree = "<group>";
@@ -304,8 +304,8 @@
 		2FAEB12818567CFB0066B1D3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2FAEB126185636ED0066B1D3 /* PTMeetingTimeCell.xib */,
 				C86268E91828781C0092B910 /* MainStoryboard.storyboard */,
+				2FAEB126185636ED0066B1D3 /* PTMeetingTimeCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -387,9 +387,9 @@
 		C86268D71828781C0092B910 /* PerfecTiming */ = {
 			isa = PBXGroup;
 			children = (
-				2FAEB12818567CFB0066B1D3 /* Views */,
 				C862690918287B280092B910 /* Controllers */,
 				C862690818287B100092B910 /* Models */,
+				2FAEB12818567CFB0066B1D3 /* Views */,
 				C86268D81828781C0092B910 /* Supporting Files */,
 			);
 			path = PerfecTiming;

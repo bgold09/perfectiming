@@ -18,40 +18,11 @@
 
 @implementation PTMeetingTimeCell
 
-
-- (void)awakeFromNib {
-    NSLog(@"wake up");
-}
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        [self setRestorationIdentifier:kPTMeetingTimeCellIdentifier];
+        
     }
-    return self;
-}
-
-- (id)initWithMeetingTime:(PTMeetingTime *)meetingTime {
-    self = [super init];
-    if (self) {
-//        [self setRestorationIdentifier:kPTMeetingTimeCellIdentifier];
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-        
-        NSString *startString = [dateFormatter stringFromDate:meetingTime.startDatetime];
-        NSString *endString = [dateFormatter stringFromDate:meetingTime.endDatetime];
-        _startLabel.text = [NSString stringWithFormat:@"%@", startString];
-        _endLabel.text = [NSString stringWithFormat:@"%@", endString];
-        _availabilityNumberLabel.text = @"Retrieving meeting availability...";
-        
-        NSString *notificationName = [meetingTime availabilityReadyForMeetingTimeNotificationName];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateColorWithPercentage:) name:notificationName object:nil];
-        
-        [self performSelectorInBackground:@selector(getAvailabilityForMeetingTime:) withObject:meetingTime];
-    }
-    
     return self;
 }
 
@@ -62,8 +33,8 @@
     
     NSString *startString = [dateFormatter stringFromDate:meetingTime.startDatetime];
     NSString *endString = [dateFormatter stringFromDate:meetingTime.endDatetime];
-    _startLabel.text = [NSString stringWithFormat:@"%@", startString];
-    _endLabel.text = [NSString stringWithFormat:@"%@", endString];
+    _startLabel.text = [NSString stringWithFormat:@"Start: %@", startString];
+    _endLabel.text = [NSString stringWithFormat:@"End: %@", endString];
     _availabilityNumberLabel.text = @"Retrieving meeting availability...";
     
     NSString *notificationName = [meetingTime availabilityReadyForMeetingTimeNotificationName];

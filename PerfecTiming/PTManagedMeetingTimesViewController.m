@@ -21,6 +21,8 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 
 @interface PTManagedMeetingTimesViewController ()
 
+@property (strong, nonatomic) UINib *cellNib;
+
 @end
 
 @implementation PTManagedMeetingTimesViewController
@@ -40,7 +42,10 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[PTMeetingTimeCell class] forCellReuseIdentifier:kPTMeetingTimeCellIdentifier];
+    _cellNib = [UINib nibWithNibName:kPTMeetingTimeCellIdentifier bundle:nil];
+    [self.tableView registerNib:_cellNib forCellReuseIdentifier:kPTMeetingTimeCellIdentifier];
+    
+//    [self.tableView registerClass:[PTMeetingTimeCell class] forCellReuseIdentifier:kPTMeetingTimeCellIdentifier];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMeetingTimeCreatedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMeetingAttendees:) name:kPTMeetingTimeCreatedNotification object:nil];
@@ -139,12 +144,11 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     PTMeetingTime *meetingTime = (PTMeetingTime *) object;
     
-//    PTMeetingTimeCell *cell = (PTMeetingTimeCell *)[tableView dequeueReusableCellWithIdentifier:kPTMeetingTimeCellIdentifier];
-//    if (!cell) {
-    PTMeetingTimeCell *cell ;
+    PTMeetingTimeCell *cell = (PTMeetingTimeCell *)[tableView dequeueReusableCellWithIdentifier:kPTMeetingTimeCellIdentifier];
+    if (!cell) {
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:kPTMeetingTimeCellIdentifier owner:self options:nil];
         cell = [topLevelObjects objectAtIndex:0];
-//    }
+    }
     
     [cell setupWithMeetingTime:meetingTime];
     
@@ -152,7 +156,7 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [indexPath row] * 100;
+    return 128.0;
 }
 
 - (PFObject *)objectAtIndex:(NSIndexPath *)indexPath {
