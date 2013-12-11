@@ -707,8 +707,8 @@
 		C86268F21828781C0092B910 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Golden (34VJJ2N978)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Golden (34VJJ2N978)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -718,7 +718,7 @@
 				INFOPLIST_FILE = "PerfecTiming/PerfecTiming-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3ECE9000-01F9-4070-89F1-8BB429824D08";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9426046F-7E3B-44D9-B41D-D641879E91D1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -726,8 +726,8 @@
 		C86268F31828781C0092B910 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Golden (34VJJ2N978)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Golden (34VJJ2N978)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -737,7 +737,7 @@
 				INFOPLIST_FILE = "PerfecTiming/PerfecTiming-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3ECE9000-01F9-4070-89F1-8BB429824D08";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9426046F-7E3B-44D9-B41D-D641879E91D1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
