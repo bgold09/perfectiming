@@ -52,16 +52,10 @@
     // Configure the view for the selected state
 }
 
-- (NSString *)reuseIdentifier {
-    return kPTMeetingTimeCellIdentifier;
-}
-
 #pragma mark - Notification Handlers
 
 - (void)updateCellWithPercentage:(NSNotification *)notification {
     NSDictionary *dictionary = notification.object;
-    
-    
     
     NSNumber *percentageNumber = [dictionary objectForKey:@"percentage"];
     CGFloat percentage = [percentageNumber floatValue];

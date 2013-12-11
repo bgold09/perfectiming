@@ -37,6 +37,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UINavigationBar *bar = [self.navigationController navigationBar];
+    [bar setTintColor: [UIColor colorWithRed:150.0/255.0 green:210.0/255.0 blue:108.0/255.0 alpha:1.0]];
+    
     self.navigationItem.rightBarButtonItems = @[self.editButtonItem];
     [self placeMenuButton];
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
