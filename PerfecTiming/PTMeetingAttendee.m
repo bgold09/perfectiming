@@ -42,6 +42,11 @@
 
 - (PTMeetingAttendeeAvailability)availabilityForMeeting {
     NSError *error;
+    
+    if (!(self.availability && self.availability.length > 0)) {
+        return PTMeetingAttendeeAvailabilityNotResponded;
+    }
+    
     NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:[self.availability dataUsingEncoding:NSUTF8StringEncoding]
                                                                options:NSJSONReadingMutableContainers
                                                                  error:&error];
