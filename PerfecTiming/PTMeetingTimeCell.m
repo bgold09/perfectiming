@@ -59,10 +59,23 @@
 #pragma mark - Notification Handlers
 
 - (void)updateCellWithPercentage:(NSNotification *)notification {
-    NSNumber *number = notification.object;
-    CGFloat percentage = [number floatValue];
+    NSDictionary *dictionary = notification.object;
     
-    self.availabilityNumberLabel.text = [NSString stringWithFormat:@"%.0f%% available", percentage * 100];
+    
+    
+    NSNumber *percentageNumber = [dictionary objectForKey:@"percentage"];
+    CGFloat percentage = [percentageNumber floatValue];
+    
+    NSNumber *unrespondedNumber = [dictionary objectForKey:@"unresponded"];
+    NSInteger unresponded = [unrespondedNumber integerValue];
+    
+    NSMutableString *availabilityString = [NSMutableString stringWithFormat:@"%.0f%% available", percentage * 100];
+    if (unresponded > 0) {
+        NSString *unrespondedString = [NSString stringWithFormat:@" (%d unresponded)", unresponded];
+        [availabilityString appendString:unrespondedString];
+    }
+    
+    self.availabilityNumberLabel.text = availabilityString;
     
     if (percentage < kYellowThreshhold) {
         self.backgroundColor = [UIColor redColor];

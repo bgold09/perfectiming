@@ -56,8 +56,10 @@
     }
     
     NSInteger count = 0;
+    NSInteger unresponded = 0;
     for (PTMeetingAttendee *attendee in attendees) {
         if (!attendee.availability || attendee.availability.length == 0) {
+            unresponded++;
             continue;
         }
         
@@ -76,6 +78,7 @@
             case PTMeetingAttendeeAvailabilityNot:
                 break;
             case PTMeetingAttendeeAvailabilityNotResponded:
+                unresponded++;
                 break;
             default:
                 break;
@@ -84,7 +87,9 @@
     
     CGFloat percentage = (CGFloat) count / (CGFloat) attendees.count;
     NSNumber *percentageNumber = [NSNumber numberWithFloat:percentage];
-    [self performSelectorOnMainThread:@selector(fireNotificationWithPercentage:) withObject:percentageNumber waitUntilDone:NO];
+    NSNumber *unrespondedNumber = [NSNumber numberWithInteger:unresponded];
+    NSDictionary *dictionary = @{@"percentage": percentageNumber, @"unresponded": unrespondedNumber};
+    [self performSelectorOnMainThread:@selector(fireNotificationWithPercentage:) withObject:dictionary waitUntilDone:NO];
 }
 
 - (void)fireNotificationWithPercentage:(NSNumber *)percentage {
