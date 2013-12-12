@@ -27,7 +27,11 @@
     PFPush *push = [[PFPush alloc] init];
     [push setQuery:query];
     [push setMessage:message];
-    [push sendPushInBackground];
+    [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
 @end

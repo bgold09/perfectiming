@@ -9,6 +9,7 @@
 #import "PTMembershipMeetingsViewController.h"
 #import "PTMeetingAttendee.h"
 #import "PTMeetingAvailabilityModel.h"
+#import "PTPushModel.h"
 #import "Constants.h"
 
 @interface PTMembershipMeetingsViewController ()
@@ -53,9 +54,14 @@
 }
 
 - (void)showSuccessAlert:(NSNotification *)notification {
+    NSString *username = [[PFUser currentUser] username];
+    PTMeeting *meeting = notification.object;
+    NSString *message = [NSString stringWithFormat:@"'%@' sent their availability for '%@' in '%@'", username, meeting.name, self.group.name];
+    [PTPushModel sendPushToManagerForGroup:self.group message:message];
+    [self loadObjects];
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Send Succeeded" message:@"Your availability was sent to the group manager." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
-    [self loadObjects]; 
 }
 
 - (void)sendAvailability:(NSNotification *)notification {

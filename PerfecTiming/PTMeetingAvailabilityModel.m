@@ -58,7 +58,7 @@
             }
             
             if (succeeded) {
-                [self performSelectorOnMainThread:@selector(fireAvailabilitySentNotification) withObject:nil waitUntilDone:NO];
+                [self performSelectorOnMainThread:@selector(fireAvailabilitySentNotificationForMeeting:) withObject:attendee.meeting waitUntilDone:NO];
             }
         }];
     }
@@ -104,8 +104,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTAvailabilityFailedNotification object:nil];
 }
 
-- (void)fireAvailabilitySentNotification {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPTAvailabilitySentNotification object:nil];
+- (void)fireAvailabilitySentNotificationForMeeting:(PTMeeting *)meeting {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPTAvailabilitySentNotification object:meeting];
 }
 
 - (void)fireAvailabilityNotificationWithDictionary:(NSDictionary *)dictionary {
