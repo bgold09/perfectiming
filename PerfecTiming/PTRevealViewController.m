@@ -48,6 +48,8 @@
 
         PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
         signUpViewController.delegate = self;
+        UIImageView *logoView2 = [[UIImageView alloc] initWithImage:logo];
+        signUpViewController.signUpView.logo = logoView2;
         
         [logInViewController setSignUpController:signUpViewController];
         [self presentViewController:logInViewController animated:YES completion:NULL];
