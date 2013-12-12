@@ -28,4 +28,10 @@ NSString * const kPTAvailabilitySentNotification = @"AvailabilitySentNotificatio
 NSString * const kPTUserSettingsChangedNotification = @"UserSettingsChangedNotification";
 NSString * const kPTMeetingAvailabilityReadyNotification = @"MeetingAvailabilityReadyNotification";
 
+#pragma mark - Other Constants
+
++ (UIColor *)tintColor {
+    return [UIColor colorWithRed:150.0/255.0 green:210.0/255.0 blue:108.0/255.0 alpha:1.0];
+}
+
 @end

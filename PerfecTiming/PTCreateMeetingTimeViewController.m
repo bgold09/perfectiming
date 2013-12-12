@@ -35,7 +35,7 @@
     [super viewDidLoad];
     
     UINavigationBar *bar = [self.navigationController navigationBar];
-    [bar setTintColor: [UIColor colorWithRed:150.0/255.0 green:210.0/255.0 blue:108.0/255.0 alpha:1.0]];
+    [bar setTintColor: [Constants tintColor]];
     
     self.startTimePicker.minimumDate = [NSDate date];
     [self.startTimePicker addTarget:self action:@selector(startDateChanged) forControlEvents:UIControlEventValueChanged];
