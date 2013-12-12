@@ -7,9 +7,10 @@
 //
 
 #import <Parse/Parse.h>
+#import <EventKitUI/EventKitUI.h>
 #import "PTMeeting.h"
 
-@interface PTManagedMeetingTimesViewController : PFQueryTableViewController
+@interface PTManagedMeetingTimesViewController : PFQueryTableViewController <EKEventEditViewDelegate>
 @property (strong, nonatomic) PTMeeting *meeting;
 
 @end

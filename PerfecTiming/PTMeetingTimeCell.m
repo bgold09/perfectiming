@@ -14,6 +14,7 @@
 
 @interface PTMeetingTimeCell ()
 
+
 @end
 
 @implementation PTMeetingTimeCell
@@ -27,6 +28,7 @@
 }
 
 - (void)setupWithMeetingTime:(PTMeetingTime *)meetingTime {
+    _availabilityReady = NO;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
@@ -80,6 +82,8 @@
     }
     
     [self.indicatorView stopAnimating];
+    self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    _availabilityReady = YES;
 }
 
 #pragma mark - Private Methods

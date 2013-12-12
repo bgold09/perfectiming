@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <EventKit/EventKit.h>
 #import "PTMeeting.h"
 
 @interface PTMeetingTime : PFObject <PFSubclassing>
@@ -19,5 +20,7 @@
 + (PTMeetingTime *)meetingTimeWithMeeting:(PTMeeting *)meeting startDate:(NSDate *)startDate endDate:(NSDate *)endDate;
 - (void)getAvailabilityForAllAttendees;
 - (NSString *)availabilityReadyForMeetingTimeNotificationName;
+- (EKEvent *)event;
+- (EKEvent *)eventWithEventStore:(EKEventStore *)eventStore;
 
 @end

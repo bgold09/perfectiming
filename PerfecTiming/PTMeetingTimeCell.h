@@ -11,6 +11,8 @@
 
 @interface PTMeetingTimeCell : PFTableViewCell
 
+@property (readonly) BOOL availabilityReady;
+
 @property (weak, nonatomic) IBOutlet UILabel *startLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
 @property (weak, nonatomic) IBOutlet UILabel *availabilityNumberLabel;

@@ -41,6 +41,27 @@
     return [NSString stringWithFormat:@"kPTAvailabilityPercentageReadyFor-%@", self.objectId];;
 }
 
+- (EKEvent *)event {
+    EKEvent *event = [[EKEvent alloc] init];
+    event.startDate = self.startDatetime;
+    event.endDate = self.endDatetime;
+    event.availability = EKEventAvailabilityBusy;
+    
+    return event;
+}
+
+- (EKEvent *)eventWithEventStore:(EKEventStore *)eventStore {
+    EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+    event.startDate = self.startDatetime;
+    event.endDate = self.endDatetime;
+    event.location = self.meeting.location;
+    event.title = [NSString stringWithFormat:@"%@: %@", self.meeting.group.name, self.meeting.name];
+    event.availability = EKEventAvailabilityBusy;
+    event.notes = @"Event created by PerfecTiming";
+    
+    return event;
+}
+
 #pragma mark - Private Methods
 
 // uses synchronous methods, dispatch in background

@@ -45,8 +45,6 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     _cellNib = [UINib nibWithNibName:kPTMeetingTimeCellIdentifier bundle:nil];
     [self.tableView registerNib:_cellNib forCellReuseIdentifier:kPTMeetingTimeCellIdentifier];
     
-//    [self.tableView registerClass:[PTMeetingTimeCell class] forCellReuseIdentifier:kPTMeetingTimeCellIdentifier];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMeetingTimeCreatedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMeetingAttendees:) name:kPTMeetingTimeCreatedNotification object:nil];
 }
@@ -119,11 +117,14 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 #pragma mark - PFQueryTableViewController Delegate
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    
-    if ([PFUser currentUser]) {
-        [query whereKey:@"meeting" equalTo:self.meeting];
+    if (![PFUser currentUser]) {
+        return nil;
     }
+    
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query whereKey:@"meeting" equalTo:self.meeting];
+    [query includeKey:@"meeting"];
+    [query includeKey:@"meeting.group"];
     
     // If Pull To Refresh is enabled, query against the network by default.
     if (self.pullToRefreshEnabled) {
@@ -189,8 +190,73 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"MeetingAvailabilitiesSegue" sender:self];
+    PTMeetingTimeCell *cell = (PTMeetingTimeCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell.availabilityReady) {
+        PTMeetingTime *meetingTime = (PTMeetingTime *) [self objectAtIndexPath:indexPath];
+        [self prepareForEventCreationWithMeetingTime:meetingTime];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    PTMeetingTimeCell *cell = (PTMeetingTimeCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell.availabilityReady) {
+        [self performSegueWithIdentifier:@"MeetingAvailabilitiesSegue" sender:self];
+    }
+}
+
+#pragma mark - Event Creation 
+
+- (void)prepareForEventCreationWithMeetingTime:(PTMeetingTime *)meetingTime {
+    EKEventStore *eventStore = [[EKEventStore alloc] init];
+    
+    if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError* error) {
+            if (!granted) {
+                NSString *message = @"Hey! I Can't access your Calendar... check your privacy settings to let me in!";
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Warning"
+                                                                   message:message
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"Ok"
+                                                         otherButtonTitles:nil];
+                [alertView show];
+            } else {
+                NSDictionary *dictionary = @{@"eventStore": eventStore, @"meetingTime": meetingTime};
+                [self performSelectorOnMainThread:@selector(displayEventCreationViewController:) withObject:dictionary waitUntilDone:YES];
+            }
+        }];
+    }
+}
+
+- (void)displayEventCreationViewController:(NSDictionary *)dictionary {
+    EKEventEditViewController *editViewController = [[EKEventEditViewController alloc] init];
+    editViewController.editViewDelegate = self;
+    
+    EKEventStore *eventStore = [dictionary objectForKey:@"eventStore"];
+    editViewController.eventStore = eventStore;
+
+    PTMeetingTime *meetingTime = [dictionary objectForKey:@"meetingTime"];
+    EKEvent *event = [meetingTime eventWithEventStore:eventStore];
+    editViewController.event = event;
+    
+    [self presentViewController:editViewController animated:YES completion:NULL];
+}
+
+#pragma mark - EKEventEditViewDelegate methods
+
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
+    if (action == EKEventEditViewActionCanceled) {
+        [controller dismissViewControllerAnimated:YES completion:NULL];
+    } else if (action == EKEventEditViewActionSaved) {
+        NSError *error;
+        [controller.eventStore saveEvent:controller.event span:EKSpanThisEvent commit:YES error:&error];
+        
+        if (error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Saving Event" message:error.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        } else {
+            [controller dismissViewControllerAnimated:YES completion:NULL];
+        }
+    }
 }
 
 //#pragma mark - UIAlertView Delegate
