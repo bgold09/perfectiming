@@ -125,7 +125,6 @@
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.60908617293690126" green="0.88691804846938771" blue="0.42201668028340245" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="cS6-q1-j1o" kind="push" identifier="ManagedGroupInfoSegue" trigger="accessoryAction" id="F7y-y3-S94"/>
                                     <segue destination="cyc-zh-WcZ" kind="push" identifier="ManagedMeetingsSegue" id="LBj-XR-3Az"/>
                                 </connections>
                             </tableViewCell>
@@ -138,6 +137,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="cS6-q1-j1o" kind="push" identifier="ManagedGroupInfoSegue" id="GFn-YQ-FSX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWQ-FT-2rk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1353,7 +1355,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="bGj-id-8t8"/>
-        <segue reference="7R1-cW-3hQ"/>
+        <segue reference="LBj-XR-3Az"/>
         <segue reference="GHx-JJ-ri6"/>
     </inferredMetricsTieBreakers>
 </document>
