@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import "PTGroup.h"
+#import "PTMeetingTime.h"
 
 @interface PTPushModel : NSObject
 
 + (void)sendPushToUser:(PFUser *)user message:(NSString *)message;
 + (void)sendPushToManagerForGroup:(PTGroup *)group message:(NSString *)message;
++ (void)sendPushToAttendeesForMeetingTime:(PTMeetingTime *)meetingTime;
 
 @end

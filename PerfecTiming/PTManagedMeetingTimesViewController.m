@@ -13,6 +13,7 @@
 #import "PTMeetingTime.h"
 #import "PTMembership.h"
 #import "PTMeetingAttendee.h"
+#import "PTPushModel.h"
 #import "Constants.h"
 
 static NSString * const CellIdentifierRed = @"RedCell";
@@ -254,6 +255,9 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Saving Event" message:error.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         } else {
+            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+            PTMeetingTime *meetingTime = (PTMeetingTime *) [self objectAtIndexPath:indexPath];
+            [PTPushModel sendPushToAttendeesForMeetingTime:meetingTime];
             [controller dismissViewControllerAnimated:YES completion:NULL];
         }
     }
