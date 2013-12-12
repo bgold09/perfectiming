@@ -41,7 +41,11 @@
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         logInViewController.delegate = self;
         [logInViewController.logInView.dismissButton setHidden:YES];
-        
+
+        UIImage *logo = [UIImage imageNamed:@"PerfecTiming"];
+        UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
+        logInViewController.logInView.logo = logoView;
+
         PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
         signUpViewController.delegate = self;
         

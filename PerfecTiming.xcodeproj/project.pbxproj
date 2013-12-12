@@ -13,6 +13,7 @@
 		2F60C15B18446F2F00EAA758 /* PTEditSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C15A18446F2F00EAA758 /* PTEditSettingsViewController.m */; };
 		2F60C15F1844776100EAA758 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C15E1844776100EAA758 /* NSString+Email.m */; };
 		2F60C16318458E2C00EAA758 /* PTMembershipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C16218458E2C00EAA758 /* PTMembershipModel.m */; };
+		2F61D11E185953730045EBA9 /* PerfecTiming.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F61D11D185953730045EBA9 /* PerfecTiming.png */; };
 		2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3E18393ECC004137C7 /* MBProgressHUD.m */; };
 		2F63EF40183943F7004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		2F63EF431839806E004137C7 /* PTMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF421839806E004137C7 /* PTMembership.m */; };
@@ -103,6 +104,7 @@
 		2F60C15E1844776100EAA758 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		2F60C16118458E2C00EAA758 /* PTMembershipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMembershipModel.h; sourceTree = "<group>"; };
 		2F60C16218458E2C00EAA758 /* PTMembershipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMembershipModel.m; sourceTree = "<group>"; };
+		2F61D11D185953730045EBA9 /* PerfecTiming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PerfecTiming.png; sourceTree = "<group>"; };
 		2F63EF3A18374D58004137C7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2F63EF3B18374D58004137C7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2F63EF3D18393ECC004137C7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 		2FAEB13E1856DF120066B1D3 /* app icons */ = {
 			isa = PBXGroup;
 			children = (
+				2F61D11D185953730045EBA9 /* PerfecTiming.png */,
 				2FAEB13F1856DF120066B1D3 /* Icon-72.png */,
 				2FAEB1401856DF120066B1D3 /* Icon-72@2x.png */,
 				2FAEB1411856DF120066B1D3 /* Icon-Small-50.png */,
@@ -546,6 +549,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F61D11E185953730045EBA9 /* PerfecTiming.png in Resources */,
 				C86268DC1828781C0092B910 /* InfoPlist.strings in Resources */,
 				2FAEB1501856DF120066B1D3 /* Icon@2x.png in Resources */,
 				C86268E41828781C0092B910 /* Default.png in Resources */,
