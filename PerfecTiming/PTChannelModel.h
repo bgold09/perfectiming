@@ -14,6 +14,5 @@
 + (void)addChannelWithName:(NSString *)channelName user:(PFUser *)user;
 + (void)addChannels:(NSArray *)channelNames user:(PFUser *)user;
 + (void)removeChannelWithName:(NSString *)channelName user:(PFUser *)user;
-+ (void)updateInstallationChannelsWithUser:(PFUser *)user;
 
 @end

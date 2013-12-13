@@ -47,7 +47,7 @@
     PFUser *manager = (PFUser *) [group.manager fetchIfNeeded];
     NSString *message = [NSString stringWithFormat:@"%@ chose a meeting time for '%@' in %@", manager.username, meeting.name, group.name];
     
-    NSString *channelName = [group.name stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+    NSString *channelName = [group channelName];
     
     [PFPush sendPushMessageToChannelInBackground:channelName withMessage:message block:^(BOOL succeeded, NSError *error) {
         if (error) {
