@@ -25,7 +25,8 @@ FOUNDATION_EXPORT NSString * const kPTUserSettingsChangedNotification;
 FOUNDATION_EXPORT NSString * const kPTMeetingAvailabilityReadyNotification;
 
 FOUNDATION_EXPORT NSString * const kPTMeetingTimeCellIdentifier;
-//UIColor  * const kPTTintColor;
+FOUNDATION_EXPORT NSString * const kPTUserChannelsKey;
+FOUNDATION_EXPORT NSString * const kPTUserNameKey;
 
 + (UIColor *)tintColor;
 

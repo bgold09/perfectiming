@@ -102,9 +102,6 @@
     
     NSString *channelName = [group channelName];
     [PTChannelModel addChannelWithName:channelName user:[PFUser currentUser]];
-    PFInstallation *installation = [PFInstallation currentInstallation];
-    [installation addUniqueObject:channelName forKey:@"channels"];
-    [installation saveInBackground];
     
     [self performSelectorOnMainThread:@selector(fireNotification:) withObject:group waitUntilDone:YES];
     [self dismissViewControllerAnimated:YES completion:NULL];

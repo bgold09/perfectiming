@@ -7,36 +7,37 @@
 //
 
 #import "PTChannelModel.h"
+#import "Constants.h"
 
-static NSString * const kChannelKey = @"channels";
+//static NSString * const kPTUserChannelsKey = @"channels";
 
 @implementation PTChannelModel
 
 + (void)addChannelWithName:(NSString *)channelName user:(PFUser *)user {
     // add channel to user's list of channels
-    [user addUniqueObject:channelName forKey:kChannelKey];
+    [user addUniqueObject:channelName forKey:kPTUserChannelsKey];
     [user saveInBackground];
     
     PFInstallation *installation = [PFInstallation currentInstallation];
-    [installation addUniqueObject:channelName forKey:kChannelKey];
+    [installation addUniqueObject:channelName forKey:kPTUserChannelsKey];
     [installation saveInBackground];
 }
 
 + (void)addChannels:(NSArray *)channelNames user:(PFUser *)user {
-    [user addUniqueObjectsFromArray:channelNames forKey:kChannelKey];
+    [user addUniqueObjectsFromArray:channelNames forKey:kPTUserChannelsKey];
     [user saveEventually];
     
     PFInstallation *installation = [PFInstallation currentInstallation];
-    [installation addUniqueObjectsFromArray:channelNames forKey:kChannelKey];
+    [installation addUniqueObjectsFromArray:channelNames forKey:kPTUserChannelsKey];
     [installation saveEventually];
 }
 
 + (void)removeChannelWithName:(NSString *)channelName user:(PFUser *)user {
-    [user removeObject:channelName forKey:kChannelKey];
+    [user removeObject:channelName forKey:kPTUserChannelsKey];
     [user saveInBackground];
     
     PFInstallation *installation = [PFInstallation currentInstallation];
-    [installation removeObject:channelName forKey:kChannelKey];
+    [installation removeObject:channelName forKey:kPTUserChannelsKey];
     [installation saveInBackground];
 }
 

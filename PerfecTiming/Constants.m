@@ -11,6 +11,8 @@
 @implementation Constants
 
 NSString * const kPTMeetingTimeCellIdentifier = @"PTMeetingTimeCell";
+NSString * const kPTUserChannelsKey = @"channels";
+NSString * const kPTUserNameKey = @"name";
 
 #pragma mark - Notification Names
 

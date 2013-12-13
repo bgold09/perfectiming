@@ -58,7 +58,7 @@
 - (void)setFields:(NSNotification *)notification {
     self.usernameCell.detailTextLabel.text = [[PFUser currentUser] username];
     self.emailCell.detailTextLabel.text = [[PFUser currentUser] email];
-    self.nameCell.detailTextLabel.text = [[PFUser currentUser] objectForKey:@"name"];
+    self.nameCell.detailTextLabel.text = [[PFUser currentUser] objectForKey:kPTUserNameKey];
 }
 
 #pragma mark - Table view delegate
@@ -94,7 +94,7 @@
         PTEditSettingsViewController *viewController = segue.destinationViewController;
         PFUser *user = [PFUser currentUser];
         
-        NSString *name = [user objectForKey:@"name"];
+        NSString *name = [user objectForKey:kPTUserNameKey];
         if (!name) {
             name = @"";
         }
