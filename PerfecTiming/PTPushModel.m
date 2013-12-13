@@ -14,24 +14,30 @@ static NSString * const kBadgeKey = @"badge";
 
 @implementation PTPushModel
 
-+ (void)sendPushToUser:(PFUser *)user message:(NSString *)message {
++ (void)sendPushToUser:(PFUser *)user message:(NSString *)message pushType:(PTPushType)pushType {
     PFQuery *query = [PFInstallation query];
     [query whereKey:@"user" equalTo:user];
     
-    PFPush *push = [[PFPush alloc] init];
-    [push setQuery:query];
-    [push setMessage:message];
-    [push sendPushInBackground];
+    NSDictionary *data = @{kAlertKey: message,
+                           kBadgeKey: @"Increment",
+                           kPTPushTypeKey: [NSNumber numberWithInteger:pushType]};
+    
+    [PFPush sendPushDataToQueryInBackground:query withData:data block:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
-+ (void)sendPushToManagerForGroup:(PTGroup *)group message:(NSString *)message {
++ (void)sendPushToManagerForGroup:(PTGroup *)group message:(NSString *)message pushType:(PTPushType)pushType {
     PFQuery *query = [PFInstallation query];
     [query whereKey:@"user" equalTo:group.manager];
     
-    PFPush *push = [[PFPush alloc] init];
-    [push setQuery:query];
-    [push setMessage:message];
-    [push sendPushInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    NSDictionary *data = @{kAlertKey: message,
+                           kBadgeKey: @"Increment",
+                           kPTPushTypeKey: [NSNumber numberWithInteger:pushType]};
+    
+    [PFPush sendPushDataToQueryInBackground:query withData:data block:^(BOOL succeeded, NSError *error) {
         if (error) {
             NSLog(@"%@", error);
         }
@@ -54,6 +60,7 @@ static NSString * const kBadgeKey = @"badge";
     NSString *channelName = [group channelName];
     NSDictionary *data = @{kAlertKey: message,
                            kBadgeKey: @"Increment",
+                           kPTPushTypeKey: [NSNumber numberWithInteger:PTPushTypeMeetingTimeChosen],
                            @"meetingTime": meetingTime.objectId};
     
     NSError *error;

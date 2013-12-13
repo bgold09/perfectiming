@@ -11,10 +11,20 @@
 #import "PTGroup.h"
 #import "PTMeetingTime.h"
 
+typedef NS_ENUM(NSInteger, PTPushType) {
+    PTPushTypeUnknown,
+    PTPushTypeMeetingTimeChosen,
+    PTPushTypeGroupUserJoined,
+    PTPushTypeGroupUserLeft,
+    PTPushTypeGroupUserSentAvailability
+};
+
+static NSString * const kPTPushTypeKey = @"PTPushTypeKey";
+
 @interface PTPushModel : NSObject
 
-+ (void)sendPushToUser:(PFUser *)user message:(NSString *)message;
-+ (void)sendPushToManagerForGroup:(PTGroup *)group message:(NSString *)message;
++ (void)sendPushToUser:(PFUser *)user message:(NSString *)message pushType:(PTPushType)pushType;
++ (void)sendPushToManagerForGroup:(PTGroup *)group message:(NSString *)message pushType:(PTPushType)pushType;
 + (void)sendPushToAttendeesForMeetingTime:(PTMeetingTime *)meetingTime;
 
 @end

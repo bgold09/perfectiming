@@ -156,7 +156,7 @@
     PFUser *user = [PFUser currentUser];
     [PTMembershipModel cleanupMembershipForGroup:group user:user];
     NSString *message = [NSString stringWithFormat:@"User %@ left your group '%@'.", user.username, group.name];
-    [PTPushModel sendPushToManagerForGroup:group message:message];
+    [PTPushModel sendPushToManagerForGroup:group message:message pushType:PTPushTypeGroupUserLeft];
     [self loadObjects];
 }
 

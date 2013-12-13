@@ -9,8 +9,6 @@
 #import "PTChannelModel.h"
 #import "Constants.h"
 
-//static NSString * const kPTUserChannelsKey = @"channels";
-
 @implementation PTChannelModel
 
 + (void)addChannelWithName:(NSString *)channelName user:(PFUser *)user {

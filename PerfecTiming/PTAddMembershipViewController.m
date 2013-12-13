@@ -152,7 +152,7 @@
 - (void)fireNotification:(PTGroup *)group {
     PFUser *user = [PFUser currentUser];
     NSString *message =[NSString stringWithFormat:@"User %@ joined your group '%@'", user.username, group.name];
-    [PTPushModel sendPushToManagerForGroup:group message:message];
+    [PTPushModel sendPushToManagerForGroup:group message:message pushType:PTPushTypeGroupUserJoined];
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     

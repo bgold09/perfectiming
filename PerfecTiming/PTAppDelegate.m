@@ -13,6 +13,7 @@
 #import "PTMeeting.h"
 #import "PTMeetingTime.h"
 #import "PTMeetingAttendee.h"
+#import "PTPushModel.h"
 
 @implementation PTAppDelegate
 

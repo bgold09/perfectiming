@@ -57,7 +57,7 @@
     NSString *username = [[PFUser currentUser] username];
     PTMeeting *meeting = notification.object;
     NSString *message = [NSString stringWithFormat:@"'%@' sent their availability for '%@' in '%@'", username, meeting.name, self.group.name];
-    [PTPushModel sendPushToManagerForGroup:self.group message:message];
+    [PTPushModel sendPushToManagerForGroup:self.group message:message pushType:PTPushTypeGroupUserSentAvailability];
     [self loadObjects];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Send Succeeded" message:@"Your availability was sent to the group manager." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
