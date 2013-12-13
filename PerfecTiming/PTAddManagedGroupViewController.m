@@ -116,6 +116,8 @@
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [alert show];
+    } else if ([self.groupNameField.text rangeOfString:@"_"].location != NSNotFound) {
+        [self showAlertWithMessage:@"Group name cannot contain underscores."];
     } else {
         [self performSelectorInBackground:@selector(checkAndCreateManagedGroup) withObject:nil];
     }

@@ -59,4 +59,8 @@
     return [self.name compare:group.name];
 }
 
+- (NSString *)channelName {
+    return [self.name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+}
+
 @end

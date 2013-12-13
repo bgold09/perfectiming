@@ -18,5 +18,6 @@
 + (BOOL)groupExistsWithName:(NSString *)name;
 - (id)initWithName:(NSString *)name manager:(PFUser *)manager pin:(NSInteger)pin;
 - (NSComparisonResult)compareToGroup:(PTGroup *)group;
+- (NSString *)channelName;
 
 @end

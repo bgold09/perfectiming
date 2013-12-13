@@ -11,6 +11,7 @@
 #import "PTMembership.h"
 #import "PTMeetingAttendee.h"
 #import "PTPushModel.h"
+#import "PTChannelModel.h"
 #import "MBProgressHUD.h"
 #import "Constants.h"
 
@@ -99,6 +100,12 @@
         [attendee save];
     }
     
+    NSString *channelName = [group channelName];
+    [PTChannelModel addChannelWithName:channelName user:[PFUser currentUser]];
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation addUniqueObject:channelName forKey:@"channels"];
+    [installation saveInBackground];
+    
     [self performSelectorOnMainThread:@selector(fireNotification:) withObject:group waitUntilDone:YES];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -118,6 +125,12 @@
     if (!self.nameField.text) {
         NSDictionary *dictionary = @{@"title": @"No Name Provided",
                                      @"message": @"You must enter the name of the group to join."};
+        [self showAlert:dictionary];
+        
+        self.saveButton.enabled = YES;
+        self.cancelButton.enabled = YES;
+    } else if ([self.nameField.text rangeOfString:@"_"].location != NSNotFound) {
+        NSDictionary *dictionary = @{@"title": @"Group name cannot contain underscores."};
         [self showAlert:dictionary];
         
         self.saveButton.enabled = YES;

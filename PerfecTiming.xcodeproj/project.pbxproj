@@ -14,6 +14,7 @@
 		2F60C15F1844776100EAA758 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C15E1844776100EAA758 /* NSString+Email.m */; };
 		2F60C16318458E2C00EAA758 /* PTMembershipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F60C16218458E2C00EAA758 /* PTMembershipModel.m */; };
 		2F61D11E185953730045EBA9 /* PerfecTiming.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F61D11D185953730045EBA9 /* PerfecTiming.png */; };
+		2F61D121185A8F0A0045EBA9 /* PTChannelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F61D120185A8F0A0045EBA9 /* PTChannelModel.m */; };
 		2F63EF3F18393ECC004137C7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3E18393ECC004137C7 /* MBProgressHUD.m */; };
 		2F63EF40183943F7004137C7 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF3B18374D58004137C7 /* Constants.m */; };
 		2F63EF431839806E004137C7 /* PTMembership.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF421839806E004137C7 /* PTMembership.m */; };
@@ -105,6 +106,8 @@
 		2F60C16118458E2C00EAA758 /* PTMembershipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMembershipModel.h; sourceTree = "<group>"; };
 		2F60C16218458E2C00EAA758 /* PTMembershipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMembershipModel.m; sourceTree = "<group>"; };
 		2F61D11D185953730045EBA9 /* PerfecTiming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PerfecTiming.png; sourceTree = "<group>"; };
+		2F61D11F185A8F0A0045EBA9 /* PTChannelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTChannelModel.h; sourceTree = "<group>"; };
+		2F61D120185A8F0A0045EBA9 /* PTChannelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTChannelModel.m; sourceTree = "<group>"; };
 		2F63EF3A18374D58004137C7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2F63EF3B18374D58004137C7 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		2F63EF3D18393ECC004137C7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -462,6 +465,8 @@
 			children = (
 				2FDBDC9E18485A4E001B24DA /* Categories */,
 				2F60C160184477D500EAA758 /* Entities */,
+				2F61D11F185A8F0A0045EBA9 /* PTChannelModel.h */,
+				2F61D120185A8F0A0045EBA9 /* PTChannelModel.m */,
 				2F60C16118458E2C00EAA758 /* PTMembershipModel.h */,
 				2F60C16218458E2C00EAA758 /* PTMembershipModel.m */,
 				2F60C156184447E100EAA758 /* PTPushModel.h */,
@@ -593,6 +598,7 @@
 			files = (
 				2F63EF461839937E004137C7 /* PTAddMembershipViewController.m in Sources */,
 				2F63EF53183A6F6A004137C7 /* PTMeeting.m in Sources */,
+				2F61D121185A8F0A0045EBA9 /* PTChannelModel.m in Sources */,
 				2F63EF67183AEF65004137C7 /* PTManagedMeetingInfoViewController.m in Sources */,
 				2F63EF73183BFC9E004137C7 /* PTMeetingAttendee.m in Sources */,
 				2F63EF86183FFE0B004137C7 /* PTMeetingAvailabilityModel.m in Sources */,

@@ -76,7 +76,6 @@
     [installation saveEventually];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTUserLoggedInNotification object:nil];
-    
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
