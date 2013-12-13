@@ -8,6 +8,7 @@
 
 #import "PTMembershipModel.h"
 #import "PTPushModel.h"
+#import "PTChannelModel.h"
 #import "PTMeetingAttendee.h"
 
 @implementation PTMembershipModel
@@ -32,6 +33,8 @@
             }
         }
     }];
+    
+    [PTChannelModel removeChannelWithName:[group channelName] user:user];
 }
 
 @end

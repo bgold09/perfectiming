@@ -54,6 +54,21 @@ static NSString * const kChannelKey = @"channels";
 
 + (void)removeChannelWithName:(NSString *)channelName user:(PFUser *)user {
     [user removeObject:channelName forKey:kChannelKey];
+    [user saveEventually];
+    
+    PFQuery *installationQuery = [PFInstallation query];
+    [installationQuery whereKey:@"user" equalTo:user];
+    [installationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error);
+            return;
+        }
+        
+        for (PFInstallation *installation in objects) {
+            [installation removeObject:channelName forKey:kChannelKey];
+            [installation saveEventually];
+        }
+    }];
 }
 
 + (void)updateInstallationChannelsWithUser:(PFUser *)user {
