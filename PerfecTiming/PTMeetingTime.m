@@ -54,7 +54,11 @@
     EKEvent *event = [EKEvent eventWithEventStore:eventStore];
     event.startDate = self.startDatetime;
     event.endDate = self.endDatetime;
-    event.location = self.meeting.location;
+    
+    if (self.meeting.location) {
+        event.location = self.meeting.location;
+    }
+    
     event.title = [NSString stringWithFormat:@"%@: %@", self.meeting.group.name, self.meeting.name];
     event.availability = EKEventAvailabilityBusy;
     event.notes = @"Event created by PerfecTiming";

@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     
-    self.menuItems = @[@"ManagedGroupsCell", @"MembershipCell", @"SettingsCell"];
+    self.menuItems = @[@"ManagedGroupsCell", @"MembershipCell", @"NotificationsCell", @"SettingsCell"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -125,6 +125,8 @@
                 vcName = @"MembershipNav";
             } else if ([segue.identifier isEqualToString:@"SettingsSegue"]) {
                 vcName = @"SettingsNav";
+            } else if ([segue.identifier isEqualToString:@"NotificationsSegue"]) {
+                vcName = @"NotificationsNav";
             }
             
             if (vcName.length > 0) {

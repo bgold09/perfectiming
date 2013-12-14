@@ -13,6 +13,7 @@
 #import "PTMeeting.h"
 #import "PTMeetingTime.h"
 #import "PTMeetingAttendee.h"
+#import "PTNotification.h"
 #import "PTPushModel.h"
 
 @implementation PTAppDelegate
@@ -24,6 +25,7 @@
     [PTMeeting registerSubclass];
     [PTMeetingTime registerSubclass];
     [PTMeetingAttendee registerSubclass];
+    [PTNotification registerSubclass];
     
     [Parse setApplicationId:@"H6LlCn8JqUr6xoPvoX5I3gNktXgGvjUtRlX9cIGy"
                   clientKey:@"8NOwQ3Quk4UbemJujJWpjjrPZEXhEkHgIImIy7KW"];

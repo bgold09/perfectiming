@@ -35,6 +35,8 @@
 		2F63EF82183F0E47004137C7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F63EF80183F0E47004137C7 /* EventKit.framework */; };
 		2F63EF83183F0E47004137C7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F63EF81183F0E47004137C7 /* EventKitUI.framework */; };
 		2F63EF86183FFE0B004137C7 /* PTMeetingAvailabilityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F63EF85183FFE0B004137C7 /* PTMeetingAvailabilityModel.m */; };
+		2FAD3069185C2B5D00B06B49 /* PTNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD3068185C2B5D00B06B49 /* PTNotificationsViewController.m */; };
+		2FAD306C185C2BF800B06B49 /* PTNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD306B185C2BF800B06B49 /* PTNotification.m */; };
 		2FAEB12518558C3F0066B1D3 /* PTMeetingTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAEB12418558C3F0066B1D3 /* PTMeetingTimeCell.m */; };
 		2FAEB127185636ED0066B1D3 /* PTMeetingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FAEB126185636ED0066B1D3 /* PTMeetingTimeCell.xib */; };
 		2FAEB1491856DF120066B1D3 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FAEB13F1856DF120066B1D3 /* Icon-72.png */; };
@@ -146,6 +148,10 @@
 		2F63EF81183F0E47004137C7 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		2F63EF84183FFE0B004137C7 /* PTMeetingAvailabilityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMeetingAvailabilityModel.h; sourceTree = "<group>"; };
 		2F63EF85183FFE0B004137C7 /* PTMeetingAvailabilityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingAvailabilityModel.m; sourceTree = "<group>"; };
+		2FAD3067185C2B5D00B06B49 /* PTNotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTNotificationsViewController.h; sourceTree = "<group>"; };
+		2FAD3068185C2B5D00B06B49 /* PTNotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTNotificationsViewController.m; sourceTree = "<group>"; };
+		2FAD306A185C2BF800B06B49 /* PTNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTNotification.h; sourceTree = "<group>"; };
+		2FAD306B185C2BF800B06B49 /* PTNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTNotification.m; sourceTree = "<group>"; };
 		2FAEB12318558C3F0066B1D3 /* PTMeetingTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMeetingTimeCell.h; sourceTree = "<group>"; };
 		2FAEB12418558C3F0066B1D3 /* PTMeetingTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingTimeCell.m; sourceTree = "<group>"; };
 		2FAEB126185636ED0066B1D3 /* PTMeetingTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTMeetingTimeCell.xib; sourceTree = "<group>"; };
@@ -270,6 +276,8 @@
 				2F63EF69183AF493004137C7 /* PTMeetingTime.m */,
 				2F63EF411839806E004137C7 /* PTMembership.h */,
 				2F63EF421839806E004137C7 /* PTMembership.m */,
+				2FAD306A185C2BF800B06B49 /* PTNotification.h */,
+				2FAD306B185C2BF800B06B49 /* PTNotification.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -482,10 +490,12 @@
 				2F63EF58183AB6B2004137C7 /* Managed Groups */,
 				2F63EF59183AB6BA004137C7 /* Managed Meetings */,
 				2F60C15C18446FD200EAA758 /* Settings */,
-				C811084E1831AF690045BD85 /* PTRevealViewController.h */,
-				C811084F1831AF690045BD85 /* PTRevealViewController.m */,
 				2FAEB12318558C3F0066B1D3 /* PTMeetingTimeCell.h */,
 				2FAEB12418558C3F0066B1D3 /* PTMeetingTimeCell.m */,
+				2FAD3067185C2B5D00B06B49 /* PTNotificationsViewController.h */,
+				2FAD3068185C2B5D00B06B49 /* PTNotificationsViewController.m */,
+				C811084E1831AF690045BD85 /* PTRevealViewController.h */,
+				C811084F1831AF690045BD85 /* PTRevealViewController.m */,
 				C83C85D0182DBA890028A722 /* PTSidebarViewController.h */,
 				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
 			);
@@ -601,6 +611,7 @@
 				2F61D121185A8F0A0045EBA9 /* PTChannelModel.m in Sources */,
 				2F63EF67183AEF65004137C7 /* PTManagedMeetingInfoViewController.m in Sources */,
 				2F63EF73183BFC9E004137C7 /* PTMeetingAttendee.m in Sources */,
+				2FAD3069185C2B5D00B06B49 /* PTNotificationsViewController.m in Sources */,
 				2F63EF86183FFE0B004137C7 /* PTMeetingAvailabilityModel.m in Sources */,
 				2F60C15F1844776100EAA758 /* NSString+Email.m in Sources */,
 				2F63EF64183AEDFF004137C7 /* PTManagedMeetingTimesViewController.m in Sources */,
@@ -632,6 +643,7 @@
 				2F63EF6D183B2E59004137C7 /* PTCreateMeetingTimeViewController.m in Sources */,
 				C830B9A51832E2C2000FFD65 /* PTAddManagedGroupViewController.m in Sources */,
 				2F63EF5E183ABF2B004137C7 /* PTGroupMembersViewController.m in Sources */,
+				2FAD306C185C2BF800B06B49 /* PTNotification.m in Sources */,
 				2F63EF7C183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

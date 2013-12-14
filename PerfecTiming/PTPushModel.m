@@ -8,6 +8,8 @@
 
 #import "PTPushModel.h"
 #import "PTMeetingAttendee.h"
+#import "PTNotification.h"
+#import "Constants.h"
 
 static NSString * const kAlertKey = @"alert";
 static NSString * const kBadgeKey = @"badge";
@@ -67,6 +69,34 @@ static NSString * const kBadgeKey = @"badge";
     [PFPush sendPushDataToChannel:channelName withData:data error:&error];
     if (error) {
         NSLog(@"%@", error);
+        return;
+    }
+    
+    // create Parse Notification object for user to retrieve notification details, take actions
+    
+    PFQuery *attendeeQuery = [PTMeetingAttendee query];
+    [attendeeQuery whereKey:@"meeting" equalTo:meeting];
+    NSArray *attendees = [attendeeQuery findObjects:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    NSMutableArray *users = [NSMutableArray array];
+    for (PTMeetingAttendee *attendee in attendees) {
+        [users addObject:attendee.user];
+    }
+    
+    NSMutableArray *notifications = [NSMutableArray array];
+    for (PFUser *user in users) {
+        PTNotification *notification = [PTNotification notificationForUser:user message:message pushType:PTPushTypeMeetingTimeChosen object:meetingTime];
+        [notifications addObject:notification];
+    }
+    
+    [PFObject saveAll:notifications error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
     }
 }
 
