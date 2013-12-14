@@ -52,7 +52,7 @@
 }
 
 - (void)markRead {
-    if (!read) {
+    if (!self.read) {
         self.read = YES;
         [self saveInBackground];
     }
