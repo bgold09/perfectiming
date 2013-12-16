@@ -47,66 +47,12 @@ static NSString * const CellIdentifierGreen = @"GreenCell";
     [self.tableView registerNib:_cellNib forCellReuseIdentifier:kPTMeetingTimeCellIdentifier];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMeetingTimeCreatedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMeetingAttendees:) name:kPTMeetingTimeCreatedNotification object:nil];
 }
 
 #pragma mark - Notifcation Handlers
 
 - (void)refreshTable:(NSNotification *)notification {
     [self loadObjects];
-}
-
-- (void)handleMeetingAttendees:(NSNotification *)notification {
-    // a new meeting time was created
-    // if first meeting time, create new MeetingAttendees
-    // if not first meeting time, upadte existing MeetingAttendees for this meeting asking for availabilities
-
-    if (self.objects.count == 0) {
-        PTGroup *group = self.meeting.group;
-        // get members of the group and create attendees
-        [self performSelectorInBackground:@selector(findGroupMembersAndCreateAttendeesForGroup:) withObject:group];
-    } else {
-        // not first meeting time
-        // update existing
-    }
-}
-
-- (void)findGroupMembersAndCreateAttendeesForGroup:(PTGroup *)group {
-    PFQuery *query = [PTMembership query];
-    [query whereKey:@"group" equalTo:group];
-    [query includeKey:@"user"];
-    
-    NSError *error;
-    NSArray *memberships = [query findObjects:&error];
-    
-    if (error) {
-        return;
-    }
-    
-    NSMutableArray *attendees = [NSMutableArray array];
-    for (PTMembership *membership in memberships) {
-        PFUser *user = membership.user;
-        PFQuery *query = [PTMeetingAttendee query];
-        [query whereKey:@"user" equalTo:user];
-        [query whereKey:@"meeting" equalTo:self.meeting];
-        
-        NSError *error;
-        PFObject *object = [query getFirstObject:&error];
-        
-        if (object) {
-            // create the MeetingAttendee object if one does not already exist for this user and meeting
-            PTMeetingAttendee *attendee = [PTMeetingAttendee meetingAttendeeWithUser:user meeting:self.meeting];
-            [attendees addObject:attendee];
-        }
-    }
-    
-    [PFObject saveAllInBackground:attendees block:^(BOOL succeeded, NSError *error) {
-        if (error) {
-            // delete meeting time?
-            [self performSelectorOnMainThread:@selector(showCreationErrorAlertWithError:) withObject:error waitUntilDone:YES];
-            return;
-        }
-    }];
 }
 
 - (void)showCreationErrorAlertWithError:(NSError *)error {

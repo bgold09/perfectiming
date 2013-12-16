@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, PTMeetingAttendeeAvailability) {
 @property (retain) PTMeeting *meeting;
 @property (retain) PFUser *user;
 @property (retain) NSString *availability;
+@property BOOL isAvailable;
 @property BOOL isRequiredAttendee;
 
 + (NSString *)parseClassName;

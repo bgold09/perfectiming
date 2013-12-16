@@ -15,6 +15,7 @@
 @dynamic meeting;
 @dynamic user;
 @dynamic availability;
+@dynamic isAvailable;
 @dynamic isRequiredAttendee;
 
 + (NSString *)parseClassName {
@@ -25,6 +26,7 @@
     PTMeetingAttendee *attendee = [PTMeetingAttendee object];
     attendee.user = user;
     attendee.meeting = meeting;
+    attendee.isAvailable = NO;
     
     PFACL *ACL = [PFACL ACL];
     ACL.publicReadAccess = YES;
