@@ -16,9 +16,7 @@
     UINavigationBar *bar = [self.navigationController navigationBar];
     [bar setTintColor: [Constants tintColor]];
     
-    self.navigationItem.rightBarButtonItems = @[self.editButtonItem];
     [self placeMenuButton];
-    
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 

@@ -38,6 +38,7 @@
     [super viewDidLoad];
     
     [self setUpForFrontReveal];
+    self.navigationItem.rightBarButtonItems = @[self.editButtonItem];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTGroupAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTGroupDeletedNotification object:nil];

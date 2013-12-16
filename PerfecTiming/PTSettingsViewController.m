@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self setUpForFrontReveal];
     [self setFields:nil];
     

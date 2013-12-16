@@ -41,6 +41,7 @@
     [super viewDidLoad];
     
     [self setUpForFrontReveal];
+    self.navigationItem.rightBarButtonItems = @[self.editButtonItem];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMembershipAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTUserLoggedOutNotification object:nil];
