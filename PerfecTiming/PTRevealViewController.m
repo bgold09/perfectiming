@@ -40,6 +40,7 @@
     if (![PFUser currentUser]) {
         PFLogInViewController *logInViewController = [[PFLogInViewController alloc] init];
         logInViewController.delegate = self;
+        [logInViewController.logInView.passwordForgottenButton setHidden:YES];
         [logInViewController.logInView.dismissButton setHidden:YES];
 
         UIImage *logo = [UIImage imageNamed:@"PerfecTiming"];
