@@ -9,6 +9,7 @@
 #import "PTEditSettingsViewController.h"
 #import <Parse/Parse.h>
 #import "NSString+Email.h"
+#import "MBProgressHUD.h"
 #import "Constants.h"
 
 @interface PTEditSettingsViewController ()
@@ -73,14 +74,20 @@
 }
 
 - (IBAction)savePressed:(id)sender {
+    [self.nameField resignFirstResponder];
+    [self.emailField resignFirstResponder];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading...";
+    
     PFUser *user = [PFUser currentUser];
     [user setEmail:self.emailField.text];
     [user setObject:self.nameField.text forKey:@"name"];
     
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:NO];
-            [self performSelectorOnMainThread:@selector(dismiss) withObject:nil waitUntilDone:NO];
+            [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:YES];
             return;
         }
         
@@ -96,6 +103,8 @@
 - (void)fireNotification {
     // update the displayed account information for the logged in user
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTUserSettingsChangedNotification object:nil];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self performSelectorOnMainThread:@selector(dismiss) withObject:nil waitUntilDone:NO];
 }
 
 - (void)dismiss {
