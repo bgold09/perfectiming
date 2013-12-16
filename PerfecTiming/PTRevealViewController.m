@@ -34,6 +34,20 @@
     [self presentWelcomeView];
 }
 
+- (void)setupLoggedInUser:(PFUser *)user {
+    PFInstallation *installation = [PFInstallation currentInstallation];
+    [installation setObject:[PFUser currentUser] forKey:@"user"];
+
+    NSArray *channels = [user objectForKey:kPTUserChannelsKey];
+    if (channels) {
+        [installation addUniqueObjectsFromArray:channels forKey:kPTUserChannelsKey];
+    }
+
+    [installation saveEventually];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPTUserLoggedInNotification object:nil];
+}
+
 #pragma mark - Public Methods
 
 - (void)presentWelcomeView {
@@ -72,17 +86,7 @@
 }
 
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    PFInstallation *installation = [PFInstallation currentInstallation];
-    [installation setObject:[PFUser currentUser] forKey:@"user"];
-    
-    NSArray *channels = [user objectForKey:kPTUserChannelsKey];
-    if (channels) {
-        [installation addUniqueObjectsFromArray:channels forKey:kPTUserChannelsKey];
-    }
-    
-    [installation saveEventually];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPTUserLoggedInNotification object:nil];
+    [self setupLoggedInUser:user];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -115,7 +119,8 @@
     return informationComplete;
 }
 
-- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {   
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    [self setupLoggedInUser:user];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
