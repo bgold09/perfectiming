@@ -9,6 +9,7 @@
 #import "PTMembershipViewController.h"
 #import "PTRevealViewController.h"
 #import "PTMembershipMeetingsViewController.h"
+#import "PTMembershipInfoViewController.h"
 #import "PTMembership.h"
 #import "PTPushModel.h"
 #import "PTMembershipModel.h"
@@ -16,6 +17,7 @@
 
 @interface PTMembershipViewController ()
 @property (strong, nonatomic) NSIndexPath *deleteIndexPath;
+@property (strong, nonatomic) NSIndexPath *infoIndexPath;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @end
@@ -71,6 +73,7 @@
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query includeKey:@"group"];
+    [query includeKey:@"group.manager"];
     
     // If Pull To Refresh is enabled, query against the network by default.
     if (self.pullToRefreshEnabled) {
@@ -132,6 +135,10 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    self.infoIndexPath = indexPath;
+}
+
 #pragma mark - UIAlertView Delegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -188,6 +195,11 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PTMembership *membership = (PTMembership *) [self objectAtIndexPath:indexPath];
         meetingsViewController.group = membership.group;
+    } else if ([segue.identifier isEqualToString:@"MembershipInfoSegue"]) {
+        PTMembershipInfoViewController *infoViewController = segue.destinationViewController;
+        PTMembership *membership = (PTMembership *) [self objectAtIndexPath:self.infoIndexPath];
+        PTGroup *group = membership.group;
+        infoViewController.group = group;
     }
 }
 

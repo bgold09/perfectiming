@@ -950,7 +950,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="x40-Bk-pEO" kind="push" identifier="MembershipMeetingsSegue" id="w6R-I6-5h7"/>
-                                    <segue destination="kHj-o3-5XY" kind="push" trigger="accessoryAction" id="dMe-Us-iwe"/>
+                                    <segue destination="kHj-o3-5XY" kind="push" identifier="MembershipInfoSegue" trigger="accessoryAction" id="dMe-Us-iwe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1225,10 +1225,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-1881" y="469"/>
         </scene>
-        <!--Table View Controller - Group Info-->
+        <!--Membership Info View Controller - Group Info-->
         <scene sceneID="zxX-1U-p3I">
             <objects>
-                <tableViewController id="kHj-o3-5XY" sceneMemberID="viewController">
+                <tableViewController id="kHj-o3-5XY" customClass="PTMembershipInfoViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="qCu-pJ-onc">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1297,6 +1297,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Group Info" id="Ke0-3b-exm"/>
+                    <connections>
+                        <outlet property="groupNameCell" destination="Cvu-HB-aJD" id="RYl-Hd-C78"/>
+                        <outlet property="managerCell" destination="C7I-Zc-tp5" id="Qn4-Hb-fok"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3uD-rQ-tsK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
