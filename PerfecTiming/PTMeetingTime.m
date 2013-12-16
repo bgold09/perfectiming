@@ -110,7 +110,11 @@
         }
     }
     
-    CGFloat percentage = (CGFloat) count / (CGFloat) attendees.count;
+    CGFloat percentage = 0.0;
+    if (attendees.count > 0) {
+        percentage = (CGFloat) count / (CGFloat) attendees.count;
+    }
+    
     NSNumber *percentageNumber = [NSNumber numberWithFloat:percentage];
     NSNumber *unrespondedNumber = [NSNumber numberWithInteger:unresponded];
     NSDictionary *dictionary = @{@"percentage": percentageNumber, @"unresponded": unrespondedNumber};
