@@ -13,31 +13,23 @@
 
 @implementation PTMeetingAvailabilityModel
 
-+ (id)sharedInstance {
-    static id singleton = nil;
-    if (!singleton) {
-        singleton = [[self alloc] init];
-    }
-    return singleton;
-}
-
-- (void)buildAvailabilityForMeeting:(PTMeeting *)meeting calendarStore:(EKEventStore *)eventStore calendars:(NSSet *)calendars {
++ (void)buildAvailabilityForMeeting:(PTMeeting *)meeting calendarStore:(EKEventStore *)eventStore calendars:(NSSet *)calendars {
     PFQuery *query = [PTMeetingTime query];
     [query whereKey:@"meeting" equalTo:meeting];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (error) {
-            [self performSelectorOnMainThread:@selector(fireAvailabilityFailedNotification) withObject:nil waitUntilDone:YES];
+            [PTMeetingAvailabilityModel performSelectorOnMainThread:@selector(fireAvailabilityFailedNotification) withObject:nil waitUntilDone:YES];
             return;
         }
         
         if (objects) {
-            [self buildAvailabilityForMeeting:meeting meetingTimes:objects calendarStore:eventStore calendars:calendars];
+            [PTMeetingAvailabilityModel buildAvailabilityForMeeting:meeting meetingTimes:objects calendarStore:eventStore calendars:calendars];
         }
     }];
 }
 
-- (void)sendAvailabilityForMeetingAttendee:(PTMeetingAttendee *)attendee availability:(NSDictionary *)availability {
++ (void)sendAvailabilityForMeetingAttendee:(PTMeetingAttendee *)attendee availability:(NSDictionary *)availability {
     NSError *error;
     NSData *data = [NSJSONSerialization dataWithJSONObject:availability
                                                        options:0
@@ -53,12 +45,12 @@
         [attendee saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {
                 attendee.availability = originalAvailability;
-                [self performSelectorOnMainThread:@selector(fireAvailabilityFailedNotification) withObject:nil waitUntilDone:NO];
+                [PTMeetingAvailabilityModel performSelectorOnMainThread:@selector(fireAvailabilityFailedNotification) withObject:nil waitUntilDone:NO];
                 return;
             }
             
             if (succeeded) {
-                [self performSelectorOnMainThread:@selector(fireAvailabilitySentNotificationForMeeting:) withObject:attendee.meeting waitUntilDone:NO];
+                [PTMeetingAvailabilityModel performSelectorOnMainThread:@selector(fireAvailabilitySentNotificationForMeeting:) withObject:attendee.meeting waitUntilDone:NO];
             }
         }];
     }
@@ -66,7 +58,7 @@
 
 #pragma mark - Private Methods
 
-- (void)buildAvailabilityForMeeting:(PTMeeting *)meeting meetingTimes:(NSArray *)meetingTimes calendarStore:(EKEventStore *)eventStore calendars:(NSSet *)calendars {
++ (void)buildAvailabilityForMeeting:(PTMeeting *)meeting meetingTimes:(NSArray *)meetingTimes calendarStore:(EKEventStore *)eventStore calendars:(NSSet *)calendars {
     NSMutableDictionary *availability = [NSMutableDictionary dictionary];
     
     for (PTMeetingTime *meetingTime in meetingTimes) {
@@ -95,20 +87,20 @@
         }
     }
     
-    [self performSelectorOnMainThread:@selector(fireAvailabilityNotificationWithDictionary:) withObject:availability waitUntilDone:YES];
+    [PTMeetingAvailabilityModel performSelectorOnMainThread:@selector(fireAvailabilityNotificationWithDictionary:) withObject:availability waitUntilDone:YES];
 }
 
 #pragma mark - Notifications
 
-- (void)fireAvailabilityFailedNotification {
++ (void)fireAvailabilityFailedNotification {
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTAvailabilityFailedNotification object:nil];
 }
 
-- (void)fireAvailabilitySentNotificationForMeeting:(PTMeeting *)meeting {
++ (void)fireAvailabilitySentNotificationForMeeting:(PTMeeting *)meeting {
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTAvailabilitySentNotification object:meeting];
 }
 
-- (void)fireAvailabilityNotificationWithDictionary:(NSDictionary *)dictionary {
++ (void)fireAvailabilityNotificationWithDictionary:(NSDictionary *)dictionary {
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTAvailabilityReadyNotification object:dictionary];
 }
 

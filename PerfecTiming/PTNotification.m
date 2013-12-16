@@ -22,29 +22,22 @@
 }
 
 + (PTNotification *)notificationForUser:(PFUser *)user message:(NSString *)message pushType:(PTPushType)pushType object:(PFObject *)object {
-    PTNotification *notification = [[PTNotification alloc] initWithUser:user message:message pushType:pushType object:object];
-    return notification;
-}
-
-- (id)initWithUser:(PFUser *)user message:(NSString *)message pushType:(PTPushType)pushType object:(PFObject *)object {
-    self = [PTNotification object];
-    if (self) {
-        self.user = user;
-        self.message = message;
-        self.pushType = pushType;
-        self.read = NO;
-
-        if (object) {
-            self.notificationObject = object.objectId;
-        }
-        
-        PFACL *ACL = [PFACL ACL];
-        ACL.publicReadAccess = YES;
-        ACL.publicWriteAccess = YES;
-        self.ACL = ACL;
+    PTNotification *notification = [PTNotification object];
+    notification.user = user;
+    notification.message = message;
+    notification.pushType = pushType;
+    notification.read = NO;
+    
+    if (object) {
+        notification.notificationObject = object.objectId;
     }
     
-    return self;
+    PFACL *ACL = [PFACL ACL];
+    ACL.publicReadAccess = YES;
+    ACL.publicWriteAccess = YES;
+    notification.ACL = ACL;
+    
+    return notification;
 }
 
 - (void)clearNotification {

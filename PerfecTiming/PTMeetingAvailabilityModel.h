@@ -13,8 +13,7 @@
 
 @interface PTMeetingAvailabilityModel : NSObject
 
-+ (id)sharedInstance;
-- (void)buildAvailabilityForMeeting:(PTMeeting *)meeting calendarStore:(EKEventStore *)eventStore calendars:(NSSet *)calendars;
-- (void)sendAvailabilityForMeetingAttendee:(PTMeetingAttendee *)attendee availability:(NSDictionary *)availability;
++ (void)buildAvailabilityForMeeting:(PTMeeting *)meeting calendarStore:(EKEventStore *)eventStore calendars:(NSSet *)calendars;
++ (void)sendAvailabilityForMeetingAttendee:(PTMeetingAttendee *)attendee availability:(NSDictionary *)availability;
 
 @end

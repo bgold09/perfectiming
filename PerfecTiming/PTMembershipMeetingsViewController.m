@@ -13,7 +13,6 @@
 #import "Constants.h"
 
 @interface PTMembershipMeetingsViewController ()
-@property (strong, nonatomic) PTMeetingAvailabilityModel *availabilityModel;
 @property (strong, nonatomic) NSIndexPath *attendeeIndexPath;
 @property (strong, nonatomic) EKEventStore *eventStore;
 
@@ -28,7 +27,6 @@
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.objectsPerPage = 25;
-        _availabilityModel = [PTMeetingAvailabilityModel sharedInstance];
     }
     
     return self;
@@ -67,7 +65,7 @@
 - (void)sendAvailability:(NSNotification *)notification {
     NSDictionary *dictionary = notification.object;
     PTMeetingAttendee *attendee = (PTMeetingAttendee *) [self objectAtIndexPath:self.attendeeIndexPath];
-    [self.availabilityModel sendAvailabilityForMeetingAttendee:attendee availability:dictionary];
+    [PTMeetingAvailabilityModel sendAvailabilityForMeetingAttendee:attendee availability:dictionary];
 }
 
 #pragma mark - PFQueryTableViewController Delegate
@@ -190,7 +188,7 @@
     PTMeetingAttendee *attendee = (PTMeetingAttendee *) [self objectAtIndexPath:self.attendeeIndexPath];
     PTMeeting *meeting = attendee.meeting;
     
-    [self.availabilityModel buildAvailabilityForMeeting:meeting calendarStore:self.eventStore calendars:calendarChooser.selectedCalendars];
+    [PTMeetingAvailabilityModel buildAvailabilityForMeeting:meeting calendarStore:self.eventStore calendars:calendarChooser.selectedCalendars];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

@@ -18,7 +18,6 @@
 @property PTPushType pushType;
 
 + (PTNotification *)notificationForUser:(PFUser *)user message:(NSString *)message pushType:(PTPushType)pushType object:(PFObject *)object;
-- (id)initWithUser:(PFUser *)user message:(NSString *)message pushType:(PTPushType)pushType object:(PFObject *)object;
 - (void)clearNotification;
 - (void)markRead;
 
