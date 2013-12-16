@@ -40,6 +40,7 @@
 		2FAD306F185E9AF200B06B49 /* PTMembershipInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD306E185E9AF200B06B49 /* PTMembershipInfoViewController.m */; };
 		2FAD3072185E9F2C00B06B49 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD3070185E9F2C00B06B49 /* Default~iphone.png */; };
 		2FAD3073185E9F2C00B06B49 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD3071185E9F2C00B06B49 /* Default.png */; };
+		2FAD3079185F920700B06B49 /* UIViewController+FrontRevealSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD3078185F920700B06B49 /* UIViewController+FrontRevealSetup.m */; };
 		2FAEB12518558C3F0066B1D3 /* PTMeetingTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAEB12418558C3F0066B1D3 /* PTMeetingTimeCell.m */; };
 		2FAEB127185636ED0066B1D3 /* PTMeetingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FAEB126185636ED0066B1D3 /* PTMeetingTimeCell.xib */; };
 		2FAEB1491856DF120066B1D3 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FAEB13F1856DF120066B1D3 /* Icon-72.png */; };
@@ -157,6 +158,8 @@
 		2FAD306E185E9AF200B06B49 /* PTMembershipInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMembershipInfoViewController.m; sourceTree = "<group>"; };
 		2FAD3070185E9F2C00B06B49 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
 		2FAD3071185E9F2C00B06B49 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2FAD3077185F920700B06B49 /* UIViewController+FrontRevealSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+FrontRevealSetup.h"; sourceTree = "<group>"; };
+		2FAD3078185F920700B06B49 /* UIViewController+FrontRevealSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+FrontRevealSetup.m"; sourceTree = "<group>"; };
 		2FAEB12318558C3F0066B1D3 /* PTMeetingTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMeetingTimeCell.h; sourceTree = "<group>"; };
 		2FAEB12418558C3F0066B1D3 /* PTMeetingTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingTimeCell.m; sourceTree = "<group>"; };
 		2FAEB126185636ED0066B1D3 /* PTMeetingTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTMeetingTimeCell.xib; sourceTree = "<group>"; };
@@ -503,6 +506,8 @@
 				C811084F1831AF690045BD85 /* PTRevealViewController.m */,
 				C83C85D0182DBA890028A722 /* PTSidebarViewController.h */,
 				C83C85D1182DBA8A0028A722 /* PTSidebarViewController.m */,
+				2FAD3077185F920700B06B49 /* UIViewController+FrontRevealSetup.h */,
+				2FAD3078185F920700B06B49 /* UIViewController+FrontRevealSetup.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -650,6 +655,7 @@
 				C830B9A51832E2C2000FFD65 /* PTAddManagedGroupViewController.m in Sources */,
 				2F63EF5E183ABF2B004137C7 /* PTGroupMembersViewController.m in Sources */,
 				2FAD306C185C2BF800B06B49 /* PTNotification.m in Sources */,
+				2FAD3079185F920700B06B49 /* UIViewController+FrontRevealSetup.m in Sources */,
 				2F63EF7C183C5290004137C7 /* PTMeetingAttendeeAvailabilitiesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

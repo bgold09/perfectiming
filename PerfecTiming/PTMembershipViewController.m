@@ -7,6 +7,7 @@
 //
 
 #import "PTMembershipViewController.h"
+#import "UIViewController+FrontRevealSetup.h"
 #import "PTRevealViewController.h"
 #import "PTMembershipMeetingsViewController.h"
 #import "PTMembershipInfoViewController.h"
@@ -39,22 +40,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UINavigationBar *bar = [self.navigationController navigationBar];
-    [bar setTintColor: [Constants tintColor]];
-    
-    self.navigationItem.rightBarButtonItems = @[self.editButtonItem];
-    [self placeMenuButton];
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    [self setUpForFrontReveal];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTMembershipAddedNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTUserLoggedOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTable:) name:kPTUserLoggedInNotification object:nil];
-}
-
-- (void)placeMenuButton {
-    UIImage *menuImage = [UIImage imageNamed:@"menu.png"];
-    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:menuImage style:UIBarButtonItemStyleBordered target:self.revealViewController action:@selector(revealToggle:)];
-    [self.navigationItem setLeftBarButtonItems:@[menuButton] animated:YES];
 }
 
 #pragma mark - Notifcation Handlers

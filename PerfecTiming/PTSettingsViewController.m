@@ -7,6 +7,7 @@
 //
 
 #import "PTSettingsViewController.h"
+#import "UIViewController+FrontRevealSetup.h"
 #import "PTEditSettingsViewController.h"
 #import "PTRevealViewController.h"
 #import <Parse/Parse.h>
@@ -36,13 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UINavigationBar *bar = [self.navigationController navigationBar];
-    [bar setTintColor: [Constants tintColor]];
-    
-    self.menuButton.target = self.revealViewController;
-    self.menuButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
+    [self setUpForFrontReveal];
     [self setFields:nil];
     
     UIView *backView = [[UIView alloc] initWithFrame:CGRectZero];
