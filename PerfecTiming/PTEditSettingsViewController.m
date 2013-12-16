@@ -94,6 +94,7 @@
 }
 
 - (void)fireNotification {
+    // update the displayed account information for the logged in user
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTUserSettingsChangedNotification object:nil];
 }
 

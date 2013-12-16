@@ -68,7 +68,7 @@
 
 #pragma mark - Private Methods
 
-// uses synchronous methods, dispatch in background
+// !! uses synchronous methods, dispatch on background thread
 - (void)getAvailability {
     PFQuery *attendeesQuery = [PTMeetingAttendee query];
     [attendeesQuery whereKey:@"meeting" equalTo:self.meeting];
@@ -122,6 +122,7 @@
 }
 
 - (void)fireNotificationWithPercentage:(NSNumber *)percentage {
+    // update cell for this meeting time
     NSString *notificationName = [self availabilityReadyForMeetingTimeNotificationName];
     [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:percentage];
 }

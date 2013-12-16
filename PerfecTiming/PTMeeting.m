@@ -35,6 +35,7 @@
     return meeting;
 }
 
+// create meeting attendee objects for this meeting, for all members of the group
 - (void)createAttendees {
     [self performSelectorInBackground:@selector(backgroundCreateAttendees) withObject:nil];
 }
@@ -49,7 +50,7 @@
 
 #pragma mark - Private methods
 
-// uses synchronous methods, dispatch on background thread
+// !! uses synchronous methods, dispatch on background thread
 - (void)backgroundCreateAttendees {
     PFQuery *membershipQuery = [PTMembership query];
     [membershipQuery whereKey:@"group" equalTo:self.group];
@@ -74,7 +75,7 @@
     }
 }
 
-// uses synchronous methods, dispatch on background thread
+// !! uses synchronous methods, dispatch on background thread
 - (void)backgroundCleanup {
     PFQuery *meetingTimesQuery = [PTMeetingTime query];
     [meetingTimesQuery whereKey:@"meeting" equalTo:self];

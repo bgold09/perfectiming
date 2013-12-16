@@ -70,6 +70,7 @@
 }
 
 - (void)fireNotification {
+    // bring up the log in view
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTUserLoggedOutNotification object:self];
 }
 

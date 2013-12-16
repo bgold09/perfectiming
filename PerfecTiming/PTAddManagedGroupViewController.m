@@ -11,9 +11,6 @@
 #import "PTGroup.h"
 #import "Constants.h"
 
-#define kPINLowerBound 1000
-#define kPINUpperBound 9999
-
 @interface PTAddManagedGroupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *groupNameField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
@@ -34,7 +31,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.groupNameField];
 }
 
-// calls synchronous functions; should be dispatched on background thread
+// !! uses synchronous methods, dispatch on background thread
 - (void)checkAndCreateManagedGroup {
     NSString *groupName = [self.groupNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
@@ -52,10 +49,7 @@
         return;
     }
     
-    // generate a PIN for the group, used for users to join the group
-    NSInteger pin = kPINLowerBound + arc4random() % (kPINUpperBound - kPINLowerBound);
-    
-    PTGroup *group = [[PTGroup alloc] initWithName:groupName manager:[PFUser currentUser] pin:pin];
+    PTGroup *group = [PTGroup groupWithName:groupName manager:[PFUser currentUser]];
     if (![group save:&error]) {
         [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
         return;
@@ -67,6 +61,7 @@
 }
 
 - (void)fireNotification {
+    // update user's managed groups
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTGroupAddedNotification object:self];
 }
 

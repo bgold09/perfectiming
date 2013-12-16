@@ -15,8 +15,7 @@
 @property NSInteger pin;
 
 + (NSString *)parseClassName;
-+ (BOOL)groupExistsWithName:(NSString *)name;
-- (id)initWithName:(NSString *)name manager:(PFUser *)manager pin:(NSInteger)pin;
++ (PTGroup *)groupWithName:(NSString *)name manager:(PFUser *)manager;
 - (void)cleanup;
 - (NSComparisonResult)compareToGroup:(PTGroup *)group;
 - (NSString *)channelName;

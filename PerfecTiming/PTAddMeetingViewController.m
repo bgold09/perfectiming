@@ -81,6 +81,7 @@
 }
 
 - (void)fireNotification {
+    // update user's managed meetings for this group
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTMeetingAddedNotification object:self];
 }
 

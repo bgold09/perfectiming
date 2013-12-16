@@ -52,7 +52,7 @@ static NSString * const kBadgeKey = @"badge";
 
 #pragma mark - Private methods
 
-// uses synchronous methods, dispatch on background thread
+// !! uses synchronous methods, dispatch on background thread
 + (void)backgroundPushToAttendeesForMeetingTime:(PTMeetingTime *)meetingTime {
     PTMeeting *meeting = (PTMeeting *) [meetingTime.meeting fetchIfNeeded];
     PTGroup *group = (PTGroup *) [meeting.group fetchIfNeeded];

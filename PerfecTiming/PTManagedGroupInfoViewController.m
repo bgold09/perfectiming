@@ -43,6 +43,7 @@
 }
 
 - (void)fireNotification {
+    // update user's managed groups table
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTGroupDeletedNotification object:self];
 }
 

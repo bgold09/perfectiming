@@ -11,6 +11,9 @@
 #import "PTMembership.h"
 #import "PTMeetingAttendee.h"
 
+#define kPINLowerBound 1000
+#define kPINUpperBound 9999
+
 @implementation PTGroup
 
 @dynamic name;
@@ -21,42 +24,24 @@
     return @"Group";
 }
 
-+ (BOOL)groupExistsWithName:(NSString *)name {
-    PFQuery *query = [PFQuery queryWithClassName:[self parseClassName]];
-    [query whereKey:@"name" equalTo:name];
++ (PTGroup *)groupWithName:(NSString *)name manager:(PFUser *)manager {
+    PTGroup *group = [PTGroup object];
+    group.name = name;
+    group.manager = manager;
     
-    NSError *error;
-    NSInteger count = [query countObjects:&error];
+    // generate a PIN for the group, used for users to join the group
+    NSInteger pin = kPINLowerBound + arc4random() % (kPINUpperBound - kPINLowerBound);
+    group.pin = pin;
     
-    if (error) {
-        NSLog(@"%@", error);
-        return NO;
-    }
+    PFACL *ACL = [PFACL ACL];
+    ACL.publicReadAccess = YES;
+    ACL.publicWriteAccess = YES;
+    group.ACL = ACL;
     
-    if (count > 0) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return group;
 }
 
-- (id)initWithName:(NSString *)name manager:(PFUser *)manager pin:(NSInteger)pin {
-    self = [PTGroup object];
-    
-    if (self) {
-        self.name = name;
-        self.manager = manager;
-        self.pin = pin;
-        
-        PFACL *ACL = [PFACL ACL];
-        ACL.publicReadAccess = YES;
-        ACL.publicWriteAccess = YES;
-        self.ACL = ACL;
-    }
-    
-    return self;
-}
-
+// delete meetings, meeting times, memberships, attendees
 - (void)cleanup {
     [self performSelectorInBackground:@selector(backgroundCleanup) withObject:nil];
 }
@@ -71,10 +56,8 @@
 
 #pragma mark - Private methods
 
-// uses synchronous methods, dispatch on background thread
+// !! uses synchronous methods, dispatch on background thread
 - (void)backgroundCleanup {
-    // delete meetings, meeting times, memberships, attendees
-    
     PFQuery *membershipQuery = [PTMembership query];
     [membershipQuery whereKey:@"group" equalTo:self];
     

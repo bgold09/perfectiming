@@ -149,7 +149,7 @@
     }
 }
 
-// uses synchronous methods, dispatch on background thread
+// !! uses synchronous methods, dispatch on background thread
 - (void)displayEventCreationViewController:(NSDictionary *)dictionary {
     EKEventEditViewController *editViewController = [[EKEventEditViewController alloc] init];
     editViewController.editViewDelegate = self;

@@ -47,7 +47,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textInputChanged:) name:UITextFieldTextDidChangeNotification object:self.pinField];
 }
 
-// calls synchronous methods; should be dispatched on background thread
+// !! uses synchronous methods, dispatch on background thread
 - (void)createGroupMembership {
     NSString *groupName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
@@ -157,12 +157,14 @@
 #pragma mark - Notifications
 
 - (void)fireNotification:(PTGroup *)group {
+    // inform group manager that a new user joined the group
     PFUser *user = [PFUser currentUser];
-    NSString *message =[NSString stringWithFormat:@"User %@ joined your group '%@'", user.username, group.name];
+    NSString *message = [NSString stringWithFormat:@"User %@ joined your group '%@'", user.username, group.name];
     [PTPushModel sendPushToManagerForGroup:group message:message pushType:PTPushTypeGroupUserJoined];
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
+    // update user's memberships table
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTMembershipAddedNotification object:self];
 }
 
