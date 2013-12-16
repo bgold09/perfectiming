@@ -58,6 +58,7 @@
             }
             
             if (succeeded) {
+                
                 [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:YES];
             }
         }];

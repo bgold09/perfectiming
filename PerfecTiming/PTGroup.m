@@ -8,6 +8,8 @@
 
 #import "PTGroup.h"
 #import <Parse/PFObject+Subclass.h>
+#import "PTMembership.h"
+#import "PTMeetingAttendee.h"
 
 @implementation PTGroup
 
@@ -55,12 +57,57 @@
     return self;
 }
 
+- (void)cleanup {
+    [self performSelectorInBackground:@selector(backgroundCleanup) withObject:nil];
+}
+
 - (NSComparisonResult)compareToGroup:(PTGroup *)group {
     return [self.name compare:group.name];
 }
 
 - (NSString *)channelName {
     return [self.name stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+}
+
+#pragma mark - Private methods
+
+// uses synchronous methods, dispatch on background thread
+- (void)backgroundCleanup {
+    // delete meetings, meeting times, memberships, attendees
+    
+    PFQuery *membershipQuery = [PTMembership query];
+    [membershipQuery whereKey:@"group" equalTo:self];
+    
+    NSError *error;
+    NSArray *memberships = [membershipQuery findObjects:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    [PFObject deleteAll:memberships error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    PFQuery *meetingsQuery = [PTMeeting query];
+    [meetingsQuery whereKey:@"group" equalTo:self];
+    NSArray *meetings = [meetingsQuery findObjects:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    for (PTMeeting *meeting in meetings) {
+        [meeting cleanup];
+    }
+    
+    [PFObject deleteAll:meetings error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
 }
 
 @end

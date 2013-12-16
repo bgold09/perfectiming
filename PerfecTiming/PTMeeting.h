@@ -18,6 +18,7 @@
 + (NSString *)parseClassName;
 + (PTMeeting *)meetingWithName:(NSString *)name group:(PTGroup *)group location:(NSString *)location;
 - (void)createAttendees;
+- (void)cleanup;
 - (NSComparisonResult)compareToMeeting:(PTMeeting *)meeting;
 
 @end

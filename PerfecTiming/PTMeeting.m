@@ -39,12 +39,17 @@
     [self performSelectorInBackground:@selector(backgroundCreateAttendees) withObject:nil];
 }
 
+- (void)cleanup {
+    [self performSelectorInBackground:@selector(backgroundCleanup) withObject:nil];
+}
+
 - (NSComparisonResult)compareToMeeting:(PTMeeting *)meeting {
     return [self.name compare:meeting.name];
 }
 
 #pragma mark - Private methods
 
+// uses synchronous methods, dispatch on background thread
 - (void)backgroundCreateAttendees {
     PFQuery *membershipQuery = [PTMembership query];
     [membershipQuery whereKey:@"group" equalTo:self.group];
@@ -63,6 +68,39 @@
     }
     
     [PFObject saveAll:attendees error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+}
+
+// uses synchronous methods, dispatch on background thread
+- (void)backgroundCleanup {
+    PFQuery *meetingTimesQuery = [PTMeetingTime query];
+    [meetingTimesQuery whereKey:@"meeting" equalTo:self];
+    
+    NSError *error;
+    NSArray *meetingTimes = [meetingTimesQuery findObjects:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    [PFObject deleteAll:meetingTimes error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    PFQuery *attendeesQuery = [PTMeetingAttendee query];
+    [attendeesQuery whereKey:@"meeting" equalTo:self];
+    NSArray *meetingAttendees = [attendeesQuery findObjects:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    [PFObject deleteAll:meetingAttendees error:&error];
     if (error) {
         NSLog(@"%@", error);
         return;

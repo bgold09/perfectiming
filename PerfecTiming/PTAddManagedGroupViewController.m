@@ -43,7 +43,6 @@
     
     NSError *error;
     NSInteger count = [query countObjects:&error];
-    
     if (error) {
         [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
         return;
@@ -53,6 +52,7 @@
         return;
     }
     
+    // generate a PIN for the group, used for users to join the group
     NSInteger pin = kPINLowerBound + arc4random() % (kPINUpperBound - kPINLowerBound);
     
     PTGroup *group = [[PTGroup alloc] initWithName:groupName manager:[PFUser currentUser] pin:pin];
