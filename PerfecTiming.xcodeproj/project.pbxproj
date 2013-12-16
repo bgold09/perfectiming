@@ -38,6 +38,8 @@
 		2FAD3069185C2B5D00B06B49 /* PTNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD3068185C2B5D00B06B49 /* PTNotificationsViewController.m */; };
 		2FAD306C185C2BF800B06B49 /* PTNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD306B185C2BF800B06B49 /* PTNotification.m */; };
 		2FAD306F185E9AF200B06B49 /* PTMembershipInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAD306E185E9AF200B06B49 /* PTMembershipInfoViewController.m */; };
+		2FAD3072185E9F2C00B06B49 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD3070185E9F2C00B06B49 /* Default~iphone.png */; };
+		2FAD3073185E9F2C00B06B49 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD3071185E9F2C00B06B49 /* Default.png */; };
 		2FAEB12518558C3F0066B1D3 /* PTMeetingTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FAEB12418558C3F0066B1D3 /* PTMeetingTimeCell.m */; };
 		2FAEB127185636ED0066B1D3 /* PTMeetingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FAEB126185636ED0066B1D3 /* PTMeetingTimeCell.xib */; };
 		2FAEB1491856DF120066B1D3 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FAEB13F1856DF120066B1D3 /* Icon-72.png */; };
@@ -80,8 +82,6 @@
 		C86268DC1828781C0092B910 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C86268DA1828781C0092B910 /* InfoPlist.strings */; };
 		C86268DE1828781C0092B910 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C86268DD1828781C0092B910 /* main.m */; };
 		C86268E21828781C0092B910 /* PTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C86268E11828781C0092B910 /* PTAppDelegate.m */; };
-		C86268E41828781C0092B910 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C86268E31828781C0092B910 /* Default.png */; };
-		C86268E61828781C0092B910 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86268E51828781C0092B910 /* Default@2x.png */; };
 		C86268E81828781C0092B910 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C86268E71828781C0092B910 /* Default-568h@2x.png */; };
 		C86268EB1828781C0092B910 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86268E91828781C0092B910 /* MainStoryboard.storyboard */; };
 		C86268F5182878900092B910 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86268F4182878900092B910 /* Parse.framework */; };
@@ -155,6 +155,8 @@
 		2FAD306B185C2BF800B06B49 /* PTNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTNotification.m; sourceTree = "<group>"; };
 		2FAD306D185E9AF200B06B49 /* PTMembershipInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMembershipInfoViewController.h; sourceTree = "<group>"; };
 		2FAD306E185E9AF200B06B49 /* PTMembershipInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMembershipInfoViewController.m; sourceTree = "<group>"; };
+		2FAD3070185E9F2C00B06B49 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
+		2FAD3071185E9F2C00B06B49 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2FAEB12318558C3F0066B1D3 /* PTMeetingTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTMeetingTimeCell.h; sourceTree = "<group>"; };
 		2FAEB12418558C3F0066B1D3 /* PTMeetingTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTMeetingTimeCell.m; sourceTree = "<group>"; };
 		2FAEB126185636ED0066B1D3 /* PTMeetingTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PTMeetingTimeCell.xib; sourceTree = "<group>"; };
@@ -211,8 +213,6 @@
 		C86268DF1828781C0092B910 /* PerfecTiming-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PerfecTiming-Prefix.pch"; sourceTree = "<group>"; };
 		C86268E01828781C0092B910 /* PTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PTAppDelegate.h; sourceTree = "<group>"; };
 		C86268E11828781C0092B910 /* PTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PTAppDelegate.m; sourceTree = "<group>"; };
-		C86268E31828781C0092B910 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		C86268E51828781C0092B910 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C86268E71828781C0092B910 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C86268EA1828781C0092B910 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C86268F4182878900092B910 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -380,16 +380,18 @@
 		C83C859E182DADB40028A722 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				C83C85C0182DB6210028A722 /* menu.png */,
-				C83C85C1182DB6210028A722 /* menu@2x.png */,
 				C83C859F182DADB40028A722 /* Book.png */,
 				C83C85A0182DADB40028A722 /* Calendar.png */,
 				C83C85A2182DADB40028A722 /* Clipboard.png */,
 				C83C85A3182DADB40028A722 /* Compas.png */,
 				C83C85A4182DADB40028A722 /* Gift-Box.png */,
 				C83C85A5182DADB40028A722 /* Infinity-Loop.png */,
+				2FAD3070185E9F2C00B06B49 /* Default~iphone.png */,
+				2FAD3071185E9F2C00B06B49 /* Default.png */,
 				C83C85A6182DADB40028A722 /* Mail.png */,
 				C83C85A7182DADB40028A722 /* Map.png */,
+				C83C85C0182DB6210028A722 /* menu.png */,
+				C83C85C1182DB6210028A722 /* menu@2x.png */,
 				C83C85A8182DADB40028A722 /* Pensils.png */,
 				C83C85A9182DADB40028A722 /* Pocket.png */,
 				C83C85AA182DADB40028A722 /* Retina-Ready.png */,
@@ -457,8 +459,6 @@
 				2F63EF3A18374D58004137C7 /* Constants.h */,
 				2F63EF3B18374D58004137C7 /* Constants.m */,
 				C86268E71828781C0092B910 /* Default-568h@2x.png */,
-				C86268E31828781C0092B910 /* Default.png */,
-				C86268E51828781C0092B910 /* Default@2x.png */,
 				C86268DA1828781C0092B910 /* InfoPlist.strings */,
 				C86268DD1828781C0092B910 /* main.m */,
 				2F63EF3D18393ECC004137C7 /* MBProgressHUD.h */,
@@ -572,8 +572,6 @@
 				2F61D11E185953730045EBA9 /* PerfecTiming.png in Resources */,
 				C86268DC1828781C0092B910 /* InfoPlist.strings in Resources */,
 				2FAEB1501856DF120066B1D3 /* Icon@2x.png in Resources */,
-				C86268E41828781C0092B910 /* Default.png in Resources */,
-				C86268E61828781C0092B910 /* Default@2x.png in Resources */,
 				2FAEB1491856DF120066B1D3 /* Icon-72.png in Resources */,
 				C86268E81828781C0092B910 /* Default-568h@2x.png in Resources */,
 				C86268EB1828781C0092B910 /* MainStoryboard.storyboard in Resources */,
@@ -596,8 +594,10 @@
 				C83C85B7182DADB40028A722 /* Pocket.png in Resources */,
 				C83C85B8182DADB40028A722 /* Retina-Ready.png in Resources */,
 				C83C85B9182DADB40028A722 /* Toilet-Paper.png in Resources */,
+				2FAD3073185E9F2C00B06B49 /* Default.png in Resources */,
 				C83C85BA182DADB40028A722 /* Watches.png in Resources */,
 				2FAEB14B1856DF120066B1D3 /* Icon-Small-50.png in Resources */,
+				2FAD3072185E9F2C00B06B49 /* Default~iphone.png in Resources */,
 				2FAEB14C1856DF120066B1D3 /* Icon-Small-50@2x.png in Resources */,
 				C83C85C2182DB6220028A722 /* menu.png in Resources */,
 				C83C85C3182DB6220028A722 /* menu@2x.png in Resources */,
