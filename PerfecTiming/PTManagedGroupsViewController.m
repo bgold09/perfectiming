@@ -150,6 +150,7 @@
             }
             
             if (succeeded) {
+                [group cleanup];
                 [self loadObjects];
             }
         }];

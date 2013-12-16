@@ -58,7 +58,7 @@
             }
             
             if (succeeded) {
-                
+                [self.group cleanup];
                 [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:YES];
             }
         }];
