@@ -94,6 +94,11 @@
     }
     
     cell.textLabel.text = notification.message;
+    if (notification.read) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
