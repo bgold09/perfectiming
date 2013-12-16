@@ -95,9 +95,16 @@
         return;
     }
     
+    NSMutableArray *attendees = [NSMutableArray array];
     for (PTMeeting *meeting in meetings) {
         PTMeetingAttendee *attendee = [PTMeetingAttendee meetingAttendeeWithUser:[PFUser currentUser] meeting:meeting];
-        [attendee save];
+        [attendees addObject:attendee];
+    }
+    
+    [PFObject saveAll:attendees error:&error];
+    if (error) {
+        [self performSelectorOnMainThread:@selector(showFailureAlert:) withObject:error waitUntilDone:NO];
+        return;
     }
     
     NSString *channelName = [group channelName];

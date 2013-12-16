@@ -73,11 +73,13 @@
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     PFInstallation *installation = [PFInstallation currentInstallation];
     [installation setObject:[PFUser currentUser] forKey:@"user"];
-    [installation saveEventually];
+    
     NSArray *channels = [user objectForKey:kPTUserChannelsKey];
     if (channels) {
         [installation addUniqueObjectsFromArray:channels forKey:kPTUserChannelsKey];
     }
+    
+    [installation saveEventually];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kPTUserLoggedInNotification object:nil];
     [self dismissViewControllerAnimated:YES completion:NULL];

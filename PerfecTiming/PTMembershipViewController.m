@@ -136,7 +136,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != [alertView cancelButtonIndex]) {
-        PTMembership *membership =  (PTMembership *) [self objectAtIndexPath:self.deleteIndexPath];
+        PTMembership *membership = (PTMembership *) [self objectAtIndexPath:self.deleteIndexPath];
         
         [membership deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (error) {

@@ -8,6 +8,7 @@
 
 #import "PTMeeting.h"
 #import <Parse/PFObject+Subclass.h>
+#import "PTMembership.h"
 #import "PTMeetingAttendee.h"
 
 @implementation PTMeeting
@@ -34,8 +35,38 @@
     return meeting;
 }
 
+- (void)createAttendees {
+    [self performSelectorInBackground:@selector(backgroundCreateAttendees) withObject:nil];
+}
+
 - (NSComparisonResult)compareToMeeting:(PTMeeting *)meeting {
     return [self.name compare:meeting.name];
+}
+
+#pragma mark - Private methods
+
+- (void)backgroundCreateAttendees {
+    PFQuery *membershipQuery = [PTMembership query];
+    [membershipQuery whereKey:@"group" equalTo:self.group];
+    
+    NSError *error;
+    NSArray *memberships = [membershipQuery findObjects:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
+    
+    NSMutableArray *attendees = [NSMutableArray array];
+    for (PTMembership *membership in memberships) {
+        PTMeetingAttendee *attendee = [PTMeetingAttendee meetingAttendeeWithUser:membership.user meeting:self];
+        [attendees addObject:attendee];
+    }
+    
+    [PFObject saveAll:attendees error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return;
+    }
 }
 
 @end

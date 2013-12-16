@@ -62,7 +62,7 @@
 
 - (void)createMeeting {
     NSString *meetingName = [self.nameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    PTMeeting *meeting = [PTMeeting meetingWithName:meetingName group:self.group location:self.locationField.text];
+    __block PTMeeting *meeting = [PTMeeting meetingWithName:meetingName group:self.group location:self.locationField.text];
     
     [meeting saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {
@@ -72,6 +72,7 @@
         }
         
         if (succeeded) {
+            [meeting createAttendees];
             [self performSelectorOnMainThread:@selector(fireNotification) withObject:nil waitUntilDone:YES];
         }
     }];

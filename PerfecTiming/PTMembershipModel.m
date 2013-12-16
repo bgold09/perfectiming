@@ -14,9 +14,11 @@
 @implementation PTMembershipModel
 
 + (void)cleanupMembershipForGroup:(PTGroup *)group user:(PFUser *)user {
+    // find all meetings for the group
     PFQuery *meetingQuery = [PTMeeting query];
     [meetingQuery whereKey:@"group" equalTo:group];
     
+    // find attendee objects for the meetings for this user
     PFQuery *query = [PTMeetingAttendee query];
     [query whereKey:@"meeting" matchesQuery:meetingQuery];
     [query whereKey:@"user" equalTo:user];

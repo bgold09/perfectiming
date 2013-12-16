@@ -16,6 +16,7 @@
     [user addUniqueObject:channelName forKey:kPTUserChannelsKey];
     [user saveInBackground];
     
+    // update channels for the current installation
     PFInstallation *installation = [PFInstallation currentInstallation];
     [installation addUniqueObject:channelName forKey:kPTUserChannelsKey];
     [installation saveInBackground];
